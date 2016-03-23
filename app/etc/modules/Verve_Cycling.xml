@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Verve_Cycling>
+            <active>true</active>
+            <codePool>local</codePool>
+            <version>1.0.0</version>
+        </Verve_Cycling>
+    </modules>
+</config>

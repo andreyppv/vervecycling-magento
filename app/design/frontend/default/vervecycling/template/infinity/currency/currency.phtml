@@ -1,0 +1,56 @@
+<?php
+/**
+ * Currency switcher
+ *
+ * @see Mage_Directory_Block_Currency
+ */
+$_websites = Mage::app()->getWebsites();
+$isSelect = ($this->getElementType() == 'select')? true : false;
+foreach($_websites as $website)
+{
+    $storeId = $website->getDefaultGroup()->getDefaultStore()->getId();
+    foreach(Mage::app()->getStore($storeId)->getAvailableCurrencyCodes() as $symbol)
+    {
+    	//$currencies[$symbol] = Mage::app()->getLocale()->currency($symbol)->getName();
+        //$currencies[$symbol] = $website->getName();
+       $currencies[$symbol] = array('currency_name'=>Mage::app()->getLocale()->currency($symbol)->getName(),
+                                    'website_code'=>$website->getCode(),
+                                    'website_name'=>$website->getName()
+                                    ); 
+    }
+}
+?>
+<?php if(count($currencies)>1): ?>
+	<?php if($isSelect): ?>
+		<div class="country-switcher">
+		    <label for="select-country" class="label" data-mobile-label="<?php echo $this->__('Shipping to') ?>"><?php echo $this->__('Where are you shipping to?') ?></label>
+		    <div class="input-box">
+			    <select id="select-country" onchange="countrySwitcherGo(this);" data-url="<?php echo $this->helper("core/url")->getCurrentUrl();?>">
+			    <?php foreach ($currencies as $currencySymbol => $data): ?>
+			    	<?php $_selected = ($currencySymbol==$this->getCurrentCurrencyCode()) ? ' selected="selected"' : '' ?>
+			        <option value="<?php echo $currencySymbol?>" title="<?php echo $this->getSkinUrl().'images/flag/' . strtolower($currencySymbol) . '.jpg'; ?>"<?php echo $_selected ?>>
+			        	<?php echo $this->__($data['website_name']); ?>
+			        	<?php //echo '(' . Mage::app()->getLocale()->currency($currencySymbol)->getSymbol() . ')'; ?>
+			        </option>
+			    <?php endforeach; ?>
+			    </select>
+		    </div>
+		</div>
+	<?php else: ?>
+		<div class="product-currency" data-current-url="<?php echo $this->helper("core/url")->getCurrentUrl();?>">
+		    <div class="sub-title"><?php echo $this->__('PRICE:') ?> <span class="name">&nbsp;</span> <a href="javascript:;" onclick="currencyLisShow(this)"><?php echo $this->__('(Change currency)')?></a></div>
+		    <ul class="currency-list">
+
+		    <?php foreach ($currencies as $currencySymbol => $data): ?>
+                        
+		        <li class="item<?php echo ($currencySymbol==$this->getCurrentCurrencyCode())? ' current':''; ?>" data-currency="<?php echo $this->getSwitchCurrencyUrl($currencySymbol) ?>">
+					<a href="<?php echo $this->getSwitchCurrencyUrl($currencySymbol) ?>" data-currency="<?php echo $currencySymbol?>" data-website="<?php echo $data['website_code']?>">
+					    <img src="<?php echo $this->getSkinUrl().'images/flag/' . strtolower($currencySymbol) . '.jpg'; ?>" title="<?php echo $data['currency_name'] ?> (<?php echo $currencySymbol ?>)" width="22" height="16" />
+					    <span class="name"><?php echo $this->__($data['currency_name']); ?></span> <span>(<?php echo Mage::app()->getLocale()->currency($currencySymbol)->getSymbol() ?>)</span>
+					</a>
+		        </li>
+		    <?php endforeach; ?>
+			</ul>
+		</div>
+	<?php endif; ?>
+<?php endif; ?>

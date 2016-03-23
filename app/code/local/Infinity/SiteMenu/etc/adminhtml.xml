@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+<config>
+    <menu>
+        <infinity>
+            <children>
+                <sitemenu translate="title" module="sitemenu">
+                    <title>Site Menu</title>
+                    <sort_order>10</sort_order>
+                    <children>
+                        <item translate="title" module="sitemenu">
+                            <title>Manage Menu Items</title>
+                            <sort_order>10</sort_order>
+                            <action>sitemenu/adminhtml_item</action>
+                        </item>
+                        <category translate="title" module="sitemenu">
+                            <title>Manage Categories</title>
+                            <sort_order>20</sort_order>
+                            <action>sitemenu/adminhtml_category</action>
+                        </category>
+                    </children>
+                </sitemenu>
+            </children>
+        </infinity>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <infinity>
+                        <children>
+                            <sitemenu translate="title" module="sitemenu">
+                                <title>Site Menu</title>
+                                <sort_order>10</sort_order>
+                                <children>
+                                    <item translate="title" module="sitemenu">
+                                        <title>Manage Menu Items</title>
+                                        <sort_order>10</sort_order>
+                                    </item>
+                                    <category translate="title" module="sitemenu">
+                                        <title>Manage Categories</title>
+                                        <sort_order>20</sort_order>
+                                    </category>
+                                </children>
+                            </sitemenu>
+                        </children>
+                    </infinity>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

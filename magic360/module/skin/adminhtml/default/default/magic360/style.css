@@ -1,0 +1,16 @@
+.magic360EditForm td.label {
+    width: 240px !important;
+}
+.magic360EditForm td.label label {
+    width: 225px !important;
+}
+.magic360EditForm td.value {
+    min-width: 475px !important;
+    width: auto !important;
+}
+.fieldsetOpen {
+    background: url("../images/entry_edit_head_arrow_up.gif") no-repeat scroll 100% 50% transparent !important;
+}
+.fieldsetClose {
+    background: url("../images/entry_edit_head_arrow_down.gif") no-repeat scroll 100% 50% transparent !important;
+}

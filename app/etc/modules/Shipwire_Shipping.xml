@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+			<Shipwire_Shipping>
+				<active>true</active>
+				<codePool>local</codePool>
+			</Shipwire_Shipping>
+	</modules>
+</config>

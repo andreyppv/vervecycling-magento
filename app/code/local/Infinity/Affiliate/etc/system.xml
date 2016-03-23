@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <checkout  translate="label" module="affiliate">            
+            <groups>
+                <affiliate_partner_names_group translate="label"> 
+                    <label>Affiliate Partner Names</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <affiliate_partner_names_field translate="label">
+                            <label>Affiliate Partner Names</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enter comma separated partner names</comment>
+                        </affiliate_partner_names_field>
+                    </fields>
+                </affiliate_partner_names_group>
+            </groups>
+        </checkout>
+        <design>
+            <groups>
+                <admin translate="label">
+                    <label>Admin Theme</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <theme translate="label comment">
+                            <label>Admin theme name</label>
+                            <comment>Override default admin theme.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </theme>
+                    </fields>
+                </admin>
+            </groups>
+        </design>
+    </sections>
+</config>

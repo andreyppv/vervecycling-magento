@@ -1,0 +1,97 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Shopping cart template
+ *
+ * @see Mage_Checkout_Block_Cart
+ */
+$controller=$this->getRequest()->getControllerName();
+$action=$this->getRequest()->getActionName();
+if($controller.$action=='cartindex')
+{
+    header('location:'.$this->getUrl('checkout/onepage'));
+    exit;
+}
+?>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="cart">
+        <?php echo $this->getMessagesBlock()->toHtml() ?>
+        <?php echo $this->getChildHtml('form_before') ?>
+        <form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="cart-form">
+            <?php echo $this->getBlockHtml('formkey'); ?>
+            <?php if($this->getContinueShoppingUrl()): ?>
+                <div class="row">
+                    <div class="col-md-8"><h2 class="checkout-title"><?php echo $this->__('Your Cart') ?></h2></div>
+                    <div class="col-md-4">
+                        <span  title="<?php echo Mage::helper('core')->quoteEscape($this->__('Continue Shopping')) ?>" class="button-primary btn pull-right quote-btn"   onclick="setLocation('<?php echo Mage::helper('core')->quoteEscape($this->getContinueShoppingUrl()) ?>')"><span><span><strong><?php echo $this->__('Continue Shopping') ?></strong></span></span></span>
+                    </div>
+                </div>
+            <?php endif; ?>
+                <fieldset>
+                      <!--[if lt IE 8]>
+                            <input type="hidden" id="update_cart_action_container" />
+                            <script type="text/javascript">
+                            //<![CDATA[
+                                Event.observe(window, 'load', function()
+                                {
+                                    // Internet Explorer (lt 8) does not support value attribute in button elements
+                                    $emptyCartButton = $('empty_cart_button');
+                                    $cartActionContainer = $('update_cart_action_container');
+                                    if ($emptyCartButton && $cartActionContainer) {
+                                        Event.observe($emptyCartButton, 'click', function()
+                                        {
+                                            $emptyCartButton.setAttribute('name', 'update_cart_action_temp');
+                                            $cartActionContainer.setAttribute('name', 'update_cart_action');
+                                            $cartActionContainer.setValue('empty_cart');
+                                        });
+                                    }
+
+                                });
+                            //]]>
+                            </script>
+                            <![endif]-->
+
+
+                <?php foreach($this->getItems() as $_item): ?>
+                    <?php echo $this->getItemHtml($_item) ?>
+                <?php endforeach ?>
+
+
+        </fieldset>
+    </form>
+    <div class="col-md-8"></div>
+    <div class="cart-collaterals col-md-4">
+        <div class="totals ">
+            <?php //echo $this->renderTotals('mytotals'); ?>
+            Total : <?php echo $this->helper('checkout')->formatPrice(Mage::getSingleton('checkout/cart')->getQuote()->getGrandTotal()); ?>
+        </div>
+    </div>
+</div>
+  </div>
+</div>

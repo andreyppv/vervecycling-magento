@@ -1,0 +1,19 @@
+<?php if ($this->getReviewsCount()): ?>
+    <span class="ratings" style="display: inline-block !important; margin:0;">
+        <?php if ($this->getRatingSummary()):?>
+            <a href="<?php echo $this->getReviewsUrl() ?>"  >
+                <span class="rating-box">
+                    <span class="rating" style="width:<?php echo $this->getRatingSummary() ?>%"></span>
+                </span>
+            </a>
+        <?php endif;?>
+        <span class="amount"><a href="#" onclick="var t = opener ? opener.window : window; t.location.href='<?php echo $this->getReviewsUrl() ?>'; return false;"></a></span>
+
+    </span>
+<?php else : ?>
+    <a href="<?php echo $this->getReviewsUrl() ?>#review-form" class="star">
+        <span class="rating-box">
+            <span class="rating" style="width:<?php echo $this->getRatingSummary() ?>%"></span>
+        </span>
+    </a>
+<?php endif; ?>

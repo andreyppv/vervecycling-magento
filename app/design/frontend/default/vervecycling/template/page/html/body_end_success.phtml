@@ -1,0 +1,14 @@
+<?php
+$orderId = Mage::getSingleton('checkout/session')->getLastRealOrderId();
+$order = Mage::getSingleton('sales/order')->loadByIncrementId($orderId);
+$total = number_format($order->getSubtotal(),2);
+?>
+<!--
+Start of DoubleClick Floodlight Tag: Please do not remove
+Activity name of this tag: Sales Confirmation
+URL of the webpage where the tag is expected to be placed: http://www.vervecycling.com
+This tag must be placed between the <body> and </body> tags, as close as possible to the opening tag.
+Creation Date: 05/07/2015
+-->
+<iframe src="https://4854312.fls.doubleclick.net/activityi;src=4854312;type=sales;cat=wj3mb6i5;qty=1;cost=<?php echo $total?>;ord=<?php echo $orderId; ?>?" width="1" height="1" frameborder="0" style="display:none"></iframe>
+<!-- End of DoubleClick Floodlight Tag: Please do not remove -->

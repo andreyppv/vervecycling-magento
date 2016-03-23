@@ -1,0 +1,198 @@
+<?php
+
+$_categories = Mage::getSingleton('sitemenu/category')->getCollection();
+$_menu = Mage::registry('sitemenu_data');
+$_id = $_menu->getId() ? $_menu->getId() : 0;
+$_fid = $_menu->getFid() ? $_menu->getFid() : 0;
+$_mg_cat_id = $_menu->getMgCatId() ? $_menu->getMgCatId() : 0;
+
+?>
+<script type="text/javascript">
+// <![CDATA[
+
+var id        = <?php echo $_id ?>;
+var parent_id = <?php echo $_fid ?>;
+var store_id  = $('store_id').getValue() ? $('store_id').getValue().join(',') : 0;
+var mg_cat_id = <?php echo $_mg_cat_id ?>;
+
+var updateStore = function () {
+
+    updateParentItems();
+    updateProductCategories();
+    updateProductCategoriesID();
+    updateCmsPages();
+
+}
+
+var updateItemType = function() {
+
+    switch ( $('is_catalog').getValue() ) {
+
+        case '1' : // product category tree
+        case '2' : // product tree
+            $('mg_cat_id').addClassName('required-entry');
+            $( $('mg_cat_id').parentNode.parentNode ).show();
+            break;
+
+        default : // normal link
+            $('mg_cat_id').removeClassName('required-entry');
+            $( $('mg_cat_id').parentNode.parentNode ).hide();
+            break;
+    }
+
+}
+
+var updateParentItems = function () {
+
+    var url = '<?php echo Mage::getModel('adminhtml/url')->getUrl('*/*/getItems') ?>';
+    new Ajax.Request( url, {
+        onSuccess : function ( transport ) {
+            if ( transport.responseText.isJSON() ) {
+                // clear all options
+                $$('#fid option').each( function ( el ) { el.remove() } );
+                // get items in selected category
+                var items = transport.responseText.evalJSON();
+                // add menu items except which is being edited
+                $('fid').insert( new Element( 'option', { 'value' : '' } ).update( '<?php echo $this->__('[ root ]') ?>' ) );
+                for ( var i = 0; i < items.length; i ++ )
+                    if ( items[i].value != id )
+                        $('fid').insert( new Element( 'option', { 'value' : items[i].value, 'selected' : ( items[i].value == parent_id ? 'selected' : null ) } ).update( items[i].label ) );
+            }
+        },
+        parameters : {
+            'store_id'    : $('store_id').getValue().toString(),
+            'category_id' : $('category').getValue()
+        }
+    } );
+
+};
+
+var updateProductCategories = function () {
+
+    var url = '<?php echo Mage::getModel('adminhtml/url')->getUrl('*/*/getProductCategories') ?>';
+    new Ajax.Request( url, {
+        onSuccess : function ( transport ) {
+            if ( transport.responseText.isJSON() ) {
+                // clear all options
+                $$('#category_url option').each( function ( el ) { el.remove() } );
+                // add product categories as options
+                $('category_url').insert( new Element( 'option', { 'value' : '' } ) );
+                var categories = transport.responseText.evalJSON();
+                setProductCategories( categories );
+            }
+        },
+        parameters : { 'store_id' : store_id }
+    } );
+
+};
+
+var setProductCategories = function ( categories, level ) {
+
+    if ( !level )
+        level = 0;
+
+    for ( var i in categories ) {
+        // set item
+        if ( categories[i].url ) {
+            var name = '';
+            for ( var n = 1; n < level; n ++ )
+                name = '　|-- ' + name;
+            name += categories[i].name;
+            $('category_url').insert( new Element( 'option', { 'value' : categories[i].url +'|'+ categories[i].id } ).update( name ) );
+        }
+
+        // set children items
+        setProductCategories( categories[i].children, level + 1 );
+    }
+}
+
+var updateCmsPages = function () {
+
+    var url = '<?php echo Mage::getModel('adminhtml/url')->getUrl('*/*/getCmsPages') ?>';
+    new Ajax.Request( url, {
+        onSuccess : function ( transport ) {
+            if ( transport.responseText.isJSON() ) {
+
+                // clear all options
+                $$('#cmspage option').each( function ( el ) { el.remove() } );
+
+                // add product categories as options
+                $('cmspage').insert( new Element( 'option', { 'value' : '' } ) );
+                var pages = transport.responseText.evalJSON();
+                for ( var i in pages )
+                    if ( pages[i].value )
+                        $('cmspage').insert( new Element( 'option', { 'value' : pages[i].value } ).update( pages[i].label ) );
+            }
+        },
+        parameters : { 'store_id' : store_id }
+    } );
+
+}
+
+var updateUrl = function ( url ) {
+
+    if ( url ) {
+        var urls = url.split('|');
+        $('url').value = urls[0];
+        $('url_rewrite').value = ( typeof( urls[1] ) != 'undefined' ) ? urls[1] : '';
+    }
+    
+}
+
+var updateCatalogUrl = function () {
+
+    var url = $('category_url').value;
+    if ( url ) {
+        var urls = url.split('|');
+        updateUrl( urls[0] + '|' + ( $('use_search_url').checked ? ( 'catalogsearch/advanced/result/?price[from]=0&cat=' + urls[1] ) : '' ) );
+    }
+    
+}
+
+var updateProductCategoriesID = function () {
+
+    var url = '<?php echo Mage::getModel('adminhtml/url')->getUrl('*/*/getProductCategories') ?>';
+    new Ajax.Request( url, {
+        onSuccess : function ( transport ) {
+            if ( transport.responseText.isJSON() ) {
+
+                // clear all options
+                $$('#mg_cat_id option').each( function ( el ) { el.remove() } );
+
+                // add product categories as options
+                $('mg_cat_id').insert( new Element( 'option', { 'value' : '' } ) );
+                var categories = transport.responseText.evalJSON();
+                setProductCategoriesID( categories );
+            }
+        },
+        parameters : { 'store_id' : store_id }
+    } );
+
+};
+
+var setProductCategoriesID = function ( categories, level ) {
+
+    if ( !level )
+        level = 0;
+
+    for ( var i in categories ) {
+        // set item
+        if ( categories[i].url ) {
+            var name = '';
+            for ( var n = 1; n < level; n ++ )
+                name = '　|-- ' + name;
+            name += categories[i].name;
+            $('mg_cat_id').insert( new Element( 'option', { 'value' : categories[i].id , 'selected' : ( categories[i].id == mg_cat_id ? 'selected' : null ) } ).update( name ) );
+        }
+
+        // set children items
+        setProductCategoriesID( categories[i].children, level + 1 );
+    }
+
+}
+
+updateStore();
+updateItemType();
+
+//-->
+</script>

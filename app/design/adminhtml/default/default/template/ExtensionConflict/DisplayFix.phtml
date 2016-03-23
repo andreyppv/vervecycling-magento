@@ -1,0 +1,95 @@
+<div class="entry-edit">
+
+<div class="content-header">
+    <table cellspacing="0" class="grid-header">
+        <tr>
+            <td><h3><?php echo$this->__('Fix Conflict Solution')?></h3></td>
+            <td align="right">
+                <button onclick="document.location.href='<?php echo $this->getBackUrl()?>'" class="scalable back" type="button"><span><?php echo $this->__('Back')?></span></button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="entry-edit-head">
+	<h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Important Notice'); ?></h4> 
+</div>
+<div class="entry-edit">
+	<fieldset>
+		<font color="red">
+			<p>This tool is provided "as is" and the solution displayed below may not work in every situations</p>
+			<p>We highly recommand to test this on a development server before applying this modification on a production server</p>
+			<p>Maison du Logiciel cant be responsible for any data lose or server errors</p>
+		</font>
+	</fieldset>
+</div>
+
+<div class="entry-edit-head">
+	<h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Conflict Information'); ?></h4> 
+</div>
+<div class="entry-edit">
+	<fieldset>
+		<table cellspacing="0" class="form-list">
+			<tr>
+				<td width="200">Core module</td>			
+				<td><?php echo $this->getConflict()->getec_core_module(); ?></td>			
+			</tr>
+			<tr>
+				<td width="200">Core class</td>			
+				<td><?php echo $this->getConflict()->getec_core_class(); ?></td>			
+			</tr>
+			<tr>
+				<td width="200">Rewrite classes</td>			
+				<td><?php echo $this->getConflict()->getec_rewrite_classes(); ?></td>			
+			</tr>
+
+		</table>
+	</fieldset>
+</div>
+
+<?php if (! $this->getConflict()->canFix()): ?>
+
+	<div class="entry-edit-head">
+		<h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Solution'); ?></h4> 
+	</div>
+	<div class="entry-edit">
+		<fieldset>
+			There are too many rewrite classes to find a solution :(
+		</fieldset>
+	</div>
+
+<?php else: ?>
+	
+	<?php if (($class1 = $this->getConflict()->getClassInformation1()) && ($class2 = $this->getConflict()->getClassInformation2())): ?>
+	
+		<div class="entry-edit-head">
+			<h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Solution'); ?></h4> 
+		</div>
+		<div class="entry-edit">
+			<fieldset>
+				<p><b>1. Remove rewrite declaration :</b></p>
+				<ul style="margin-left: 30px;">
+					<li>Edit file <font color="red"><?php echo $class1['config_file_path']; ?></font></li>
+					<li>Remove code : <font color="red">&lt;<?php echo $this->getConflict()->getec_core_class(); ?>&gt;<?php echo $class1['class']; ?>&lt;<?php echo $this->getConflict()->getec_core_class(); ?>&gt;</font></li>
+				</ul>
+				
+				<p><b>2. Change class declaration </b></p>
+				<ul style="margin-left: 30px;">
+					<li>Edit file <font color="red"><?php echo $class2['class_path']; ?></font></li>
+					<li>Replace class declaration <font color="red">"<?php echo $class2['class_declaration']; ?>"</font> with <font color="red">"<?php echo $class2['new_class_declaration']; ?><?php echo $class1['class']; ?>"</font></li>
+				</ul>
+				<p><b>3. Refresh Magento Cache</p>
+				<p><b>4. Go back to the conflict list and click on refresh button to check if conflict is fixed</p>				
+			</fieldset>
+		</div>
+
+	<?php else: ?>
+		
+		Unable to load classes information		
+	
+
+	<?php endif; ?>
+		
+<?php endif; ?>
+
+</div>

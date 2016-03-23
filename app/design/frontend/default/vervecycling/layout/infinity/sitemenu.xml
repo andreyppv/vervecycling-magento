@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addJs"><script>infinity/hoverIntent.js</script></action>
+            <action method="addJs"><script>infinity/superfish.js</script></action>
+	    <action method="addCss"><stylesheet>css/infinity_menu.css</stylesheet></action>
+	</reference>
+        <reference name="header">
+            <remove name="top.links" />
+	        <reference name="header.quick.access">
+	            <block type="sitemenu/sitemenu" name="infinity_menu_top" as="topLinks" template="infinity/sitemenu/top.phtml" >
+	                <action method="setMenuCategory"><identify>top</identify></action>
+	            </block>
+	        </reference>
+            <remove name="top.menu" />
+			<block type="page/html_wrapper" name="infinity_menu_main_wrap" as="topMenu">
+				<action method="setElementClass"><value>nav-container</value></action>
+	            <block type="sitemenu/sitemenu" name="infinity_menu_main" template="infinity/sitemenu/main.phtml" >
+	                <action method="setMenuCategory"><identify>main</identify></action>
+	                <action method="setProCatTpl"><template>infinity/sitemenu/item/catalog/category.phtml</template></action>
+	                <action method="setProTpl"><template>infinity/sitemenu/item/catalog/product.phtml</template></action>
+	            </block>
+			</block>
+        </reference>
+ 		<reference name="footer">
+			<block type="sitemenu/sitemenu" name="infinity_menu_footer_top_links" as="footerTopLinks" template="infinity/sitemenu/footer.phtml" >
+                <action method="setMenuCategory"><identify>footer</identify></action>
+            </block>
+			<block type="sitemenu/sitemenu" name="infinity_menu_footer_links" as="footerLinks" template="infinity/sitemenu/footer_links.phtml" >
+                <action method="setMenuCategory"><identify>footer-links</identify></action>
+            </block>
+		</reference>
+    </default>
+</layout>

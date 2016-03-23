@@ -1,0 +1,15 @@
+<?php
+/**
+ * Note: This mark is a requirement of PayPal
+ * @see Mage_Paypal_Block_Standard_Form
+ */
+?>
+<!-- PayPal Logo -->
+<span class="label">
+	<?php echo Mage::helper('paypal')->__('PayPal') ?>
+	<p class="desc"><?php echo Mage::helper('paypal')->__('You will be redirected to PayPal after placing this order.') ?></p>
+</span>
+<a class="paypal-logo" href="<?php echo $this->getPaymentAcceptanceMarkHref()?>" onclick="javascript:window.open('<?php echo $this->getPaymentAcceptanceMarkHref()?>','olcwhatispaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, ,left=0, top=0, width=400, height=350'); return false;">
+	<img src="<?php echo $this->getSkinUrl('images/paypal-logo.jpg');?>" alt="<?php echo Mage::helper('paypal')->__('Acceptance Mark') ?>" />
+</a>
+<!-- PayPal Logo -->

@@ -1,0 +1,79 @@
+<?php
+/**
+ * Cryozonic
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Single Domain License
+ * that is available through the world-wide-web at this URL:
+ * http://cryozonic.com/licenses/stripe.html
+ * If you are unable to obtain it through the world-wide-web,
+ * please send an email to info@cryozonic.com so we can send
+ * you a copy immediately.
+ *
+ * @category   Cryozonic
+ * @package    Cryozonic_Stripe
+ * @copyright  Copyright (c) Cryozonic Ltd (http://cryozonic.com)
+ */
+
+$address_line1_check = $this->getInfo()->getAdditionalInformation('address_line1_check');
+$address_zip_check = $this->getInfo()->getAdditionalInformation('address_zip_check');
+?>
+
+<?php
+/**
+ * @see Cryozonic_Stripe_Block_Payment_Info
+ */
+?>
+<?php echo $this->escapeHtml($this->getMethod()->getTitle()) ?>
+
+<?php if ($_specificInfo = $this->getSpecificInformation()):?>
+<table>
+<?php foreach ($_specificInfo as $_label => $_value):?>
+    <tr>
+        <td><?php echo $this->escapeHtml($_label)?>:</td>
+        <td><?php echo nl2br(implode($this->getValueAsArray($_value, true), "\n"))?></td>
+    </tr>
+<?php endforeach; ?>
+</table>
+<?php endif;?>
+
+<?php if (!empty($address_line1_check) && !empty($address_zip_check)): ?>
+<style type="text/css">
+	.cryozonic.payment-info td {
+		padding-right: 20px;
+		font: 13px/1.5em Arial, Helvetica, sans-serif;
+	}
+	.cryozonic.payment-info td.result {
+		color: #666;
+	}
+	.cryozonic.payment-info td.result.pass {
+		color: #4F8A10;
+		text-transform: uppercase;
+		font-weight: bold;
+	}
+	.cryozonic.payment-info td.result.fail {
+		color: #D8000C;
+		text-transform: uppercase;
+		font-weight: bold;
+	}
+</style>
+<table class="cryozonic payment-info">
+	<?php if ($this->getInfo()->getCcType()): ?>
+	<tr>
+		<td><?php echo $this->getInfo()->getCcType(); ?> ending</td>
+		<td>xxxx <?php echo $this->getInfo()->getCcLast4(); ?></td>
+	</tr>
+	<?php endif; ?>
+	<tr>
+		<td><?php echo $this->__('Street Check'); ?></td>
+		<td class="result <?php echo $address_line1_check; ?>"><?php echo $address_line1_check; ?></td>
+	</tr>
+	<tr>
+		<td><?php echo $this->__('Zip Check'); ?></td>
+		<td class="result <?php echo $address_zip_check; ?>"><?php echo $address_zip_check; ?></td>
+	</tr>
+</table>
+<?php endif; ?>
+
+<?php echo $this->getChildHtml()?>

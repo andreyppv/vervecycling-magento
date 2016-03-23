@@ -1,0 +1,50 @@
+<?php
+$locationsList = $this->parseLocationsOption();
+$location = Mage::getModel('core/cookie')->get('location');
+$location = ($location) ? $location : trim(reset(array_keys($locationsList)));
+
+ $ip = $_SERVER['REMOTE_ADDR'];
+ $ipdat = @json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=" . $ip));
+ $ipdat->geoplugin_countryCode; // Here i am getting the country code
+
+?>
+
+<?php
+	if($ipdat->geoplugin_countryCode == 'US'){
+		 echo $this->getLayout()->createBlock('cms/block')->setBlockId('usa_number')->toHtml(); 
+	}
+	elseif($ipdat->geoplugin_countryCode == 'AU')
+	{
+		 echo $this->getLayout()->createBlock('cms/block')->setBlockId('aus_number')->toHtml(); 
+	}
+	elseif($ipdat->geoplugin_countryCode == 'EU')
+	{
+		 echo $this->getLayout()->createBlock('cms/block')->setBlockId('eu_number')->toHtml(); 
+	} 
+	elseif($ipdat->geoplugin_countryCode == 'UK')
+	{
+		 echo $this->getLayout()->createBlock('cms/block')->setBlockId('gbp_number')->toHtml(); 
+	}
+	else { ?>
+    
+        <div class="form-language">
+           <div class="label">
+                <span class="country"><?php echo $locationsList[$location]['subtitle'].'&nbsp;:'; ?></span>
+                <span class="switcher"><?php echo $locationsList[$location]['phone']; ?></span>
+                <span class="move">&nbsp;</span>
+           </div>
+           
+                
+            <ul id="language-chooser" class="language-chooser">
+                <?php foreach($locationsList as $locationPoint => $locationProperty) : ?>
+                    <li class="">
+                        <a title="<?php echo $locationProperty['title']; ?>" subtitle="<?php echo $locationProperty['subtitle']; ?>" hreflang="<?php echo $locationProperty['phone']; ?>" href="#" location="<?php echo $locationPoint; ?>">
+                            <span><?php echo $locationProperty['title']; ?></span>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+		
+        
+<?php } ?>

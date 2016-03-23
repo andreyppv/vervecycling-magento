@@ -1,0 +1,42 @@
+<?php
+
+$magicToolboxHelper = Mage::helper('magic360/settings');
+$tool = $magicToolboxHelper->loadTool('product');
+
+if($tool->params->checkValue('enable-effect', 'No')) {
+    require($magicToolboxHelper->getTemplateFilename('product.info.media'));
+    return;
+}
+
+$_product = $this->getProduct();
+$_id = $_product->getId();
+
+$magic360Images = Mage::registry('magic360Images');
+if($magic360Images) {
+    if(count($magic360Images)) {
+        $_images = array();
+        $baseDir = Mage::getBaseDir('media').DS.'magictoolbox'.DS.'magic360';
+        foreach($magic360Images as $_image) {
+            if(!file_exists($baseDir.$_image['file'])) continue;
+            $img = $this->helper('magic360/image')->init($_image['file'])->__toString();
+            $originalSizeArray = $this->helper('magic360/image')->getOriginalSizeArray();
+            if($tool->params->checkValue('square-images', 'Yes')) {
+                $big_image_size = ($originalSizeArray[0] > $originalSizeArray[1]) ? $originalSizeArray[0] : $originalSizeArray[1];
+                $img = $this->helper('magic360/image')->setWatermarkFile(null)->resize($big_image_size)->__toString();
+            }
+            list($w, $h) = $magicToolboxHelper->magicToolboxGetSizes('thumb', $originalSizeArray);
+            $medium = $this->helper('magic360/image')->setWatermarkFile(null)->resize($w, $h)->__toString();
+            $_images[] = compact('img', 'medium');
+        }
+        if($tool->isEnabled(count($_images), $_id)) {
+            echo $tool->getMainTemplate($_images, array("id" => "productMagic360"));
+            echo '<img id="image" scr="" style="display: none !important;" />';
+            return;
+        }
+    }
+}
+
+$tool->params->setValue('enable-effect', 'No');
+require($magicToolboxHelper->getTemplateFilename('product.info.media'));
+
+?>

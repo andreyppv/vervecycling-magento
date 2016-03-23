@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+    <default>
+        <reference name="head">
+            <!-- jQuery plugins -->
+            <action method="addItem"><type>skin_js</type><name>js/verve/jquery/plugins/jquery.easing.min.js</name><params/></action>
+            <action method="addItem"><type>skin_js</type><name>js/verve/jquery/plugins/jquery.tabs.min.js</name><params/></action>
+             
+            <action method="addItem"><type>skin_js</type><name>js/verve/jquery/plugins/jquery.accordion.min.js</name><params/></action>
+             
+            <action method="addItem"><type>skin_js</type><name>js/verve/jquery/plugins/jquery.ba-throttle-debounce.min.js</name><params/></action>
+            <action method="addItem"><type>skin_js</type><name>css/bower_components/bootstrap/dist/js/bootstrap.min.js</name><params/></action>
+             
+            <action method="addItem"><type>skin_js</type><name>bower_components/owlcarousel/owl-carousel/owl.carousel.js</name><params/></action>
+            <!--<action method="addItem"><type>skin_js</type><name>js/verve_home.js</name><params/></action>-->
+
+            <!-- CSS: -->
+            <action method="addItem"><type>skin_css</type><name>css/normalize.css</name><params/></action>
+            <action method="addItem"><type>skin_css</type><name>css/bower_components/bootstrap/dist/css/bootstrap.min.css</name><params/></action>
+            <action method="addItem"><type>skin_css</type><name>css/bower_components/font-awesome/css/font-awesome.min.css</name><params/></action>
+            <action method="addItem"><type>skin_css</type><name>css/bower_components/owlcarousel/owl-carousel/owl.carousel.css</name><params/></action>
+            <action method="addItem"><type>skin_css</type><name>css/bower_components/owlcarousel/owl-carousel/owl.theme.css</name><params/></action>
+            <action method="addItem"><type>skin_css</type><name>css/style.css</name><params/></action>
+            <action method="addItem"><type>skin_css</type><name>css/styles-ie.css</name><params/><if>lt IE 8</if></action>
+            <action method="addCss"><stylesheet>css/widgets.css</stylesheet></action>
+
+            <!--Mage files-->
+            <action method="addJs"><script>prototype/prototype.js</script></action>
+            <action method="addJs"><script>lib/ccard.js</script></action>
+            <action method="addJs"><script>prototype/validation.js</script></action>
+            <action method="addJs"><script>scriptaculous/builder.js</script></action>
+            <action method="addJs"><script>scriptaculous/effects.js</script></action>
+            <action method="addJs"><script>scriptaculous/dragdrop.js</script></action>
+            <action method="addJs"><script>scriptaculous/controls.js</script></action>
+            <action method="addJs"><script>scriptaculous/slider.js</script></action>
+            <action method="addJs"><script>varien/js.js</script></action>
+            <action method="addJs"><script>varien/form.js</script></action>
+            <action method="addJs"><script>varien/menu.js</script></action>
+            <action method="addJs"><script>mage/translate.js</script></action>
+            <action method="addJs"><script>mage/cookies.js</script></action>
+
+            <block type="page/js_cookie" name="js_cookies" template="page/js/cookie.phtml"/>
+
+            <action method="addItem"><type>js</type><name>lib/ds-sleight.js</name><params/><if>lt IE 7</if></action>
+            <action method="addItem"><type>skin_js</type><name>js/ie6.js</name><params/><if>lt IE 7</if></action>
+
+            <!---->
+
+        </reference>
+
+        <!--========== Header ==========-->
+        <reference name="header">
+
+
+        </reference>
+        <!--========== /Header ==========-->
+        <!--<reference name="content">
+
+            <block type="core/template" name="verve_before" template="page/html/verve/template_before.phtml"  >
+                <block type="page/html_topmenu" name="catalog.topnav" template="page/html/topmenu.phtml">
+                    <block type="page/html_topmenu_renderer" name="catalog.topnav.renderer" template="page/html/topmenu/renderer.phtml"/>
+                </block>
+
+                <block type="core/template" name="content.between">
+                </block>
+
+            </block>
+
+        </reference>-->
+
+
+        <reference name="feature_content">
+            <block type="core/template" name="our.clients" template="page/html/verve/ourclients.phtml"  />
+
+            <block type="core/template" name="extras"   />
+
+            <block type="cms/block" name="testimonials" template="verve/testimonials.phtml" >
+                <action method="setBlockId"><block_id>testimonials</block_id></action>
+            </block>
+            <block type="core/template" name="verve_after" template="page/html/verve/template_after.phtml"  >
+            </block>
+        </reference>
+
+
+        <!--<reference name="our.clients">
+            <block type="core/template" name="theclients" template="page/html/ourclients.phtml"  />
+        </reference>-->
+
+        <!--<cms_page>
+
+
+            <reference name="content">
+                <block type="page/html_wrapper" name="i_block_cms_page_top" before="-">
+                    <action method="setElementClass"><value>block_cms_page_top std</value></action>
+                    <block type="cms/block" name="block_cms_page_top">
+                        <action method="setBlockId"><block_id>block_cms_page_top</block_id></action>
+                    </block>
+                </block>
+            </reference>
+
+        </cms_page>-->
+
+        <!--========== root ==========-->
+        <!--<reference name="root">
+            <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+        </reference>-->
+        <block type="page/html_wrapper" name="cms.wrapper" translate="label">
+            <label>CMS Content Wrapper</label>
+            <action method="setElementClass"><value>std</value></action>
+            <block type="cms/page" name="cms_page"/>
+        </block>
+        <!--========== /root ==========-->
+        <remove name="right.permanent.callout"/>
+        <remove name="left.permanent.callout"/>
+        <remove name="cms.wrapper" />
+        <remove name="paypal.partner.right.logo"/>
+        <remove name="cart_sidebar" />
+        <remove name="catalog.compare.sidebar" />
+
+    </default>
+
+
+
+
+
+</layout>

@@ -1,0 +1,5 @@
+<?php $_product = $this->getProduct(); ?>
+<?php if ($_product->getResource()->getAttribute('shipping_estimation')->getIsVisibleOnFront() && $_product->getShippingEstimation()): ?>
+	<?php $shippingEstimation = $_product->getAttributeText('shipping_estimation'); ?>
+    <img src="<?php echo $this->getSkinUrl('images/truck-icon.png'); ?>" alt="<?php echo $shippingEstimation; ?>" width="16" height="12" /><?php echo $shippingEstimation; ?>
+<?php endif; ?>

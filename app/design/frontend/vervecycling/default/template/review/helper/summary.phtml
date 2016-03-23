@@ -1,0 +1,98 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php /*if ($this->getReviewsCount()): */?><!--
+    <div class="ratings">
+        <?php /*if ($this->getRatingSummary()):*/?>
+            <div class="rating-box">
+                <div class="rating" style="width:<?php /*echo $this->getRatingSummary() */?>%"></div>
+            </div>
+        <?php /*endif;*/?>
+        <p class="rating-links">
+            <a href="<?php /*echo $this->getReviewsUrl() */?>"><?php /*echo $this->__('%d Review(s)', $this->getReviewsCount()) */?></a>
+            <span class="separator">|</span>
+            <a href="<?php /*echo $this->getReviewsUrl() */?>#review-form"><?php /*echo $this->__('Add Your Review') */?></a>
+        </p>
+    </div>
+<?php /*elseif ($this->getDisplayIfEmpty()): */?>
+    <p class="no-rating"><a href="<?php /*echo $this->getReviewsUrl() */?>#review-form"><?php /*echo $this->__('Be the first to review this product') */?></a></p>
+--><?php /*endif; */?>
+
+
+<!--<ul class="review">
+    <li>
+<?php /*if ($this->getReviewsCount()): */?>
+    <div class="ratings">
+        <?php /*if ($this->getRatingSummary()):*/?>
+            <a href="<?php /*echo $this->getReviewsUrl() */?>" class="star">
+                <div class="rating-box">
+                    <div class="rating" style="width:<?php /*echo $this->getRatingSummary() */?>%"></div>
+                </div>
+            </a>
+        <?php /*endif;*/?>
+        <span class="amount"><a href="#" onclick="var t = opener ? opener.window : window; t.location.href='<?php /*echo $this->getReviewsUrl() */?>'; return false;"></a></span>
+
+    </div>
+<?php /*else : */?>
+    <a href="<?php /*echo $this->getReviewsUrl() */?>#review-form" class="star">
+        <div class="rating-box">
+            <div class="rating" style="width:<?php /*echo $this->getRatingSummary() */?>%"></div>
+        </div>
+    </a>
+<?php /*endif; */?>
+    </li>
+    <li><a href="<?php /*echo $this->getReviewsUrl() */?>">Read the Review ></a></li>
+</ul>-->
+
+<p>
+    <span class="firstItem">
+<?php if ($this->getReviewsCount()): ?>
+    <span class="ratings">
+        <?php if ($this->getRatingSummary()):?>
+            <a href="<?php echo $this->getReviewsUrl() ?>"  >
+                <span class="rating-box">
+                    <span class="rating" style="width:<?php echo $this->getRatingSummary() ?>%"></span>
+                </span>
+            </a>
+        <?php endif;?>
+        <span class="amount"><a href="#" onclick="var t = opener ? opener.window : window; t.location.href='<?php echo $this->getReviewsUrl() ?>'; return false;"></a></span>
+
+    </span>
+<?php else : ?>
+    <a href="<?php echo $this->getReviewsUrl() ?>#review-form" class="star">
+        <span class="rating-box">
+            <span class="rating" style="width:<?php echo $this->getRatingSummary() ?>%"></span>
+        </span>
+    </a>
+<?php endif; ?>
+    </span>
+    <span style="display: inline-block; margin-left: 5px;">
+        <a href="<?php echo $this->getReviewsUrl() ?>" style="display: inline-block; vertical-align: middle; margin-top: -8px;">
+            Read the Review >
+        </a>
+    </span>
+</p>
+

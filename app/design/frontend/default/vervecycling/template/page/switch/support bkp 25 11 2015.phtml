@@ -1,0 +1,21 @@
+<?php
+$locationsList = $this->parseLocationsOption();
+$location = Mage::getModel('core/cookie')->get('location');
+$location = ($location) ? $location : trim(reset(array_keys($locationsList)));
+?>
+<div class="form-language">
+    <div class="label">
+        <span class="country"><?php echo $locationsList[$location]['subtitle'].'&nbsp;:'; ?></span>
+        <span class="switcher"><?php echo $locationsList[$location]['phone']; ?></span>
+        <span class="move">&nbsp;</span>
+    </div>
+    <ul id="language-chooser" class="language-chooser">
+        <?php foreach($locationsList as $locationPoint => $locationProperty) : ?>
+            <li class="">
+                <a title="<?php echo $locationProperty['title']; ?>" subtitle="<?php echo $locationProperty['subtitle']; ?>" hreflang="<?php echo $locationProperty['phone']; ?>" href="#" location="<?php echo $locationPoint; ?>">
+                    <span><?php echo $locationProperty['title']; ?></span>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>

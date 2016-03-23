@@ -1,0 +1,53 @@
+<?php
+
+$_level = $this->getLevel();
+$_items = $this->getItems();
+$itemsCount = count($_items);
+$itemsCountLimitPerColumn = Mage::getBlockSingleton('sitemenu/sitemenu')->getCountItemLimit();
+
+?>
+
+<ul class="catalog level-<?php echo $_level ?>">
+    <?php foreach ( $_items as $key=>$_item ): ?>
+        <?php $key += 1; ?>
+        <?php
+            $_has_child  = $_item->getHasChild();
+            $_is_current = $_item->getIsCurrent();
+            $_is_first   = $_item->getIsFirst();
+            $_is_last    = $_item->getIsLast();
+            $_image      = $_item->getImage();
+            $_thumbnail  = $_item->getThumbnail();
+            $_desc       = $_item->getDescription();
+
+            $_class  = 'level-'. $_level;
+            $_class .= $_has_child ? ' parent' : '';
+            $_class .= $_is_current ? ' current' : '';
+            $_class .= $_is_last ? ' last' : ( $_is_first ? ' first' : '' );
+        ?>
+        <?php if (1 == $key): ?>
+            <li class="<?php echo $_class ?> item-cat-<?php echo $_item->getEntityId() ?>">
+                <ul>
+        <?php endif; ?>
+            <li>
+                <a target="<?php echo $_item->getTarget() ? $_item->getTarget() : '_self' ?>"
+                   href="<?php echo $_item->getUrl() ?>"><span><?php echo $_item->getName() ?></span></a>
+            </li>
+            <?php
+                // @INFO: We have commented line below for prevent displaying subcategories in our
+                // drop down menu.
+                //echo $_item->getChildren()
+            ?>
+            <?php if ((1 < $key) && (0 == ($key % $itemsCountLimitPerColumn))): ?>
+                </ul><ul>
+            <?php endif; ?>
+            <?php if ((0 == ($key % $itemsCountLimitPerColumn)) && ($itemsCount == $key)): ?>
+                    </ul>
+                </li>
+                <?php break; ?>
+            <?php endif; ?>
+        <?php if ((0 != ($key % $itemsCountLimitPerColumn)) && (($itemsCount) == $key)): ?>
+                </ul>
+            </li>
+        <?php endif; ?>
+    <?php endforeach; ?>
+</ul>

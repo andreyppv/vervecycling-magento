@@ -1,0 +1,70 @@
+<div id="<?php echo $this->getHtmlId() ?>" >
+<!--<ul class="messages">
+    <li class="notice-msg">
+        <ul>
+            <li>
+            <?php //echo Mage::helper('magic360')->__('Select the images that will be used for the Magic 360&#8482;.'); ?>
+            </li>
+        </ul>
+    </li>
+</ul>-->
+<div class="grid">
+<table cellspacing="0" class="data border" id="<?php echo $this->getHtmlId() ?>_grid" width="100%">
+    <col width="1" /><!--Image-->
+    <col width="70" /><!--Order-->
+    <col width="70" /><!--Exclude-->
+    <col width="70" /><!--Remove-->
+    <col />
+    <thead id="<?php echo $this->getHtmlId() ?>_head" style="display: none;">
+        <tr class="headings">
+            <th><?php echo Mage::helper('magic360')->__('Image') ?></th>
+            <th><?php echo Mage::helper('magic360')->__('Order') ?></th>
+            <th>
+                <?php echo Mage::helper('magic360')->__('Exclude') ?>
+                <input type="checkbox" title="Check all" <?php if($this->getElement()->getReadonly()) { ?> disabled="disabled"<?php } ?> onclick="checkAll('disable');" />
+            </th>
+            <th>
+                <?php echo Mage::helper('magic360')->__('Remove') ?>
+                <input type="checkbox" title="Check all" <?php if($this->getElement()->getReadonly()) { ?> disabled="disabled"<?php } ?> onclick="checkAll('remove');" />
+            </th>
+            <th class="last"></th>
+        </tr>
+    </thead>
+    <tbody id="<?php echo $this->getHtmlId() ?>_list">
+        <tr id="<?php echo $this->getHtmlId() ?>_template" class="template no-display">
+            <td class="cell-image"><div class="place-holder" onmouseover="<?php echo $this->getJsObjectName(); ?>.loadImage('__file__')"><span><?php echo Mage::helper('magic360')->__('Roll Over for preview') ?></span></div><img src="<?php echo $this->getSkinUrl('images/spacer.gif')?>" width="100" style="display:none;" alt="" /></td>
+            <td class="cell-position"><input type="text" <?php if($this->getElement()->getReadonly()) { ?> disabled="disabled"<?php } ?> class="input-text validate-number" onkeyup="<?php echo $this->getJsObjectName(); ?>.updateImage('__file__')" onchange="<?php echo $this->getJsObjectName(); ?>.updateImage('__file__')" /></td>
+            <td class="cell-disable a-center"><input type="checkbox" <?php if($this->getElement()->getReadonly()) { ?> disabled="disabled"<?php } ?> onclick="<?php echo $this->getJsObjectName(); ?>.updateImage('__file__')" /></td>
+            <td class="cell-remove a-center"><input type="checkbox" <?php if($this->getElement()->getReadonly()) { ?> disabled="disabled"<?php } ?> onclick="<?php echo $this->getJsObjectName(); ?>.updateImage('__file__')" /></td>
+            <td class="last"></td>
+        </tr>
+        <tr id="<?php echo $this->getHtmlId() ?>-image-0" class="no-display">
+            <td class="cell-image"><?php echo Mage::helper('magic360')->__('No image') ?></td>
+            <td class="cell-position"><input type="hidden" />&nbsp;</td>
+            <td class="cell-disable"><input type="hidden" />&nbsp;</td>
+            <td class="cell-remove"><input type="hidden" />&nbsp;</td>
+            <td class="last"></td>
+        </tr>
+    </tbody>
+    <?php if(!$this->getElement()->getReadonly()) { ?>
+    <tfoot>
+        <tr>
+            <td colspan="100" class="last" style="padding:8px">
+            <?php echo $this->getUploaderHtml() ?>
+            </td>
+        </tr>
+    </tfoot>
+    <?php } ?>
+</table>
+</div>
+</div>
+<input type="hidden" id="<?php echo $this->getHtmlId() ?>_save" name="<?php echo $this->getElement()->getName() ?>" value="<?php echo $this->htmlEscape($this->getImagesJson()) ?>" />
+<script type="text/javascript">
+//<![CDATA[
+var <?php echo $this->getJsObjectName(); ?> = new MagicToolbox.Gallery('<?php echo $this->getHtmlId() ?>', <?php if($this->getElement()->getReadonly()) { ?>null<?php } else { ?><?php echo $this->getUploader()->getJsObjectName() ?><?php } ?>);
+function checkAll(cellType) {
+    var inputs = $$('#<?php echo $this->getHtmlId() ?>_list tr.preview td.cell-'+cellType+' input');
+    inputs.each(function(item) {item.click();});
+}
+//]]>
+</script>

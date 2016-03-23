@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+    <sitemenu_adminhtml_item_index>
+        <reference name="content">
+            <block type="sitemenu/adminhtml_item" name="sitemenu" />
+        </reference>
+    </sitemenu_adminhtml_item_index>
+
+    <sitemenu_adminhtml_category_index>
+        <reference name="content">
+            <block type="sitemenu/adminhtml_category" name="sitemenu" />
+        </reference>
+    </sitemenu_adminhtml_category_index>
+</layout>

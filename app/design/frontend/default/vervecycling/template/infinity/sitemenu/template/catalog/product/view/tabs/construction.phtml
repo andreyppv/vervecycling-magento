@@ -1,0 +1,6 @@
+<?php $construction = $this->getProduct()->getConstruction(); ?>
+<?php if ($construction): ?>
+    <div class="std">
+        <?php echo $this->helper('catalog/output')->productAttribute($this->getProduct(), $construction, 'construction') ?>
+    </div>
+<?php endif; ?>

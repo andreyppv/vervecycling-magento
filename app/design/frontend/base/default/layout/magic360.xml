@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <block type="magic360/header" name="magic360_header" as="magic360_header" />
+        </reference>
+    </default>
+    <catalog_product_view>
+        <reference name="head">
+            <remove name="magic360_header"/>
+            <block type="magic360/header" name="magic360_header_product" as="magic360_header" />
+        </reference>
+        <reference name="magic360_header_product">
+            <action method="setPageType">
+                <type>product</type>
+            </action>
+        </reference>
+        <reference name="product.info.media">
+            <action method="setTemplate">
+                <template helper="magic360/settings/getBlockTemplate">
+                    <name>product.info.media</name>
+                    <template>magic360/media.phtml</template>
+                </template>
+            </action>
+        </reference>
+    </catalog_product_view>
+</layout>

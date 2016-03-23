@@ -1,0 +1,35 @@
+<meta http-equiv="Content-Type" content="<?php echo $this->getContentType() ?>" />
+<title><?php echo $this->getTitle() ?></title>
+<meta name="format-detection" content="telephone=no">
+<meta name="description" content="<?php echo htmlspecialchars($this->getDescription()) ?>" />
+<meta name="keywords" content="<?php echo htmlspecialchars($this->getKeywords()) ?>" />
+<meta name="robots" content="<?php echo htmlspecialchars($this->getRobots()) ?>" />
+<link rel="icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<link rel="shortcut icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--[if lt IE 7]>
+<script type="text/javascript">
+//<![CDATA[
+    var BLANK_URL = '<?php echo $this->helper('core/js')->getJsUrl('blank.html') ?>';
+    var BLANK_IMG = '<?php echo $this->helper('core/js')->getJsUrl('spacer.gif') ?>';
+//]]>
+</script>
+<![endif]-->
+<?php $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https": "http";?>
+<script type="text/javascript">var switchTo5x=true;</script>
+<?php $sharethisUrl = ($protocol == 'https') ? 'ws' : 'w' ?>
+<script type="text/javascript" src="<?php echo $protocol;?>://<?php echo $sharethisUrl;?>.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "5633843f-5435-49fc-b6d1-6cae3a5c124d", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+
+<script type="text/javascript" src="<?php echo $protocol;?>://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript">if(!window.jQuery) document.write("<script src='<?php echo $this->getUrl() . 'js/jquery/jquery.1.8.2.min.js' ?>'><\/script>")</script>
+<script type="text/javascript">
+//<![CDATA[
+	jQuery.noConflict();
+//]]>
+</script>
+<link type="text/css" rel="stylesheet" href="<?php echo $protocol;?>://fast.fonts.net/cssapi/7fa73cec-3adf-4aa8-898c-5adf8b1dd468.css"/>
+<?php echo $this->getCssJsHtml() ?>
+<?php echo $this->getChildHtml() ?>
+<?php echo $this->helper('core/js')->getTranslatorScript() ?>
+<?php echo $this->getIncludes() ?>

@@ -1,0 +1,13 @@
+<div class="infinity-menu-footer" id="sitemenu-<?php echo $this->getMenuCategory();?>">
+    <h3><?php echo $this->__('Store Information'); ?></h3>
+	<?php echo $this->getMenu(); ?>
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+jQuery( document ).ready( function ( $ ) {
+    // add `active` class to parents of current page item
+    $('#sitemenu-<?php echo $this->getMenuCategory();?> li.current').parents('#sitemenu-<?php echo $this->getMenuCategory();?> li').addClass('active');
+} );
+//]]>
+</script>

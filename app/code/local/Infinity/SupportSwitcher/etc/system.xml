@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <design translate="label" module="core">
+            <groups>
+                <header translate="label">
+                    <fields>
+                        <supportswitcher translate="label">
+                            <label>Support Switcher Formatted  Text</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </supportswitcher>
+                    </fields>
+                </header>
+            </groups>
+        </design>
+    </sections>
+</config>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <magictoolbox translate="title" module="magic360">
+            <title>Magic Toolbox</title>
+            <sort_order>300</sort_order>
+            <children>
+                <magic360 translate="title" module="magic360">
+                    <title>Magic 360 settings</title>
+                    <sort_order>10</sort_order>
+                    <action>adminhtml/magic360/index</action>
+                </magic360>
+            </children>
+        </magictoolbox>
+    </menu>
+</config>

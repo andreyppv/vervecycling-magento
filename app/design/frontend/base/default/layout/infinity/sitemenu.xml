@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addJs"><script>infinity/hoverIntent.js</script></action>
+            <action method="addJs"><script>infinity/superfish.js</script></action>
+	    <action method="addCss"><stylesheet>css/infinity_menu.css</stylesheet></action>
+	</reference>
+        <reference name="header">
+            <remove name="top.links" />
+            <block type="sitemenu/sitemenu" name="infinity_menu_top" as="topLinks" template="infinity/sitemenu/top.phtml" >
+                <action method="setMenuCategory"><identify>top</identify></action>
+            </block>
+            <remove name="top.menu" />
+            <block type="sitemenu/sitemenu" name="infinity_menu_main" as="topMenu" template="infinity/sitemenu/main.phtml" >
+                <action method="setMenuCategory"><identify>main</identify></action>
+                <action method="setProCatTpl"><template>infinity/sitemenu/item/catalog/category.phtml</template></action>
+                <action method="setProTpl"><template>infinity/sitemenu/item/catalog/product.phtml</template></action>
+            </block>
+        </reference>
+    </default>
+</layout>

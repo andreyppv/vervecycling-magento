@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <MagicToolbox_Magic360>
+            <active>true</active>
+            <codePool>local</codePool>
+        </MagicToolbox_Magic360>
+    </modules>
+</config>

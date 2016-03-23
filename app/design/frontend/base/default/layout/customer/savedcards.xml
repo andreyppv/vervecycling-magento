@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Cryozonic
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Single Domain License
+ * that is available through the world-wide-web at this URL:
+ * http://cryozonic.com/licenses/stripe.html
+ * If you are unable to obtain it through the world-wide-web,
+ * please send an email to info@cryozonic.com so we can send
+ * you a copy immediately.
+ *
+ * @category   Cryozonic
+ * @package    Cryozonic_Stripe
+ * @copyright  Copyright (c) Cryozonic Ltd (http://cryozonic.com)
+ */
+-->
+<layout version="0.1.0">
+    <customer_savedcards_index translate="label">
+        <label>Saved Cards</label>
+        <reference name="head">
+            <action method="setTitle"><title>Saved Cards</title></action> <!--Page Title-->
+        </reference>
+        <!-- Mage_Customer -->
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="cryozonic_stripe/customer_savedcards" name="customer_savedcards" before="-" template="cryozonic/stripe/customer/savedcards.phtml"/>
+        </reference>
+    </customer_savedcards_index>
+</layout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- @copyright Copyright (c) 2013 Magenio -->
+<config>
+	<tabs>
+		<italianlocale module="italianlocale" translate="label">
+			<label>Localizzazione Italiana</label>
+			<sort_order>140</sort_order>
+		</italianlocale>
+	</tabs>
+    <sections>
+        <italianlocale_info translate="label" module="italianlocale">
+            <label>Info Magento per l'Italia</label>
+            <tab>italianlocale</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+					<frontend_model>italianlocale/adminhtml_info</frontend_model>
+					<iframe_url>http://ecommerce-italiano.it/community/index.php</iframe_url>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>                   
+                </general>                
+            </groups>
+        </italianlocale_info>
+    </sections>
+</config>

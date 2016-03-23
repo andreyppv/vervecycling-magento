@@ -1,0 +1,2292 @@
+/*  font-family:'Futura PT W01 Bold', Georgia, 'Times New Roman', Times, serif;
+    font-family:'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;
+    font-family:'FuturaPTW01-CondExtraBo', Georgia, 'Times New Roman', Times, serif;
+    font-family:'Futura PT W01 Book', Georgia, 'Times New Roman', Times, serif;
+    font-family:'Futura PT W01 Heavy', Georgia, 'Times New Roman', Times, serif;
+    font-family:'FuturaPTW01-HeavyObliqu', Georgia, 'Times New Roman', Times, serif;
+    font-family:'FuturaPTW01-BookOblique', Georgia, 'Times New Roman', Times, serif;
+*/
+/* Reset ================================================================================= */
+*{margin:0;padding:0;}
+html{min-width:1050px;}
+body{background:#F9F9F9 url(../images/background.png) repeat;color:#000;font:18px/26px 'Futura PT W01 Book', 'Times New Roman', Times, serif;margin:0;padding:0;min-width:1050px;text-align:center;}
+
+img{border:0;vertical-align:top;max-width:100%;}
+
+a{color:#db192d;text-decoration:none;}
+a:hover{color:#009acf;text-decoration:none;}
+:focus{outline:0;}
+
+/* Headings */
+h1{font-size:34px;font-weight:normal;line-height:1.15;}
+h2{font:34px/38px 'Futura PT W01 Heavy', Georgia, 'Times New Roman', Times, serif;}
+h3{font:24px/28px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;}
+h4{font:16px/22px 'FuturaPTW01-CondExtraBo', Georgia, 'Times New Roman', Times, serif;}
+h5{font-size:12px;font-weight:normal;}
+h6{font-size:11px;font-weight:normal;}
+
+/* Forms */
+form{display:block;}
+fieldset{border:0;}
+legend{display:none;}
+
+/* Table */
+table{border:0;border-collapse:collapse;border-spacing:0;empty-cells:show;font-size:100%;}
+caption,th,td{vertical-align:top;text-align:left;font-weight:normal;}
+
+/* Content */
+address{font-style:normal;}
+cite{font-style:normal;}
+q,
+blockquote{quotes:none;}
+q:before,
+q:after{content:'';}
+small,big{font-size:1em;}
+sup{font-size:1em;vertical-align:top;}
+b,
+strong{font-weight:normal;font-family:'Futura PT W01 Heavy', Georgia, 'Times New Roman', Times, serif;}
+i,
+em{font-style:normal;font-family:'FuturaPTW01-BookOblique', Georgia, 'Times New Roman', Times, serif;}
+
+/* Lists */
+ul,ol{list-style:none;}
+ul.ul > li{padding:0 0 1px 30px;position:relative;}
+ul.ul > li:before{content: '';position:absolute;left:6px;top:9px;width:6px;height:6px;background:url(../images/spt_general.png) -62px -90px no-repeat;}
+/* Tools */
+.hidden{display:block !important;border:0 !important;margin:0 !important;padding:0 !important;font-size:0 !important;line-height:0 !important;width:0 !important;height:0 !important;overflow:hidden !important;}
+.nobr{white-space:nowrap !important;}
+.wrap{white-space:normal !important;}
+.a-left{text-align:left !important;}
+.a-center{text-align:center !important;}
+.a-right{text-align:right !important;}
+.v-top{vertical-align:top;}
+.v-middle{vertical-align:middle;}
+.f-left,
+.left{float:left !important;}
+.f-right,
+.right{float:right !important;}
+.f-none{float:none !important;}
+.f-fix{float:left;width:100%;}
+.no-display{display:none;}
+.no-margin{margin:0 !important;}
+.no-padding{padding:0 !important;}
+.no-bg{background:none !important;}
+/* ======================================================================================= */
+
+/* Layout ================================================================================ */
+.wrapper{}
+.page{text-align:left;}
+.page-print{background:#fff;padding:20px;text-align:left;}
+.page-empty{background:#fff;padding:20px;text-align:left;}
+.page-popup{padding:20px;text-align:left;}
+.main-container{padding:40px 0 60px;}
+.main-container.is-bottom{margin-bottom:0;}
+.main{}
+
+.header .welcome-msg,
+.main,
+.footer{max-width:1050px;margin:0 auto;}
+
+.bottom-information-wrap{padding:20px 0 60px;background: url(../images/bkg_widgets.png) repeat;}
+
+/* Base Columns */
+.col-left{float:left;width:290px;margin-right:40px;}
+.col-main{}
+.col-right{overflow:hidden;}
+
+/* 1 Column Layout */
+.col1-layout .col-main{float:none;width:auto;}
+
+/* 2 Columns Layout */
+.col2-left-layout .col-main{overflow:hidden;}
+.col2-right-layout .col-main{float:left;width:100%;padding-right:330px;margin-right:-290px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+
+/* 3 Columns Layout */
+.col3-layout .col-main{width:65.8%;}
+.col3-layout .col-wrapper{float:left;width:74.8%;}
+.col3-layout .col-wrapper .col-main{float:right;}
+.col3-layout .col-wrapper .sidebar{width:31.1%;}
+
+/* Content Columns */
+.col2-set .col-1{float:left;width:47.65%;}
+.col2-set .col-2{float:right;width:47.75%;}
+.col2-set .col-narrow{width:33%;}
+.col2-set .col-wide{width:65%;}
+
+.col3-set .col-1{float:left;width:32%;}
+.col3-set .col-2{float:left;width:32%;margin-left:2%;}
+.col3-set .col-3{float:right;width:32%;}
+
+.col4-set .col-1{float:left;width:23.5%;}
+.col4-set .col-2{float:left;width:23.5%;margin:0 2%;}
+.col4-set .col-3{float:left;width:23.5%;}
+.col4-set .col-4{float:right;width:23.5%;}
+/* ======================================================================================= */
+
+
+/* Global Styles ========================================================================= */
+/* Form Elements */
+input,select,textarea,button{font:18px 'Futura PT W01 Book', Georgia, 'Times New Roman', Times, serif;vertical-align:middle;color:#3c3c3c;}
+input.input-text,select,textarea{
+    background:#fff;border:1px solid #c8c8c8;color:#b4b4b4;
+    -webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;
+    -webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;
+}
+input.input-text:hover,select:hover,textarea:hover,
+input.input-text.focus,select.focus,textarea.focus{
+    border-color:#a0a0a0;
+}
+input.input-text.text-active,select.text-active,textarea.text-active{color:#3c3c3c;}
+input.input-text{line-height:22px;}
+input.input-text,textarea{padding:7px 10px;}
+select{padding:1px;}
+select option{padding-right:10px;}
+select.multiselect option{border-bottom:1px solid #c8c8c8;padding:2px 5px;}
+select.multiselect option:last-child{border-bottom:0;}
+textarea{overflow:auto;}
+input.radio{margin-right:3px;}
+input.checkbox{margin-right:3px;}
+input.qty{width:60px !important;}
+
+button.button::-moz-focus-inner{padding:0;border:0;}
+.wrapper .button{
+    display:inline-block;vertical-align:top;
+    font:18px/22px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;
+    text-decoration:none !important;
+    text-align:center;
+    margin:0;padding:7px 36px 9px;
+    color:#fff;
+    background:#00afeb;
+    background:-moz-linear-gradient(top, #00b4f2 0%, #00a7e1 100%);
+    background:-webkit-linear-gradient(top, #00b4f2 0%,#00a7e1 100%);
+    background:-o-linear-gradient(top, #00b4f2 0%,#00a7e1 100%);
+    background:-ms-linear-gradient(top, #00b4f2 0%,#00a7e1 100%);
+    background:linear-gradient(top, #00b4f2 0%,#00a7e1 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b4f2', endColorstr='#00a7e1',GradientType=0 );
+    border:0;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+    cursor:pointer;
+    -webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;
+}
+.wrapper .button:hover{background:#009acf;filter:none;cursor:pointer;text-decoration:none;}
+.wrapper .button.big{padding:12px 36px 16px;font-family:'Futura PT W01 Heavy', Georgia, 'Times New Roman', Times, serif;}
+.wrapper .button.big.btn-proceed-checkout{margin-bottom: 9px;}
+.wrapper .button.grey{
+    color:#3c3c3c;
+    background: #c8c8c8;
+    background: -moz-linear-gradient(top,  #c8c8c8 0%, #bebebe 100%);
+    background: -webkit-linear-gradient(top,  #c8c8c8 0%,#bebebe 100%);
+    background: -o-linear-gradient(top,  #c8c8c8 0%,#bebebe 100%);
+    background: -ms-linear-gradient(top,  #c8c8c8 0%,#bebebe 100%);
+    background: linear-gradient(to bottom,  #c8c8c8 0%,#bebebe 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c8c8c8', endColorstr='#bebebe',GradientType=0 );
+}
+.wrapper .button.grey:hover{background:#c0c0c0;}
+.wrapper .button.white{
+    border:1px solid #c8c8c8;
+    padding:6px 36px 8px;
+    color:#3c3c3c;
+    background: #ffffff;
+    background: -moz-linear-gradient(top,  #ffffff 0%, #f5f5f5 100%);
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#f5f5f5 100%);
+    background: -o-linear-gradient(top,  #ffffff 0%,#f5f5f5 100%);
+    background: -ms-linear-gradient(top,  #ffffff 0%,#f5f5f5 100%);
+    background: linear-gradient(to bottom,  #ffffff 0%,#f5f5f5 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f5f5f5',GradientType=0 );
+
+}
+.wrapper .button.white:hover{background:#fff;}
+
+button.link{display:inline-block;vertical-align:top;font:16px/22px 'Futura PT W01 Book', Georgia, 'Times New Roman', Times, serif;color:#db192d;border:none;background:none;cursor:pointer;}
+button.link:hover{color:#00a7e1;}
+button.disabled span{}
+
+button.btn-checkout span{}
+button.btn-checkout.no-checkout{}
+
+p.control input.checkbox,
+p.control input.radio{margin-right:6px;}
+/* Form Highlight */
+/*input.input-text:focus,select:focus,textarea:focus{}*/
+/*.highlight{background:#efefef;}*/
+
+/* Form lists */
+/* Grouped fields */
+.input-box select,
+.input-box textarea,
+.input-box input.input-text{width:100%;}
+
+.form-list li{margin:0 0 8px;}
+.form-list label{float:left;font:16px/22px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;text-transform:uppercase;margin:0 0 4px;position:relative;z-index:0;color:#000;}
+.form-list label.required{}
+.form-list label.required em{float:right;font-style:normal;color:#db192d;position:absolute;top:0;right:-8px;}
+.form-list li.control label{float:none;display:inline-block;vertical-align:middle;font:16px/26px 'Futura PT W01 Heavy', Georgia, 'Times New Roman', Times, serif;text-transform:none;}
+.form-list li.control input.radio,
+.form-list li.control input.checkbox{margin-right:6px;}
+.form-list li.control .input-box{clear:none;display:inline-block;vertical-align:middle;width:auto;}
+/*.form-list li.fields{margin-right:-15px;}*/
+.form-list .input-box{display:block;clear:both;width:100%;}
+.form-list .field{float:left;width:48%;}
+.form-list .field + .field{float:right;}
+.form-list input.input-text{width:100%;}
+.form-list textarea{width:100%;height:10em;}
+.form-list select{width:100%;}
+.form-list li.wide .input-box{width:100%;}
+.form-list li.wide input.input-text{}
+.form-list li.wide textarea{}
+.form-list li.wide select{}
+.form-list li.additional-row{border-top:1px solid #ccc;margin-top:10px;padding-top:7px;}
+.form-list li.additional-row .btn-remove{float:right;margin:5px 0 0;}
+.form-list .input-range input.input-text{}
+/* Customer */
+.form-list .customer-name-prefix .input-box,
+.form-list .customer-name-suffix .input-box,
+.form-list .customer-name-prefix-suffix .input-box,
+.form-list .customer-name-prefix-middlename .input-box,
+.form-list .customer-name-middlename-suffix .input-box,
+.form-list .customer-name-prefix-middlename-suffix .input-box{width:auto;}
+
+.form-list .name-prefix{width:65px;}
+.form-list .name-prefix select{width:55px;}
+.form-list .name-prefix input.input-text{width:49px;}
+
+.form-list .name-suffix{width:65px;}
+.form-list .name-suffix select{width:55px;}
+.form-list .name-suffix input.input-text{width:49px;}
+
+.form-list .name-middlename{width:70px;}
+.form-list .name-middlename input.input-text{width:49px;}
+
+.form-list .customer-name-prefix-middlename-suffix .name-firstname,
+.form-list .customer-name-prefix-middlename .name-firstname{width:140px;}
+.form-list .customer-name-prefix-middlename-suffix .name-firstname input.input-text,
+.form-list .customer-name-prefix-middlename .name-firstname input.input-text{width:124px;}
+.form-list .customer-name-prefix-middlename-suffix .name-lastname{width:205px;}
+.form-list .customer-name-prefix-middlename-suffix .name-lastname input.input-text{width:189px;}
+
+.form-list .customer-name-prefix-suffix .name-firstname{width:210px;}
+.form-list .customer-name-prefix-suffix .name-lastname{width:205px;}
+.form-list .customer-name-prefix-suffix .name-firstname input.input-text,
+.form-list .customer-name-prefix-suffix .name-lastname input.input-text{width:189px;}
+
+.form-list .customer-name-prefix-suffix .name-firstname{width:210px;}
+.form-list .customer-name-prefix-suffix .name-lastname{width:205px;}
+.form-list .customer-name-prefix-suffix .name-firstname input.input-text,
+.form-list .customer-name-prefix-suffix .name-lastname input.input-text{width:189px;}
+
+.form-list .customer-name-prefix .name-firstname,
+.form-list .customer-name-middlename .name-firstname{width:210px;}
+
+.form-list .customer-name-suffix .name-lastname,
+.form-list .customer-name-middlename .name-firstname,
+.form-list .customer-name-middlename-suffix .name-firstname,
+.form-list .customer-name-middlename-suffix .name-lastname{width:205px;}
+
+.form-list .customer-name-prefix .name-firstname input.input-text,
+.form-list .customer-name-suffix .name-lastname input.input-text,
+.form-list .customer-name-middlename .name-firstname input.input-text,
+.form-list .customer-name-middlename-suffix .name-firstname input.input-text,
+.form-list .customer-name-middlename-suffix .name-lastname input.input-text{width:189px;}
+
+.form-list .customer-dob .dob-month,
+.form-list .customer-dob .dob-day,
+.form-list .customer-dob .dob-year{float:left;width:85px;}
+.form-list .customer-dob input.input-text{display:block;width:74px;}
+.form-list .customer-dob label{font-size:10px;font-weight:normal;color:#888;}
+.form-list .customer-dob .dob-day,
+.form-list .customer-dob .dob-month{width:60px;}
+.form-list .customer-dob .dob-day input.input-text,
+.form-list .customer-dob .dob-month input.input-text{width:46px;}
+.form-list .customer-dob .dob-year{width:140px;}
+.form-list .customer-dob .dob-year input.input-text{width:134px;}
+
+.buttons-set{clear:both;margin:20px 0 0;}
+.buttons-set .back-link{float:left;}
+.buttons-set button.button{float:right;}
+.buttons-set p.required{margin:0 0 5px;}
+
+.buttons-set-order{}
+
+.fieldset{border:1px solid #c8c8c8;background:#fff;padding:18px 20px;margin:20px 0;}
+.fieldset .legend{font:18px/22px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;color:#000;text-transform:uppercase;margin-bottom:14px;}
+
+/* Form Validation */
+.validation-advice{clear:both;margin:5px 0 0;font: 14px/14px 'Futura PT W01 Book', 'Times New Roman', Times, serif;color:#DB192D;}
+.validation-failed{border:1px dashed #f00 !important;background:#faebe7 !important;}
+.validation-passed{}
+span.required,
+p.required{font:14px/22px 'Futura PT W01 Book', 'Times New Roman', Times, serif;text-align:right;color:#7c7c7c;}
+span.required:before,
+p.required:before{content:'*';color:#db192d;margin-right:3px;font-size:15px;}
+/* Expiration date and CVV number validation fix */
+.v-fix{float:left;}
+.v-fix .validation-advice{display:block;width:12em;margin-right:-12em;position:relative;}
+
+/* Global Messages  */
+.success{color:#3d6611;font-weight:bold;}
+.error{color:#f00;font-weight:bold;}
+.notice{color:#ccc;}
+
+.messages,
+.messages ul{list-style:none !important;margin:0 !important;padding:0 !important;}
+.messages{width:100%;overflow:hidden;}
+.messages li{margin:0 0 10px;}
+.messages li li{margin:0;}
+.error-msg,
+.success-msg,
+.note-msg,
+.notice-msg{border-style:solid !important;border-width:1px !important;background-position:10px 50% !important;background-repeat:no-repeat !important;min-height:24px !important;padding:8px 8px 8px 32px !important;font-size:14px !important;font-weight:bold !important;line-height:24px;}
+.error-msg{border-color:#f16048;background-color:#faebe7;background-image:url(../images/i_msg-error.gif);color:#df280a;}
+.success-msg{border-color:#446423;background-color:#eff5ea;background-image:url(../images/i_msg-success.gif);color:#3d6611;}
+.note-msg,
+.notice-msg{border-color:#fcd344;background-color:#fafaec;background-image:url(../images/i_msg-note.gif);color:#3d6611;}
+
+/* BreadCrumbs */
+.breadcrumbs{
+    padding:10px 0;
+    margin-top:-40px;
+    font:18px/20px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;
+    text-transform:uppercase;
+    position:relative;
+}
+.breadcrumbs li{display:inline;}
+.breadcrumbs a{color:#00a7e1;}
+.breadcrumbs a:hover{color:#db192d;}
+.breadcrumbs a:before{content:'< ';}
+
+/* Page Heading */
+.page-title{font-family:'Futura PT W01 Heavy', Georgia, 'Times New Roman', Times, serif;margin:0 0 30px;}
+.page-title h1,
+.page-title h2{font-size:34px;line-height:28px;}
+.page-title .separator{margin:0 3px;}
+.page-title .link-rss{float:right;}
+.title-buttons{text-align:right;}
+.title-buttons h1,
+.title-buttons h2,
+.title-buttons h3,
+.title-buttons h4,
+.title-buttons h5,
+.title-buttons h6{float:left;}
+.title-buttons .button-box{display:inline-block;vertical-align:top;overflow:hidden;margin-top:-3px;}
+.title-buttons .button-box .button{padding-left:17px;padding-right:17px;}
+
+.subtitle,
+.sub-title{clear:both;}
+
+/* Pager */
+.pager{
+    border:1px solid #c8c8c8;padding:6px 20px;margin:10px 0;
+    font-size:1px;line-height:0;
+    text-align:justify;
+    background:#fff;
+    background:-moz-linear-gradient(top, #fff 0%, #f5f5f5 100%);
+    background:-webkit-linear-gradient(top, #fff 0%,#f5f5f5 100%);
+    background:-o-linear-gradient(top, #fff 0%,#f5f5f5 100%);
+    background:-ms-linear-gradient(top, #fff 0%,#f5f5f5 100%);
+    background:linear-gradient(to bottom, #fff 0%,#f5f5f5 100%);
+    filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr=#ffffff, EndColorStr=#f5f5f5, GradientType=0);
+}
+.pager:after{content:'';display:inline-block;vertical-align:top;width:100%;}
+.pager label{margin-right:8px;font:16px/22px 'Futura PT W01 Heavy', Georgia, 'Times New Roman', Times, serif;}
+.pager label,
+.pager .select-area{display:inline-block;vertical-align:middle;text-align:left;}
+.pager .amount{}
+.pager .limiter{}
+.pager .limiter .select-area{width:170px !important;}
+.pager .amount,
+.pager .limiter,
+.pager .pages{font-size:16px;line-height:22px;display:inline-block;vertical-align:middle;text-align:left;}
+.pager .pages{margin:0 135px;}
+.pager .pages ol{display:inline;}
+.pager .pages li{display:inline;}
+.pager .pages .current{}
+
+/* Sorter */
+.sorter{border:1px solid #ddd;padding:5px;margin:5px 0;}
+.sorter .view-mode{float:left;}
+.sorter .sort-by{float:right;}
+.sorter .link-feed{}
+
+/* Toolbar */
+.toolbar{}
+.toolbar .pager{}
+.toolbar .sorter{}
+.toolbar-bottom{}
+
+/* Data Table */
+.data-table{width:100%;border:1px solid #000;border-collapse:separate;background:#fff;}
+.data-table th{padding:5px;white-space:nowrap;}
+.data-table td{padding:10px;}
+.data-table thead{background-color:#000;font:18px/20px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;text-transform:uppercase;color:#fff;}
+.data-table thead th{padding:8px 15px 10px;}
+.data-table thead tr th:first-child,
+.data-table thead tr th.first{padding-left:29px;}
+.data-table thead tr th:last-child,
+.data-table thead tr th.last{padding-right:29px;}
+.data-table tbody{}
+.data-table tfoot{}
+.data-table tr.last{}
+.data-table tr.odd{}
+.data-table tr.even{}
+.data-table tbody.odd{}
+.data-table tbody.odd td{}
+.data-table tbody.even{}
+.data-table tbody.even td{}
+.data-table tbody td{border-top:1px solid #c8c8c8;}
+.data-table tbody tr:first-child td,
+.data-table tbody tr.first td{border-top-width:0;}
+.data-table th .tax-flag{white-space:nowrap;}
+.data-table td.label,
+.data-table th.label{}
+.data-table td.value{}
+
+/* Shopping cart total summary row expandable to details */
+tr.summary-total{cursor:pointer;}
+tr.summary-total td{}
+tr.summary-total .summary-collapse{float:right;text-align:right;padding-left:20px;background:url(../images/bkg_collapse.gif) 0 4px no-repeat;cursor:pointer;}
+tr.show-details .summary-collapse{background-position:0 -53px;}
+tr.show-details td{}
+tr.summary-details td{font-size:11px;background-color:#dae1e4;color:#626465;}
+tr.summary-details-first td{border-top:1px solid #d2d8db;}
+tr.summary-details-excluded{font-style:italic;}
+
+/* Shopping cart tax info */
+.cart-tax-info{display:block;}
+.cart-tax-info,
+.cart-tax-info .cart-price{padding-right:20px;}
+.cart-tax-total{display:block;padding-right:20px;background:url(../images/bkg_collapse.gif) 100% 4px no-repeat;cursor:pointer;}
+.cart-tax-info .price,
+.cart-tax-total .price{display:inline !important;font-weight:normal !important;}
+.cart-tax-total-expanded{background-position:100% -53px;}
+
+/* Class: std - styles for admin-controlled content */
+.std .subtitle{padding:0;}
+.std h2{margin-bottom:0.4em;}
+.std ol.ol{list-style:decimal outside;padding-left:1.5em;}
+.std ul.disc{list-style:disc outside;padding-left:18px;margin:0 0 10px;}
+.std dl dt{font-weight:normal;font-family:'Futura PT W01 Heavy', Georgia, 'Times New Roman', Times, serif;}
+.std dl dd{margin:0 0 10px;}
+.std ul,
+.std ol,
+.std dl,
+.std p,
+.std address,
+.std blockquote{margin:0 0 1em;padding:0;}
+.std ul li{padding:0 0 0 25px;position:relative;}
+.std ul li:before{content:'';position:absolute;left:1px;top:0.76em;width:8px;height:8px;background:url(../images/spt_general.png) -62px -80px no-repeat;}
+.std ol{list-style:decimal outside;padding-left:1.5em;}
+.std ul ul{list-style-type:circle;}
+.std ul ul,
+.std ol ol,
+.std ul ol,
+.std ol ul{margin:.5em 0;}
+.std dt{font-weight:normal;font-family:'Futura PT W01 Heavy', Georgia, 'Times New Roman', Times, serif;}
+.std dd{padding:0 0 0 1.5em;}
+.std blockquote{font-style:italic;padding:0 0 0 1.5em;}
+.std address{font-style:normal;}
+
+/* Misc */
+.links li{display:inline;}
+.links li.first{padding-left:0 !important;}
+.links li.last{background:none !important;padding-right:0 !important;}
+
+.link-cart{color:#f00;}
+.link-wishlist{}
+.link-reorder{}
+.link-compare{}
+.link-print{background:url(../images/i_print.gif) 0 2px no-repeat;padding:2px 0 2px 25px;}
+.link-rss{background:url(../images/i_rss.gif) 0 1px no-repeat;padding-left:18px;white-space:nowrap;}
+.btn-remove,
+.btn-remove2{display:inline-block;vertical-align:top;width:30px;height:30px;font-size:0;line-height:0;background:url(../images/spt_general.png) -15px -80px no-repeat;text-indent:-999em;overflow:hidden;}
+.btn-edit{display:block;width:11px;height:11px;font-size:0;line-height:0;background:url(../images/btn_edit.gif) 0 0 no-repeat;text-indent:-999em;overflow:hidden;}
+
+.cards-list dt{margin:5px 0 0;}
+.cards-list .offset{padding:2px 0 2px 20px;}
+
+
+.separator{margin:0 3px;}
+
+.divider{clear:both;display:block;font-size:0;line-height:0;height:1px;margin:10px 0;background:#ddd;text-indent:-999em;overflow:hidden;}
+
+/* Noscript Notice */
+.noscript{border:1px solid #ddd;border-width:0 0 1px;background:#ffff90;font-size:12px;line-height:1.25;text-align:center;color:#2f2f2f;}
+.noscript .noscript-inner{width:1000px;margin:0 auto;padding:12px 0 12px;background:url(../images/i_notice.gif) 20px 50% no-repeat;}
+.noscript p{margin:0;}
+
+/* Demo Notice */
+.demo-notice{margin:0;padding:6px 10px;background:#d75f07;font-size:12px;line-height:1.15;text-align:center;color:#fff;}
+
+/* Cookie Notice */
+.notice-cookie{border-bottom:1px solid #cfcfcf;background:#ffff90;font-size:12px;line-height:1.25;text-align:center;color:#2f2f2f;}
+.notice-cookie .notice-inner{width:870px;margin:0 auto;padding:12px 0 12px 80px;background:url(../images/i_notice.gif) 20px 25px no-repeat;text-align:left;}
+.notice-cookie .notice-inner p{margin:0 0 10px;border:1px dotted #cccc73;padding:10px;}
+.notice-cookie .notice-inner .actions{}
+
+/* ======================================================================================= */
+
+
+/* Header ================================================================================ */
+.header-container{}
+.header{text-align:center;background-color:#000;float:left;width:100%;margin-right:-100%;overflow:hidden;color:#fff;}
+.header.no-banner{background:url(../images/black05.png) repeat;}
+
+.header .main-banner{float:left;width:100%;margin-right:-100%;overflow:hidden;font-size:0;line-height:0;text-indent:-999em;position:relative;}
+.header .main-banner:after{
+    content:'';position:absolute;bottom:0;left:0;width:100%;height:14px;
+    background-image: -moz-linear-gradient(bottom, rgba(0,0,0,0.3) 0%, transparent 100%);
+    background-image: -webkit-linear-gradient(bottom, rgba(0,0,0,0.3) 0%,transparent 100%);
+    background-image: -o-linear-gradient(bottom, rgba(0,0,0,0.3) 0%,transparent 100%);
+    background-image: -ms-linear-gradient(bottom, rgba(0,0,0,0.3) 0%,transparent 100%);
+    background-image: linear-gradient(bottom, rgba(0,0,0,0.3) 0%,transparent 100%);
+}
+.header .main-banner img{margin:0 -999px;width:auto;max-width:none;}
+.header .welcome-msg{width:100%;margin-top:105px;text-align:left;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:relative;}
+.header.no-banner .welcome-msg{padding:0 20px 18px;}
+.header .welcome-msg .site-title{font:36px/36px 'FuturaPTW01-HeavyObliqu', Georgia, 'Times New Roman', Times, serif;text-transform:uppercase;margin-bottom:10px;}
+.header .welcome-msg .site-description{font:22px/22px 'FuturaPTW01-HeavyObliqu', Georgia, 'Times New Roman', Times, serif;margin:0;padding:0;}
+
+.header .form-search{text-align:right;}
+.header .form-search .search-autocomplete{z-index:999;}
+.header .form-search .search-autocomplete ul{border:1px solid #ddd;background-color:#fff;}
+.header .form-search .search-autocomplete li{padding:3px;border-bottom:1px solid #ddd;cursor:pointer;}
+.header .form-search .search-autocomplete li .amount{float:right;font-weight:bold;}
+.header .form-search .search-autocomplete li.selected{}
+
+.header .quick-access-wrap{position:fixed;top:60px;left:0;width:100%;z-index:995;}
+.header .quick-access-wrap .content{max-width:1050px;margin:0 auto;}
+.header .quick-access{
+    float:right;background:#00a7e1;padding:2px 0;
+    -webkit-border-radius:0 0 3px 3px;
+    -moz-border-radius:0 0 3px 3px;
+    border-radius:0 0 3px 3px;
+    -moz-box-shadow:0 1px 5px rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow:0 1px 5px rgba(0, 0, 0, 0.6);
+    box-shadow:0 1px 5px rgba(0, 0, 0, 0.6);
+    font-size:0;line-height:0;color:#fff;
+    overflow:hidden;
+    white-space:nowrap;
+}
+.header .quick-access ul{display:inline-block;vertical-align:top;}
+.header .quick-access ul li:first-child{border-left:0;}
+.header .quick-access li,
+.header .quick-access ul.links li{display:inline-block;vertical-align:top;border-left:1px solid #52c3eb;font:18px/22px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;padding:0 2px !important;}
+.header .quick-access a{display:block;padding:7px 18px 9px;color:inherit;text-decoration:none;position:relative;}
+.header .quick-access ul.links a{padding:7px 20px 9px 16px;}
+.header .quick-access a:hover{background:#009acf;}
+.header .quick-access ul.links .login{padding:7px 17px 9px 39px;}
+.header .quick-access ul.links .account{padding:7px 19px 9px 38px;}
+.header .quick-access .login:before,
+.header .quick-access .account:before{content:'';position:absolute;top:10px;left:18px;width:14px;height:15px;background:url(../images/spt_general.png) -166px -101px no-repeat;}
+.header .quick-access ul.links .top-link-cart{padding-left:42px;}
+.header .quick-access .top-link-cart:before{content:'';position:absolute;top:9px;left:18px;width:18px;height:16px;background:url(../images/spt_general.png) -166px -80px no-repeat;}
+
+.top-navigation-border{position:fixed;top:0;left:0;right:0;z-index:990;width:100%;border-bottom:2px solid #00a7e1;height:60px;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+}
+.top-navigation-wrap{position:fixed;top:0;left:0;right:0;z-index:1100;min-width:1140px;}
+.top-navigation{width:100%;background:url(../images/black_texture95.png) repeat;position:relative;border-bottom:2px solid #00a7e1;font-size:1px;line-height:0;text-align:justify;}
+.top-navigation:after{content:'';display:inline-block;vertical-align:top;width:100%;}
+.top-navigation .logo,
+.top-navigation .nav-container,
+.top-navigation .user-panel{display:inline-block;vertical-align:middle;}
+
+.top-navigation .logo{padding:14px 15px;font-size:0;overflow:hidden;}
+.top-navigation .logo img{float:left;}
+.top-navigation .logo .over{display:none;}
+.top-navigation .logo:hover .over{display:block;}
+.top-navigation .logo:hover .no-over{display:none;}
+.top-navigation .form-language,
+.top-navigation .header-country-switcher{
+    color:#fff;
+    position:relative;
+    cursor:pointer;
+    border-left:1px solid rgba(255,255,255,0.16);
+}
+.top-navigation .user-panel{white-space:nowrap;}
+.top-navigation .user-panel .form-language,
+.top-navigation .user-panel .header-country-switcher{
+    display:inline-block;
+    vertical-align:top;
+}
+.form-language .label,
+.header-country-switcher .label{
+    height:22px;
+    padding:19px 33px 19px 20px;
+    font:16px/22px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;
+    text-transform:uppercase;
+    position:relative;
+    z-index:1001;
+}
+.form-language .label:after,
+.header-country-switcher .label:after{
+    content:'';
+    width:0;
+    height:0;
+    border-left:4px solid transparent;
+    border-right:4px solid transparent;
+    border-top:6px solid #fff;
+    position:absolute;
+    top:50%;
+    right:20px;
+    margin-top:-4px;
+}
+.form-language .label .move,
+.header-country-switcher .label .move{display:none;}
+.form-language .language-chooser,
+.header-country-switcher .chooser{
+    overflow:hidden;
+    position:absolute;top:100%;left:-9999px;
+    width:100%;
+    border:1px solid #3dbce8;border-width:1px 0 2px;
+    background:#00a7e1;
+    -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.7);
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.7);
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.7);
+}
+.form-language .language-chooser li,
+.header-country-switcher .chooser li{border-top: 1px solid #3dbce8;font-size:16px;line-height:26px;}
+.form-language .language-chooser li a,
+.header-country-switcher .chooser li a{display:block;padding:8px 20px 10px;color:inherit;text-decoration:none;}
+.form-language .language-chooser li:not(.active) a:hover,
+.header-country-switcher .chooser li:not(.active) a:hover{background:#29b5e6;}
+.form-language .language-chooser li.active a,
+.header-country-switcher .chooser li.active a{color:#000;}
+
+.form-language:hover .label,
+.header-country-switcher:hover .label{background:#009acf;color:#000;}
+.form-language:hover .label:after,
+.header-country-switcher:hover .label:after{border-top-color:#000;}
+.form-language:hover .language-chooser,
+.header-country-switcher:hover .chooser{left:0;}
+
+.header-container .top-container{clear:both;text-align:right;}
+/********** < Navigation */
+.nav-container{font-size:0;line-height:0;text-align:center;text-transform:uppercase;color:#fff;padding:15px 0 10px;}
+.nav-container ul.level-1{display:inline-block;vertical-align:top;padding:17px 0 10px;}
+.nav-container li.level-1{display:inline-block;vertical-align:top;margin:0 5px 5px;position:relative;}
+.nav-container a{
+    display:inline-block;vertical-align:top;color:#fff;
+    font:16px/26px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;
+    text-decoration:none;
+    padding:0 15px;
+    -webkit-border-radius:13px;-moz-border-radius:13px;border-radius:13px;
+}
+.nav-container a:focus, .nav-container a:hover, .nav-container a:active{background:#3c3c3c;color:#fff;}
+.top-navigation-wrap .nav-container li.store-link{margin-left:22px;}
+.top-navigation-wrap .nav-container li.store-link a{color:#000;position:relative;padding-left:34px;background:#00a7e1;letter-spacing:-0.3px;}
+.top-navigation-wrap .nav-container li.store-link a:after{content:'';position:absolute;left:13px;top:5px;width:16px;height:14px;background:url(../images/spt_general.png) -45px -80px no-repeat;}
+.nav-container li ul.sub-menu{position:absolute;text-align:center;left:-50%;top:100%;z-index:99;width:auto !important;padding:19px 0 0 100%;background:url(../images/transparent.png) repeat;display:none;}
+.nav-container li ul.sub-menu li{float:none;display:block;width:100%;margin:10px 0 0 -50%;}
+.nav-container li ul.sub-menu a{display: inline-block;vertical-align:top;background:#fbfbfb;color:#000;padding:2px 15px;white-space:nowrap;}
+.nav-container li ul.sub-menu a:hover{background:#444;color:#fff;}
+.nav-container li:hover ul.sub-menu{display:block;}
+.nav-container .move{display:none;}
+
+.nav-mobile-control{display:none;float:right;color:#fff;cursor:pointer;border-left:1px solid rgba(255,255,255,0.16);}
+.nav-mobile-control .label{display:block;height:22px;padding:19px 42px 19px 20px;font:22px/22px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;text-transform:uppercase;position:relative;color:#fff;z-index:1105;}
+.nav-mobile-control .label:after{content:'';width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:9px solid #fff;position:absolute;top:50%;right:20px;margin-top:-5px;}
+.nav-mobile-control:hover .label,.nav-mobile-control .label.show{background:#009acf;color:#000;}
+.nav-mobile-control:hover .label:after,.nav-mobile-control .label.show:after{border-top-color:#000;}
+.nav-mobile-control .label.show:before{content:'';position:absolute;top:100%;right:0;width:9999px;height:2px;background:#3dbce8;}
+.navigation-mobile-drop{
+    overflow:hidden;position:absolute;top:60px;left:0;width:100%;
+    border-bottom:2px solid #3dbce8;background:#00a7e1;
+    font:16px/26px 'Futura PT W01 Cond Bold', 'Open Sans', sans-serif;text-transform:uppercase;color:#fff;
+    cursor:pointer;
+    z-index:1095;
+    -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.7);
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.7);
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.7);
+}
+.navigation-mobile-drop .nav-container{margin:0;text-align:left;padding:0;}
+.navigation-mobile-drop .nav-container ul.level-1,
+.navigation-mobile-drop .nav-container li.level-1{display:block;margin:0;}
+.navigation-mobile-drop .nav-container li ul.sub-menu{position:static;text-align:left;padding:0;background:#00a7e1;display:none;}
+.navigation-mobile-drop .nav-container li ul.sub-menu.show{display:block;}
+.navigation-mobile-drop .nav-container li ul.sub-menu li{border-top:1px solid #3dbce8;font-size:16px;line-height:26px;width:auto;margin:0;}
+.navigation-mobile-drop .nav-container li ul.sub-menu li a{display:block;padding:8px 20px 10px;color:inherit;text-decoration:none;background:none;}
+.navigation-mobile-drop li{border-top:1px solid #3dbce8;}
+.navigation-mobile-drop li a{display:block;padding:11px 20px;line-height:22px;color:inherit;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;}
+.navigation-mobile-drop li a:focus,
+.navigation-mobile-drop li a:hover,
+.navigation-mobile-drop li a:active{background:#29b5e6;color:#fff;}
+.navigation-mobile-drop li.store-link a{color:#000;background:#29aad7;}
+.navigation-mobile-drop .form-language .label{border-top:2px solid #3dbce8;padding:11px 33px 11px 20px;color:#fff;}
+.navigation-mobile-drop .sitemenu li.parent.show > a,
+.navigation-mobile-drop .form-language .label.show{color:#000;}
+.navigation-mobile-drop .form-language .label:after{display:none;}
+.navigation-mobile-drop .sitemenu li.parent .move,
+.navigation-mobile-drop .form-language .label .move{display:block;position:absolute;right:0;top:0;width:50px;height:44px;background:none;}
+.navigation-mobile-drop .sitemenu li.parent .move:before,
+.navigation-mobile-drop .form-language .label .move:before{content:'';width:2px;height:12px;background:#fff;position:absolute;right:25px;top:15px;}
+.navigation-mobile-drop .sitemenu li.parent .move:after,
+.navigation-mobile-drop .form-language .label .move:after{content:'';width:12px;height:2px;background:#fff;position:absolute;right:20px;top:20px;}
+.navigation-mobile-drop .sitemenu li.parent.show .move:before,
+.navigation-mobile-drop .form-language .label.show .move:before{display:none;}
+.navigation-mobile-drop .sitemenu li.parent.show .move:after,
+.navigation-mobile-drop .form-language .label.show .move:after{background:#000;}
+.navigation-mobile-drop .form-language .language-chooser{display:none;border:none;position:static;-moz-box-shadow:none;-webkit-box-shadow:none;box-shadow:none;}
+.navigation-mobile-drop .form-language .language-chooser.show{display:block;}
+
+.header-after-row .nav-container{
+    overflow:hidden;
+    padding:0;
+    margin:0;
+}
+.header-after-row .nav-container > ul{
+    overflow:hidden;
+    margin-bottom:-10px;
+}
+
+.header-after-row .nav-container li.level0{
+    float:left;
+    padding:0 10px 10px 0;
+}
+.nav-container a.level-top{
+    color:#3c3c3c;
+    font: 18px/26px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;
+    min-width:150px;
+    padding: 5px 20px;
+    border: 1px solid #c8c8c8;
+    border-radius:3px;
+    background: #fff;
+    background: -moz-linear-gradient(top, #fff 0%, #f5f5f5 100%);
+    background: -webkit-linear-gradient(top, #fff 0%,#f5f5f5 100%);
+    background: -ms-linear-gradient(top, #fff 0%,#f5f5f5 100%);
+    background: linear-gradient(to bottom, #fff 0%,#f5f5f5 100%);
+    filter: progid:DXImageTransform.Microsoft.Gradient(StartColorStr=#ffffff, EndColorStr=#f5f5f5, GradientType=0);
+    box-sizing:border-box;
+}
+.nav-container a.level-top:hover{color:#00a7e1;}
+.nav-container .active a.level-top{
+    color:#00a7e1;
+    border-color:#000;
+    background:#000;
+    filter:none;
+}
+/* ======================================================================================= */
+.header-after-row{
+    padding:10px 40px;
+    background: url(../images/bkg_widgets.png) repeat;
+}
+.header-after-row .content{
+    max-width:1050px;
+    margin:0 auto;
+}
+.header-after-row .country-switcher,
+.header-after-row .product-currency{float:right;}
+.header-after-row .product-currency{margin:7px 0;}
+.header-after-row .product-currency .currency-list{
+    min-width:250px;
+    left:auto;
+    right:0;
+}
+
+.country-switcher{
+    font-size:0;
+    line-height:0;
+}
+.country-switcher .label{
+    display:inline-block;
+    vertical-align:middle;
+    margin-right:14px;
+    font:18px/26px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;
+    text-transform:uppercase;
+    color:#00a7e1;
+}
+.country-switcher .input-box{
+    display:inline-block;
+    vertical-align:middle;
+    width:246px;
+}
+.country-switcher .select-area .center{padding-left:13px;}
+.country-switcher .select-area img{display:none;}
+
+/* Sidebar =============================================================================== */
+.block{margin:0 0 20px;}
+.block .block-title{padding:0 20px;margin-bottom:2px;background:url(../images/bkg_widgets.png) repeat;}
+.block .block-title strong{font:24px/36px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;}
+.block .block-title a{text-decoration:none !important;}
+.block .block-subtitle{font-size:13px;font-weight:bold;}
+.block .block-content{padding:17px 20px 20px;background:url(../images/bkg_widgets.png) repeat;}
+.block .block-content ul a{color:#3c3c3c;}
+.block .block-content ul a:hover{color:#009acf;}
+.block .block-content li.item{padding:5px 0;}
+.block .btn-remove,
+.block .btn-edit{float:right;}
+.block .actions{text-align:right;}
+.block .actions a{float:left;}
+.block .empty{}
+
+.block li.odd{}
+.block li.even{background-color:#f6f6f6;}
+
+/* Mini Products List */
+.mini-products-list li{padding:5px 0;}
+.mini-products-list .product-image{float:left;width:50px;padding:5px;border:1px solid #ddd;}
+.mini-products-list .product-details{margin-left:75px;}
+.mini-products-list .product-details h4{font-size:1em;font-weight:bold;margin:0;}
+.block-cart .mini-products-list .product-details .product-name,
+.block-cart .mini-products-list .product-details .nobr small{word-wrap:break-word;}
+.block-cart .mini-products-list .product-details .nobr{white-space:normal !important;}
+
+/* Block: Account */
+.block-account{}
+
+/* Block: Currency Switcher */
+.block-currency{}
+.block-currency select{width:100%;border:1px solid #888;}
+
+/* Block: Layered Navigation */
+.block-layered-nav{}
+.block-layered-nav dt{font-weight:bold;}
+.block-layered-nav .currently{}
+.block-layered-nav .btn-remove{float:left;margin:2px 3px 0 0;}
+
+/* Block: Cart */
+.block-cart{}
+.block-cart .summary{}
+.block-cart .amount{}
+.block-cart .subtotal{text-align:center;}
+.block-cart .actions .paypal-logo{float:left;width:100%;margin:3px 0 0;text-align:right;}
+.block-cart .actions .paypal-logo .paypal-or{clear:both;display:block;padding:0 55px 5px 0;}
+
+/* Block: Wishlist */
+.block-wishlist{}
+
+/* Block: Related */
+.block-related{}
+.block-related li{padding:5px 0;}
+.block-related input.checkbox{float:left;margin-right:-20px;}
+.block-related .product{margin-left:20px;}
+.block-related .product .product-image{float:left;margin-right:-65px;}
+.block-related .product .product-details{margin-left:65px;}
+
+/* Block: Compare Products */
+.block-compare{}
+.block-compare li{padding:5px 0;}
+
+/* Block: Recently Viewed */
+.block-viewed{}
+
+/* Block: Recently Compared */
+.block-compared{}
+
+/* Block: Poll */
+.block-poll label{}
+.block-poll input.radio{float:left;margin:1px -18px 0 0;}
+.block-poll .label{display:block;margin-left:18px;}
+.block-poll li{padding:3px 9px;}
+.block-poll .actions{margin:5px 0 0;}
+.block-poll .answer{font-weight:bold;}
+.block-poll .votes{float:right;margin-left:10px;}
+
+/* Block: Tags */
+.block-tags ul,
+.block-tags li{display:inline;}
+
+/* Block: Subscribe */
+.block-subscribe{}
+
+/* Block: Reorder */
+.block-reorder{}
+.block-reorder li{padding:5px 0;}
+.block-reorder input.checkbox{float:left;margin:3px -20px 0 0;}
+.block-reorder .product-name{margin-left:20px;}
+
+/* Block: Banner */
+.block-banner{}
+.block-banner .block-content{text-align:center;}
+
+/* Block: Login */
+.block-login label{font-weight:bold;color:#666;}
+.block-login input.input-text{display:block;width:167px;margin:3px 0;}
+
+/* Paypal */
+.sidebar .paypal-logo{display:block;margin:10px 0;text-align:center;}
+.sidebar .paypal-logo a{float:none;}
+/* ======================================================================================= */
+
+
+/* Category Page ========================================================================= */
+.category-title{border:0;margin:0 0 7px;}
+.category-image{width:100%;overflow:hidden;margin:0 0 10px;text-align:center;}
+.category-image img{}
+.category-description{margin:0 0 10px;}
+.category-products{}
+.category-products .toolbar{display:none;}
+
+/* View Type: Grid */
+.products-grid{
+    margin:0 -15px -24px;
+    position:relative;
+    letter-spacing: -0.36em;
+    line-height:22px;
+}
+.products-grid.last{border-bottom:0;}
+.products-grid li.item{
+    display:inline-block;
+    vertical-align:top;
+    width:33.33%;
+    letter-spacing:0;
+}
+.products-grid .box{
+    position:relative;
+    padding:0 15px 86px;
+}
+.products-grid .price-box .price-to,
+.products-grid .price-box .price-from .price-label{display:none;}
+.products-grid li.item.last{float:right;}
+.products-grid .item-content{padding:12px 10px 80px;}
+.products-grid .product-image{
+    padding-bottom:10px;
+    margin-bottom:17px;
+    border-bottom:1px solid #c7c7c7;
+    text-align:center;
+}
+.products-grid .product-image img{height:auto;}
+.products-grid .product-name{
+    overflow:hidden;
+    height:60px;
+    margin:0 0 18px;
+    font-weight:bold;
+    font-size:22px;
+    line-height:28px;
+    letter-spacing:1px;
+}
+.products-grid .product-name .label,
+.product-view .product-name .label{
+    font:20px/28px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;
+    letter-spacing:0;
+    color:#3d3d3d;
+}
+.products-grid .description{
+    overflow:hidden;
+    height:6.11111111111em;
+    margin-bottom:20px;
+}
+.products-grid .description li:not(.title):before{
+	content:'>';
+	display:inline-block;
+	vertical-align:top;
+	margin-right:5px;
+	color: #00a2e1;
+	font-family: 'Futura PT W01 Heavy', Georgia, 'Times New Roman', Times, serif;
+}
+.products-grid .description br:last-child{display:none;}
+.products-grid .price-box .price{
+    font-size:21px;
+    line-height:24px;
+}
+.products-grid .product-name a{}
+.products-grid .price-box{margin:0 0 15px;}
+.products-grid .availability{line-height:21px;}
+.products-grid .actions{
+    position:absolute;
+    bottom:54px;
+    left:15px;
+    right:15px;
+}
+
+.col1grid .item{width:100%;}
+.col1grid .product-image{width:150px;float:left;}
+.col1grid .product-details{margin-left:160px;}
+
+.col2grid .item{width:48.57%;}
+.col2grid .product-image{width:150px;float:left;}
+.col2grid .product-details{width:180px;float:right;}
+
+.col3grid .item{width:31%;}
+.col3grid .col-2{margin:0 0 0 3.5%;}
+
+.col4grid .item{width:23.125%;}
+.col4grid .col-2{margin:0 2.5%;}
+
+.col5grid .item{width:18.0%;}
+.col5grid .col-2{margin:0 2.0%;}
+.col5grid .col-3{margin-right:2.0%;}
+
+/* View Type: List */
+.products-list li.item{
+    border-bottom:1px solid #c8c8c8;
+    padding:49px 0;
+}
+.products-list li.item:first-child{padding-top:9px;}
+.products-list li.item.last{
+    border-bottom:0;
+    padding-bottom:10px;
+}
+.products-list .product-image{
+    float:left;
+    width:32%;
+    padding-right:6px;
+    margin:0 24px 0 0;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+}
+.products-list .product-image a{text-decoration:none;}
+.products-list .product-image img{
+    display:block;
+    max-width:100%;
+    height:auto;
+}
+.products-list .product-shop{overflow:hidden;}
+.products-list .product-name{
+    margin:0 0 16px;
+    font-size:31px;
+    line-height:38px;
+    letter-spacing:0.5px;
+}
+.products-list .product-name a{}
+.products-list .desc{
+    float:left;
+    width:100%;
+    margin-right:-100%;
+    padding:55px 270px 0 0;
+    font-size:16px;
+    line-height:22px;
+    text-align:left;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+}
+.products-list .shop{
+    float:right;
+    width:240px;
+    padding-top:58px;
+    position:relative;
+    text-align:center;
+}
+.products-list .price-box{margin:0 8px 6px 0px;}
+.products-list .price-box .price-to,
+.products-list .price-box .price-from .price-label{display:none;}
+.products-list .price-box .price{font-size:22px;}
+.products-list .price-box .price em{
+    font-size:14px;
+    padding-right:4px;
+}
+.products-grid .btn-cart,
+.products-list .btn-cart{
+    font:14px/22px 'Futura PT W01 Bold', Georgia, 'Times New Roman', Times, serif;
+    padding:3px 20px 5px;
+    min-width:119px;
+    -moz-border-radius:15px;
+    -webkit-border-radius:15px;
+    border-radius:15px;
+}
+.products-grid .btn-cart{
+    min-width:150px;
+    padding:5px 20px 9px;
+    font-size:15px;
+    line-height:18px;
+}
+
+/* ======================================================================================= */
+
+
+/* Product View ========================================================================== */
+.catalog-product-view{background:#fff;}
+/* Rating */
+.no-rating{margin:0;}
+
+.ratings{font-size:11px;line-height:1.25;margin:7px 0;}
+.ratings strong{float:left;margin:1px 3px 0 0;}
+.ratings .rating-links{margin:0;}
+.ratings .rating-links .separator{margin:0 2px;}
+.ratings dt{}
+.ratings dd{}
+.rating-box{width:69px;height:13px;font-size:0;line-height:0;background:url(../images/bkg_rating.gif) 0 0 repeat-x;text-indent:-999em;overflow:hidden;}
+.rating-box .rating{float:left;height:13px;background:url(../images/bkg_rating.gif) 0 100% repeat-x;}
+.ratings .rating-box{float:left;margin-right:3px;}
+.ratings .amount{}
+
+.ratings-table th,
+.ratings-table td{font-size:11px;line-height:1.15;padding:3px 0;}
+.ratings-table th{font-weight:bold;padding-right:8px;}
+
+/* Availability */
+.availability{margin:0;}
+.availability span{font-weight:bold;}
+.availability.in-stock span{}
+.availability.out-of-stock span{color:#d83820;}
+
+.availability-only{margin:0 0 7px;}
+.availability-only a{background:url(../images/i_availability_only_arrow.gif) 100% 0 no-repeat;cursor:pointer;padding-right:15px;}
+.availability-only .expanded{background-position:100% -15px;}
+.availability-only strong{}
+
+.availability-only-details{margin:0 0 7px;}
+.availability-only-details th{background:#f2f2f2;font-size:10px;padding:0 8px;}
+.availability-only-details td{border-bottom:1px solid #ddd;font-size:11px;padding:2px 8px 1px;}
+.availability-only-details tr.odd td.last{}
+
+/* Email to a Friend */
+.email-friend{}
+
+/* Alerts */
+.alert-price{}
+.alert-stock{}
+
+/********** < Product Prices */
+.price{white-space:nowrap !important;}
+
+.price-box{font-family:'Futura PT W01 Heavy', Georgia, 'Times New Roman', Times, serif;}
+.price-box .price{font-size:28px;line-height:38px;}
+.price-box .price .add-price-bundle{font-size:18px;}
+.price-box .price em{font:inherit;}
+
+/* Regular price */
+.regular-price{}
+.regular-price .price{}
+
+/* Old price */
+.old-price{}
+.old-price .price-label{white-space:nowrap;}
+.old-price .price{font-weight:bold;text-decoration:line-through;}
+
+/* Special price */
+.special-price{}
+.special-price .price-label{font-weight:bold;white-space:nowrap;}
+.special-price .price{}
+
+/* Minimal price (as low as) */
+.minimal-price{}
+.minimal-price .price-label{font-weight:bold;white-space:nowrap;}
+
+.minimal-price-link{display:block;}
+.minimal-price-link .label{}
+.minimal-price-link .price{font-weight:normal;}
+
+/* Excluding tax */
+.price-excluding-tax{display:block;}
+.price-excluding-tax .label{white-space:nowrap;}
+.price-excluding-tax .price{font-weight:normal;}
+
+/* Including tax */
+.price-including-tax{display:block;}
+.price-including-tax .label{white-space:nowrap;}
+.price-including-tax .price{}
+
+/* Configured price */
+.configured-price{}
+.configured-price .price-label{font-weight:bold;white-space:nowrap;}
+.configured-price .price{}
+
+/* FPT */
+.weee{display:block;font-size:11px;color:#444;}
+.weee .price{font-size:11px;font-weight:normal;}
+
+/* Excl tax (for order tables) */
+.price-excl-tax{display:block;}
+.price-excl-tax .label{display:block;white-space:nowrap;}
+.price-excl-tax .price{display:block;}
+
+/* Incl tax (for order tables) */
+.price-incl-tax{display:block;}
+.price-incl-tax .label{display:block;white-space:nowrap;}
+.price-incl-tax .price{display:block;}
+
+/* Price range */
+.price-from{}
+.price-from .price-label{font-weight:bold;white-space:nowrap;}
+
+.price-to{}
+.price-to .price-label{font-weight:bold;white-space:nowrap;}
+
+/* Price notice next to the options */
+.price-notice{padding-left:10px;}
+.price-notice .price{}
+
+/* Price as configured */
+.price-as-configured{}
+.price-as-configured .price-label{white-space:nowrap;}
+
+.price-box-bundle{}
+/********** Product Prices > */
+
+/* Tier Prices */
+.tier-prices .price{}
+.tier-prices .benefit{}
+
+.tier-prices-grouped{}
+
+/* Add to Links */
+.add-to-links .separator{display:none;}
+
+/* Add to Cart */
+.add-to-cart label{float:left;margin-right:5px;}
+.add-to-cart .qty{float:left;}
+.add-to-cart button.button{float:left;margin-left:5px;}
+.add-to-cart .paypal-logo{clear:left;text-align:right;}
+.add-to-cart .paypal-logo .paypal-or{clear:both;display:block;margin:5px 60px 5px 0;}
+.product-view .add-to-cart .paypal-logo{margin:0;}
+
+/* Add to Links + Add to Cart */
+.add-to-box{padding:1px 0 10px;}
+.add-to-box .btn-holder{
+    overflow:hidden;
+    padding:0 0 0 5px;
+}
+.add-to-box .btn-holder .button.big{
+    width:100%;
+    margin:0;
+    padding:8px;
+}
+.add-to-box .add-to-cart{overflow:hidden;}
+.add-to-box .or{float:left;margin:0 10px;}
+.add-to-box .add-to-links{float:left;}
+
+
+.product-view{}
+
+.product-essential{margin-bottom:53px;}
+
+.product-collateral{max-width:1050px;margin:0 auto;}
+.product-collateral .box-collateral{margin:0 0 15px;}
+
+/* Product Images */
+.product-view .product-img-box{float:left;width:100%;margin-right:-100%;padding-right:330px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+.product-img-box .product-image{display:block;overflow:hidden;font-size:1px;line-height:0;margin-bottom:20px;position:relative;}
+.product-img-box .product-image .item{width:100%;position:absolute;left:-9999px;top:0;}
+.product-img-box .product-image .item.active{position:relative;left:0;}
+.product-img-box .control-wrap{position:absolute;bottom:10px;left:0;width:100%;}
+.product-img-box .control-rotate{
+    display:inline-block;vertical-align:top;
+    font:16px/22px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;color:#3c3c3c;text-transform:uppercase;
+    padding:2px 16px 2px 36px;
+    background:#c8c8c8;
+    background:-moz-linear-gradient(top,  #c8c8c8 0%, #bebebe 100%);
+    background:-webkit-linear-gradient(top,  #c8c8c8 0%,#bebebe 100%);
+    background:-o-linear-gradient(top,  #c8c8c8 0%,#bebebe 100%);
+    background:-ms-linear-gradient(top,  #c8c8c8 0%,#bebebe 100%);
+    background:linear-gradient(to bottom,  #c8c8c8 0%,#bebebe 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c8c8c8', endColorstr='#bebebe',GradientType=0 );
+    position:relative;
+    -webkit-border-radius: 12px;-moz-border-radius:12px;border-radius:12px;
+}
+.product-img-box .control-rotate:before{content:'';position:absolute;top:50%;left:15px;width:15px;height:14px;margin-top:-7px;background:url(../images/spt_general.png) -130px -100px no-repeat;}
+.product-img-box .control-rotate:hover{filter:none;background:#b4b4b4;}
+.product-img-box .control-rotate span{display:none;}
+.product-img-box .control-rotate.active{
+    border:1px solid #c8c8c8;
+    padding:1px 14px 1px 33px;
+    background:#ffffff;
+    background:-moz-linear-gradient(top,  #ffffff 0%, #fafafa 50%, #ffffff 100%);
+    background:-webkit-linear-gradient(top,  #ffffff 0%,#fafafa 50%,#ffffff 100%);
+    background:-o-linear-gradient(top,  #ffffff 0%,#fafafa 50%,#ffffff 100%);
+    background:-ms-linear-gradient(top,  #ffffff 0%,#fafafa 50%,#ffffff 100%);
+    background:linear-gradient(to bottom,  #ffffff 0%,#fafafa 50%,#ffffff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 );
+
+}
+.product-img-box .control-rotate.active span{display:inline;}
+.product-img-box .control-rotate.active:hover{filter:none;background:#f6f6f6;border-color:#b4b4b4;}
+.product-img-box .more-views{overflow:hidden;position:relative;}
+
+.more-views .mask{position:relative;overflow:hidden;margin:0 10px;}
+.more-views .slideset{width:9999px;margin:0 -9999px 0 0;}
+.more-views .slide{margin:0 10px;float:left;width:120px;height:84px;}
+.more-views .slide a:hover{opacity:0.8;}
+.more-views .slide a.active{opacity:0.3;}
+.more-views .btn-prev,
+.more-views .btn-next{position:absolute;top:0;width:30px;height:100%;overflow:hidden;text-indent:-9999px;background:rgba(0,0,0,0.8);}
+.more-views .btn-prev:hover,
+.more-views .btn-next:hover{background:#000;}
+.more-views .btn-prev{left:0;}
+.more-views .btn-next{right:0;}
+.more-views .btn-prev:after,
+.more-views .btn-next:after{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin:-10px 0 0 -7px;
+    width:12px;
+    height:20px;
+    background:url(../images/spt_general.png) -180px -150px no-repeat;
+}
+.more-views .btn-next:after{background-position:-200px -150px;margin:-10px 0 0 -5px;}
+.more-views > a.disabled{display:none;}
+
+.product-image-popup{margin:0 auto;}
+.product-image-popup .buttons-set{float:right;clear:none;border:0;margin:0;padding:0;}
+.product-image-popup .nav{margin:0 100px;text-align:center;}
+.product-image-popup .image{display:block;}
+.product-image-popup .image-label{}
+
+/* Product Shop */
+.product-view .product-name-wrap{float:right;width:290px;margin-bottom:24px; position:relative;}
+.product-view .product-name-wrap .product-name{padding:21px 0 11px;position:relative;}
+.product-view .product-name-wrap .product-name h1{font-size:34px;line-height:38px;}
+.product-view .product-name-wrap .product-name:before,
+.product-view .product-name-wrap .product-name:after{content:'';position:absolute;top:0;width:50%;height:0;border-left:8px solid transparent;border-right:8px solid transparent;}
+.product-view .product-name-wrap .product-name:before{left:0;border-bottom:6px solid #000;}
+.product-view .product-name-wrap .product-name:after{right:0;border-top:6px solid #000;}
+.product-view .product-name-wrap .short-description{font-size:16px;line-height:22px;color:#3c3c3c;}
+
+.product-view .product-shop{float:right;clear:right;width:290px;}
+
+.product-shop .price-box-bundle{display:none;}
+.product-shop .product-message{padding-top:17px;color:#000;font-size:16px;line-height:22px;}
+.product-shop .product-message li{padding:0 0 4px 25px;position:relative;}
+.product-shop .product-message img{width:16px;position:absolute;left:0;top:3px;}
+.product-shop .product-message .ships img{top:5px;}
+
+/* Share This */
+.sharethis-product{padding:6px 20px;background:url(../images/black_texture95.png) repeat;color:#fff;font-size:0;line-height:0;overflow:hidden;}
+.sharethis-product .label{float:left;padding:2px 18px 2px 20px;position:relative;font:16px/22px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;text-transform:uppercase;}
+.sharethis-product .label:before{content:'';position:absolute;top:5px;left:0;width:17px;height:14px;background:url(../images/spt_general.png) -148px -100px no-repeat;}
+.sharethis-product .share{float:left;}
+.sharethis-product .share > span{float:left;width:26px;height:26px;margin:0 0 0 1px;background-color:#454545;}
+.sharethis-product .share .st_sharethis_large{margin-left:6px;}
+.sharethis-product .share .stButton{display:block;margin:0;font-size:0;line-height:0;}
+.sharethis-product .share .stButton .stLarge{display:block;height:26px;width:26px;background:url(../images/spt_general.png) no-repeat !important;}
+.sharethis-product .share .stButton .stLarge:hover{opacity:1;}
+.sharethis-product .share .st_facebook_large .stLarge{background-position:0 -120px !important;}
+.sharethis-product .share .st_facebook_large .stLarge:hover{background-position:0 -147px !important;}
+.sharethis-product .share .st_twitter_large .stLarge{background-position:-27px -120px !important;}
+.sharethis-product .share .st_twitter_large .stLarge:hover{background-position:-27px -147px !important;}
+.sharethis-product .share .st_googleplus_large .stLarge{background-position:-54px -120px !important;}
+.sharethis-product .share .st_googleplus_large .stLarge:hover{background-position:-54px -147px !important;}
+.sharethis-product .share .st_pinterest_large .stLarge{background-position:-81px -120px !important;}
+.sharethis-product .share .st_pinterest_large .stLarge:hover{background-position:-81px -147px !important;}
+.sharethis-product .share .st_linkedin_large .stLarge{background-position:-108px -120px !important;}
+.sharethis-product .share .st_linkedin_large .stLarge:hover{background-position:-108px -147px !important;}
+.sharethis-product .share .st_sharethis_large .stLarge{background-position:-135px -120px !important;}
+.sharethis-product .share .st_sharethis_large .stLarge:hover{background-position:-135px -147px !important;}
+
+/* Collateral Tabs */
+.collateral-tabs{position:relative;overflow:hidden;}
+.collateral-tabs .tab{
+    float:left;
+    padding:10px 5px;margin-bottom:20px;
+    background:url(../images/grey05.png) repeat;
+    font-size:0;line-height:0;
+    text-transform:uppercase;text-align:center;white-space:nowrap;
+    -webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;
+}
+.collateral-tabs .tab.first{padding-left:10px;}
+.collateral-tabs .tab.last{padding-right:10px;}
+.collateral-tabs .tab span{
+    display:inline-block;vertical-align:top;min-width:150px;
+    font:18px/26px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;color:#3c3c3c;
+    padding:5px 20px;cursor:pointer;
+    border:1px solid #c8c8c8;
+    background:#fff;
+    background:-moz-linear-gradient(top, #fff 0%, #f5f5f5 100%);
+    background:-webkit-linear-gradient(top, #fff 0%,#f5f5f5 100%);
+    background:-o-linear-gradient(top, #fff 0%,#f5f5f5 100%);
+    background:-ms-linear-gradient(top, #fff 0%,#f5f5f5 100%);
+    background:linear-gradient(to bottom, #fff 0%,#f5f5f5 100%);
+    filter:progid:DXImageTransform.Microsoft.Gradient(StartColorStr=#ffffff, EndColorStr=#f5f5f5, GradientType=0);
+    -webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;
+    -webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;
+}
+.collateral-tabs .tab.active span{border-color:#000;background:#000;color:#00a7e1;filter:none;}
+.collateral-tabs .tab span:hover{color:#00a7e1;}
+.collateral-tabs .tab-container{float:right;width:100%;margin:78px 0 0 -100%;position:absolute;left:-999em;z-index:1;background:#fff;}
+.collateral-tabs .tab-container.active{position:relative;left:0;z-index:2;}
+.collateral-tabs .tab-content{padding:55px 44px 40px;font-size:18px;line-height:36px;overflow:hidden;}
+.btn-list{
+    position:absolute;
+    left:-9999px;
+    top:-9999px;
+    overflow:hidden;
+    margin:0 0 32px;
+    padding:2px;
+    background:#00b4f2;
+    background:-moz-linear-gradient(top,  #00b4f2 0%, #00a7e1 100%);
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,#00b4f2), color-stop(100%,#00a7e1));
+    background:-webkit-linear-gradient(top,  #00b4f2 0%,#00a7e1 100%);
+    background:-o-linear-gradient(top,  #00b4f2 0%,#00a7e1 100%);
+    background:-ms-linear-gradient(top,  #00b4f2 0%,#00a7e1 100%);
+    background:linear-gradient(to bottom,  #00b4f2 0%,#00a7e1 100%);
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+    text-align:center;
+    font:18px/22px "Futura PT W01 Cond Bold", Arial, Helvetica, sans-serif;
+}
+.btn-list ul{
+    margin:0 -3px;
+    overflow:hidden;
+}
+.tab-content .btn-list li{
+    width:50%;
+    float:left;
+    padding:0 3px;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+}
+.btn-list li:before{display:none;}
+.btn-list a{
+    display:block;
+    padding:6px 5px;
+    background:#fff;
+    color:#00b4f2;
+}
+.btn-list .active a,
+.btn-list a:hover{
+    background:none;
+    color:#fff;
+}
+.collateral-tabs .tab-content h2{
+    overflow:hidden;
+    min-width:40%;
+}
+.collateral-tabs .installation-block h2{
+    text-align:center;
+    margin:0 0 34px;
+}
+.installation-holder{
+    overflow:hidden;
+    margin:0 -3px 0 0;
+}
+.files-block{
+    float:right;
+    width:233px;
+    padding:0 0 0 42px;
+}
+.tab-content .files-list{
+    margin:0;
+    padding:0;
+    color:#3c3c3c;
+    font-size:16px;
+    line-height:22px;
+}
+.tab-content .files-list li{
+    padding:4px 0 8px 27px;
+    list-style:none;
+    float:none;
+    border-bottom:1px solid #c8c8c8;
+    background:url(../images/ico-pdf.png) no-repeat 0 8px;
+}
+.tab-content .files-list li:before{display:none;}
+.tab-content .files-list a{color:#3c3c3c;}
+.installation-content{overflow:hidden;}
+.collateral-tabs .tab-content h3{
+    margin:0 0 17px;
+    letter-spacing:-0.4px;
+    text-transform:uppercase;
+    font:21px/26px "Futura PT W01 Heavy", Arial, Helvetica, sans-serif;
+}
+.tab-container .tab-content .video-list{
+    margin:0 0 0 -2px;
+    padding:19px 0 0;
+}
+.tab-content .video-list li{
+    margin:0 0 49px;
+    padding:2px 0 56.25%;
+    list-style:none;
+    position:relative;
+}
+.tab-content .video-list li:before{display:none;}
+.video-list iframe{
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+}
+.collateral-tabs .tab-content ul{overflow:hidden;margin-bottom:2em;min-width:40%;}
+.collateral-tabs .tab-content ul:last-child{margin-bottom:0;}
+.collateral-tabs .tab-content ul.column-2{width:71%;}
+.collateral-tabs .tab-content ul.column-2 li{display:inline-block;vertical-align:top;width:48%;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+.collateral-tabs .tab-content hr{clear:both;border-color:#c8c8c8;border-width:1px 0 0;margin:60px -9999px 0;}
+
+/* Product Options */
+.product-options-wrap{padding:17px 20px 20px;background:url(../images/bkg_widgets.png) repeat;}
+.product-options{margin:0 0 20px;}
+.product-options .title{font-size:18px;line-height:22px;color:#000;text-transform:uppercase;margin-bottom:14px;}
+.product-options dt,
+.product-options dd .qty-holder{display:none;}
+.product-options dt .qty-holder label{vertical-align:middle;}
+.product-options dt .qty-disabled{background:none;border:0;padding:3px;color:#000;}
+.product-options dd{margin:0 0 10px;font-size:0;line-height:0;}
+.product-options dl.last dd.last{}
+.product-options dd input.input-text{width:98%;}
+.product-options dd input.datetime-picker{width:150px;}
+.product-options dd .time-picker{display:-moz-inline-box;display:inline-block;padding:2px 0;vertical-align:middle;}
+.product-options dd textarea{width:98%;height:8em;}
+.product-options dd select{width:100%;}
+.product-options .options-list{}
+.product-options .options-list input.radio{float:left;margin:3px -18px 0 0;}
+.product-options .options-list input.checkbox{float:left;margin:3px -20px 0 0;}
+.product-options .options-list .label{display:block;margin-left:20px;}
+.product-options ul.validation-failed{padding:0 7px;}
+.product-options p.required{padding:15px 0 0;}
+
+.product-options-bottom{border-top:1px solid #c8c8c8;padding-top:15px;}
+.product-options-bottom .price-box{margin:0 0 10px;}
+.product-options-bottom .price-label{display:none;}
+.product-options-bottom .add-to-cart input{display:none;}
+.product-options-bottom .add-to-cart .btn-cart{width:100%;margin:0;}
+
+.product-currency{position:relative;margin-bottom:5px;}
+.product-currency .sub-title{font:16px/22px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;}
+.product-currency .sub-title a{position:relative;padding-right:13px;letter-spacing:0.1px;white-space:nowrap;}
+.product-currency .sub-title.show a{color:#009acf;}
+.product-currency .sub-title a:after{content:'';width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:6px solid #db192d;position:absolute;top:7px;right:0;}
+.product-currency .sub-title.show a:after,
+.product-currency .sub-title a:hover:after{border-top-color:#009acf;}
+.product-currency .currency-list{
+    min-width:100%;
+    border:1px solid #a0a0a0;
+    background:#f6f6f6;
+    font-size:16px;
+    line-height:22px;
+    text-align:left;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+    -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.24);
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.24);
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.24);
+    position:absolute;
+    top:26px;
+    z-index:10;
+    display:none;
+}
+.product-currency .currency-list.show{display:block;}
+.product-currency .currency-list li{border-top:1px solid #e3e3e3;}
+.product-currency .currency-list li:first-child{border-top:none;}
+.product-currency .currency-list a{display:block;color:#3c3c3c;padding:8px 19px 12px;white-space:nowrap;}
+.product-currency .currency-list a img{margin-right:2px;}
+.product-currency .currency-list a img,
+.product-currency .currency-list a span{display:inline-block;vertical-align:middle;}
+.product-currency .currency-list .current a{color:#009acf;}
+.product-currency .currency-list a:hover{color:#009acf;background:#ebebeb;}
+/* Grouped Product */
+.product-view .grouped-items-table{}
+
+/* Block: Description */
+.product-view .box-description{}
+
+/* Block: Additional */
+.product-view .box-additional{}
+
+/* Block: Upsell */
+.product-collateral .box-up-sell{ text-align: center; margin-bottom: 0;}
+.product-collateral .box-up-sell .item-content{padding-bottom:12px;}
+.product-collateral .box-up-sell td{
+    text-align: center;
+    width: 33.3%;
+}
+.product-collateral .box-up-sell h2{
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.product-collateral .box-up-sell .price-to .price-label,
+.product-collateral .box-up-sell .price-from .price-label{
+    display: none;
+}
+.product-collateral .box-up-sell .price-to{
+    display: inline-block;
+}
+.product-collateral .box-up-sell .price-from{
+    display: inline-block;
+}
+.product-collateral .box-up-sell .price-from:after {
+    content: ' - ';
+}
+.product-collateral .box-up-sell .products-grid .product-image{
+    width: 200px;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+.product-collateral .box-up-sell .price-box .price{
+    font-size: 16px;
+    line-height: normal;
+}
+.product-collateral .box-up-sell .product-name{
+    line-height: normal;
+}
+
+.product-collateral .box-up-sell .product-name a{
+    font-size: 20px;
+    font-weight: normal;
+    line-height: normal;
+}
+.product-collateral .box-up-sell .products-grid{
+    border-bottom: 0;
+}
+/* Block: Tags */
+.product-view .box-tags{}
+.product-view .box-tags .form-add label{float:left;}
+.product-view .box-tags .form-add .input-box{float:left;width:260px;margin:0 5px;}
+.product-view .box-tags .form-add input.input-text{}
+.product-view .box-tags .form-add p{clear:both;}
+
+/* Block: Reviews */
+.product-view .box-reviews{}
+.product-view .box-reviews .form-add{}
+
+/* Send a Friend */
+.send-friend{}
+/* ======================================================================================= */
+
+
+/* Content Styles ================================================================= */
+.product-name{font:18px/28px 'Futura PT W01 Heavy', Georgia, 'Times New Roman', Times, serif;}
+.product-name a{color:#000;}
+
+/* Product Tags */
+.tags-list li{display:inline;}
+
+/* Advanced Search */
+.advanced-search{}
+.advanced-search-amount{}
+.advanced-search-summary{}
+
+/* CMS Home Page */
+.cms-home .subtitle{}
+.cms-index-index .main-container,
+.catalog-category-view .main-container{background:#fff;}
+
+/* Sitemap */
+.page-sitemap .links{text-align:right;margin:0 8px -22px 0;}
+.page-sitemap .links a{text-decoration:none;position:relative;}
+.page-sitemap .links a:hover{text-decoration:underline;}
+.page-sitemap .sitemap{margin:12px;}
+.page-sitemap .sitemap a{}
+.page-sitemap .sitemap li{margin:3px 0;}
+.page-sitemap .sitemap li.level-0{margin:10px 0 0;font-weight:bold;}
+.page-sitemap .sitemap li.level-0 a{}
+
+/* RSS */
+.rss-title h1{background:url(../images/i_rss-big.png) 0 4px no-repeat;padding-left:27px;}
+.rss-table .link-rss{display:block;line-height:1.35;background-position:0 2px;}
+/* ======================================================================================= */
+
+
+/* Shopping Cart ========================================================================= */
+.cart{}
+
+/* Checkout Types */
+.cart .checkout-types{display:inline-block;vertical-align:top;text-align:right;}
+.cart .title-buttons .button-box .btn-continue{display:inline-block;vertical-align:middle;padding-left:20px;padding-right:21px;}
+.cart .title-buttons .button-box .or{display:inline-block;vertical-align:middle;color:#3c3c3c;font-family:'Futura PT W01 Book', Georgia, 'Times New Roman', Times, serif;padding:1px 5px 4px;font-size:19px;}
+.cart .title-buttons .button-box .checkout-types{display:inline-block;vertical-align:middle;}
+.cart .checkout-types .paypal-or{margin:0 8px;line-height:2.3;}
+.cart .totals .checkout-types .paypal-or{clear:both;display:block;padding:7px 44px 11px 0;line-height:20px;font-size:19px;color:#3c3c3c;}
+
+/* Shopping Cart Table */
+.cart-table .item-msg{font-size:10px;}
+.cart-table tbody td{padding:30px 15px;}
+.cart-table tbody tr td:first-child, .cart-table tbody tr td.first{padding-left:29px;}
+.cart-table tbody tr td:last-child, .cart-table tbody tr td.last{padding-right:29px;}
+.cart-table th.unit-price{padding:8px 55px 10px 36px;}
+.cart-table td.unit-price{padding:36px 55px 30px 36px;}
+.cart-table td.remove{padding-top:34px;}
+.cart-table td.subtotal{padding-top:36px;}
+.cart-table td.edit{padding-top:36px;}
+.cart-table img{max-width:none;}
+.cart-table a{color:#db192d;text-decoration:none;}
+.cart-table a:hover{color:#00a7e1;}
+.cart-table input.qty{margin-bottom:8px;}
+.cart-table .product-name{padding:4px 0 9px;}
+.cart-table .product-name a{color:#000;}
+.cart-table .product-name a:hover{color:#00a7e1;}
+.cart-table .text-block{position:absolute;left:-9999px;top:-9999px;}
+.cart-table .text-block .it3{display:none;}
+.cart-table .text-block .it2 .title{display:none;}
+.cart-table .text-block .title,
+.cart-table .text-block .val{display:inline-block;vertical-align:middle;margin:0 5px 10px;}
+.cart-table .text-block input.qty{margin:0 8px 0 0;display:inline-block;vertical-align:middle;}
+.cart-table .text-block .btn-update{display:inline-block;vertical-align:middle;}
+.cart-table .text-block .btn-remove{display:inline;font:inherit;background:none;text-indent:0;}
+
+/* Shopping Cart Collateral boxes */
+.cart .cart-collaterals{margin:30px -15px 0;}
+.cart .cart-collaterals .col{float:left;width:33.33%;padding:0 15px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+.cart .cart-collaterals .field{padding:16px 20px 20px;background:url(../images/bkg_widgets.png) repeat;font-size:18px;line-height:22px;}
+.cart .cart-collaterals .title{font:18px/22px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;text-transform:uppercase;color:#00a7e1;margin:0 0 14px;letter-spacing:0.2px;}
+.cart .cart-collaterals .sub-title{display:block;margin:0 0 10px;}
+.cart .cart-collaterals .shipping-form .sub-title{margin-bottom:13px;}
+.cart .cart-collaterals .field button.button{padding:7px 20px 9px;}
+.cart .cart-collaterals .discount-form button.button{min-width:120px;}
+.cart .cart-collaterals .form-list li{margin:0 0 15px;}
+.cart .cart-collaterals .buttons-set button.button{float:left;}
+.cart .cart-collaterals .discount-form .buttons-set .cancel{float:right;}
+
+.cart .crosssell{}
+.cart .crosssell h2{font-size:13px;font-weight:bold;}
+.cart .crosssell .product-image{float:left;width:75px;height:75px;border:1px solid #ddd;}
+.cart .crosssell .product-details{margin-left:90px;}
+.cart .crosssell li.item{margin:12px 0;}
+
+/* Discount Codes & Estimate Shipping and Tax Boxes */
+.cart .discount{margin-bottom:30px;}
+.cart .shipping .sp-methods{}
+.cart .shipping .sp-methods dt{font:16px/22px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;text-transform:uppercase;margin:20px 0 4px;color: #000;}
+.cart .shipping .sp-methods dd li{border-bottom:none;padding:6px 0;}
+
+/* Shopping Cart Totals */
+.cart .totals{overflow:hidden;border:1px solid #000;border-top-width:6px;padding:9px 19px;background:#fff;}
+.cart .totals table{width:100%;margin-bottom:13px;}
+.cart .totals table th,
+.cart .totals table td{padding:6px 0 5px;font-size:16px;line-height:22px;}
+.cart .totals table th{font-weight:bold;}
+.cart .totals .shopping-cart-totals-table tr th,
+.cart .totals .shopping-cart-totals-table tr td:first-child{text-align:left !important;}
+.cart .totals .grand-total{display:block;border-top:1px solid #c8c8c8;padding-top:26px;font-family:'Futura PT W01 Heavy', Georgia, 'Times New Roman', Times, serif;margin-bottom:20px;}
+.cart .totals .grand-total tr,
+.cart .totals .grand-total tr.grand-total-row td,
+.cart .totals .grand-total tbody{display:block;text-align:right;}
+.cart .totals .grand-total tr{overflow:hidden;}
+.cart .totals .grand-total tr td:first-child{text-align:left !important;}
+.cart .totals .grand-total tr td{width:50%;float:left;}
+.cart .totals .grand-total tr.grand-total-row td{text-align:right !important;}
+.cart .totals .grand-total tr.grand-total-row td{width:auto;float:none;}
+/*.cart .totals .grand-total tr{display:none;}
+.cart .totals .grand-total tr.excl-tax{display:block;}*/
+.cart .totals .grand-total .label{color:#00a7e1;padding:0 0 8px;}
+.cart .totals .grand-total .grand-price{font-size:28px;line-height:38px;color:#000;padding:0;}
+.cart .totals .checkout-types{display:block;}
+
+/* Options Tool Tip */
+.item-options{color:#3c3c3c;font-size:16px;line-height:22px;padding-left:15px;}
+.item-options dt{font-family:'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;text-transform:uppercase;}
+.item-options dd{margin-bottom:11px;}
+.truncated{cursor:help;}
+.truncated a.dots{cursor:help;}
+.truncated a.details{cursor:help;}
+.truncated .truncated_full_value{position:relative;z-index:999;}
+.truncated .truncated_full_value .item-options{position:absolute;top:-99999em;left:-99999em;z-index:999;width:250px;padding:8px;border:1px solid #ddd;background-color:#f6f6f6;}
+.truncated .truncated_full_value .item-options > p{font-weight:bold;text-transform:uppercase;}
+.truncated .show .item-options{top:-20px;left:50%;}
+.col-left .truncated .show .item-options{left:30px;top:7px;}
+.col-right .truncated .show .item-options{left:-240px;top:7px;}
+/* ======================================================================================= */
+
+
+/* Checkout ============================================================================== */
+/********** < Common Checkout Styles */
+.checkout-onepage-index .top-information-wrap{margin-bottom:7px;}
+/* Shipping and Payment methods */
+.opc .sp-methods dt.sub-title{margin-bottom:14px;}
+.opc .sp-methods dd + dt.sub-title{margin-top:20px;}
+.sp-methods dd li{border-bottom:1px solid #c8c8c8;padding:6px 0;}
+.sp-methods dd label{font:16px/26px 'Futura PT W01 Heavy', Georgia, 'Times New Roman', Times, serif;color:#000;}
+.sp-methods .price{float:right;color:#00a7e1;}
+.sp-methods .form-list{padding-left:20px;width:41%;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;}
+.sp-methods .rad-area{margin-right:8px;}
+.sp-methods select.month{width:53.956%;margin-right:10px;}
+.sp-methods select.year{width:24.82%;}
+.sp-methods input.cvv{width:3em !important;}
+
+.sp-methods .checkmo-list li{margin:0 0 5px;}
+.sp-methods .checkmo-list label{width:135px;padding-right:10px;text-align:right;}
+.sp-methods .checkmo-list address{float:left;}
+
+.sp-methods .centinel-logos a{margin-right:3px;}
+.sp-methods .centinel-logos img{vertical-align:middle;}
+
+.sp-methods .release-amounts{margin:0.5em 0 1em;}
+.sp-methods .release-amounts button{float:left;margin:5px 10px 0 0;}
+
+.please-wait{float:right;margin-right:5px;}
+.please-wait img{vertical-align:middle;}
+.cvv-what-is-this{cursor:help;margin-left:5px;}
+
+/* Tooltip */
+.tool-tip{border:1px solid #ddd;background-color:#f6f6f6;padding:5px;position:absolute;z-index:9999;}
+.tool-tip .btn-close{text-align:right;}
+.tool-tip .btn-close a{display:block;margin:0 0 0 auto;width:15px;height:15px;background:url(../images/btn_window_close.gif) 100% 0 no-repeat;text-align:left;text-indent:-999em;overflow:hidden;}
+.tool-tip .tool-tip-content{padding:5px;}
+
+/* Gift Messages */
+.gift-messages{}
+.gift-messages-form{border:1px solid #ddd;background-color:#f5f5f5;}
+.gift-messages-form{position:relative;}
+.gift-messages-form label{float:none !important;position:static !important;}
+.gift-messages-form h4{}
+.gift-messages-form .whole-order{}
+.gift-messages-form .item{margin:0 0 10px;}
+.gift-messages-form .item .product-img-box{float:left;width:75px;}
+.gift-messages-form .item .product-image{margin:0 0 7px;}
+.gift-messages-form .item .number{margin:0;font-weight:bold;text-align:center;}
+.gift-messages-form .item .details{margin-left:90px;}
+.gift-messages-form .item .details .product-name{}
+
+.gift-message-link{display:block;background:url(../images/bkg_collapse.gif) 0 4px no-repeat;padding-left:20px;}
+.gift-message-link.expanded{background-position:0 -53px;}
+.gift-message-row{}
+.gift-message-row .btn-close{float:right;}
+.gift-message dt strong{font-weight:bold;}
+
+/* Checkout Agreements */
+.checkout-agreements{}
+.checkout-agreements li{margin:10px 0;}
+.checkout-agreements .agreement-content{border:1px solid #ddd;background-color:#f6f6f6;padding:5px;height:10em;overflow:auto;}
+.checkout-agreements .agree{padding:6px;}
+
+/* Centinel */
+.centinel{}
+.centinel .authentication{border:1px solid #ddd;background:#fff;}
+.centinel .authentication iframe{width:99%;height:400px;background:transparent !important;margin:0 !important;padding:0 !important;border:0 !important;}
+
+/* Generic Info Set */
+.info-set{}
+/********** Common Checkout Styles > */
+
+/* One Page Checkout */
+.block-progress{}
+.block-progress .block-title{font:24px/36px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;margin-bottom:10px;}
+.block-progress dt{background:url(../images/bkg_widgets.png) repeat;padding:16px 20px 14px;margin-bottom:8px;font:18px/22px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;color:#7c7c7c;text-transform:uppercase;}
+.block-progress dt.complete{color:#00a7e1;margin-bottom:0;}
+.block-progress dd.complete{padding:0 20px 18px;background:url(../images/bkg_widgets.png) repeat;margin-bottom:8px;font-size:16px;line-height:22px;}
+.block-progress dd.complete a{font-family:'FuturaPTW01-BookOblique', Georgia, 'Times New Roman', Times, serif;}
+.block-progress .dt{color:#00a7e1;margin-bottom:14px;font:18px/22px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;text-transform:uppercase;}
+.block-progress .address{border-bottom:1px solid #c8c8c8;margin-bottom:16px;padding-bottom:18px;}
+.block-progress .shipping-address p{font:16px/22px 'Futura PT W01 Heavy', Georgia, 'Times New Roman', Times, serif;}
+
+.opc{position:relative;}
+.opc li.section{margin-bottom:4px;}
+
+.opc .buttons-set.disabled button.button{display:none;}
+.opc .buttons-set .please-wait{height:21px;line-height:21px;}
+
+.opc .step-title{background:url(../images/bkg_widgets.png) repeat;padding:10px 16px;font:18px/22px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;color:#7c7c7c;text-transform:uppercase;}
+.opc .step-title .number{float:left;margin-right:11px;}
+.opc .step-title h2{float:left;font:inherit;}
+.opc .step-title a,
+.opc .allow.active .step-title a{float:left;margin:5px 0 0 7px;width:16px;height:13px;background:url(../images/spt_general.png) -46px -96px no-repeat;text-indent:-999px;overflow:hidden;display:none;}
+
+.opc .allow .step-title{
+    border:1px solid #c8c8c8;padding:9px 15px;color:#3c3c3c;cursor:pointer;
+    background: #ffffff;
+    background: -moz-linear-gradient(top,  #ffffff 0%, #f5f5f5 100%);
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#f5f5f5 100%);
+    background: -o-linear-gradient(top,  #ffffff 0%,#f5f5f5 100%);
+    background: -ms-linear-gradient(top,  #ffffff 0%,#f5f5f5 100%);
+    background: linear-gradient(to bottom,  #ffffff 0%,#f5f5f5 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f5f5f5',GradientType=0 );
+}
+
+.opc .allow .step-title a{display:block;}
+
+.opc .active{}
+.opc .active .step-title{background:#000;color:#00a7e1;cursor:default;padding:10px 16px;border:none;}
+
+.opc .step{border:1px solid #000;border-top:0;padding:26px 29px 30px;background:#fff;position:relative;color:#3c3c3c;font-size:16px;}
+.opc .step .form-list{margin:0 0 10px;}
+.opc .step .form-list li{margin:0 0 15px;}
+.opc .step h3{color:#000;margin-bottom:8px;overflow:hidden;letter-spacing:-0.2px;}
+.opc .step h3 .required{float:right;letter-spacing:normal;margin:6px 0 0;}
+.opc .step h4{font:16px/28px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;text-transform:uppercase;margin-bottom:7px;}
+.opc .step p{margin-bottom:18px;}
+.opc .step .tool-tip{right:10px;}
+.opc .step .sub-title{color:#000;margin-bottom:19px;font:24px/28px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;}
+.opc .step .button{min-width:150px;font:16px/22px 'Futura PT W01 Heavy', Georgia, 'Times New Roman', Times, serif;}
+.opc .step a.forgot{font-size:14px;line-height:22px;}
+
+.opc .step #login-form .form-list{margin:0 0 -13px;}
+.opc .step #login-form .form-list li{margin:0 0 15px;}
+.opc #checkout-step-login .buttons-set{margin:36px 0 0;}
+.opc #checkout-step-login .form-list li{margin:0 0 6px;}
+.opc #checkout-step-login ul.ul{letter-spacing:-0.6px;}
+.opc #checkout-step-login .buttons-set button.button{float:left;}
+
+#opc-billing .form-list li.street .input-box{margin:0 0 10px;}
+#opc-billing .form-list li.street .input-box.last{margin:0;}
+#opc-billing .check-address{margin:0 0 30px;padding-bottom:12px;border-bottom:1px solid #c8c8c8;}
+#opc-billing .check-address .sub-title{margin-bottom:20px;}
+#opc-billing .check-address li{margin:0 0 6px;}
+#opc-billing .check-address .rad-area{margin-right:8px;}
+#opc-billing .buttons-set{margin:0;}
+#opc-billing .buttons-set .button{float:right;}
+#billing-new-address-form,
+#shipping-new-address-form{margin:0 0 26px;padding:0 0 25px;border-bottom:1px solid #c8c8c8;}
+
+#checkout-step-shipping_method .sp-methods{margin-bottom:106px;}
+#checkout-step-shipping_method .buttons-set button.button{float:right;}
+
+#checkout-step-payment .sp-methods dt{color:#000;margin-bottom:26px;border-bottom:1px solid #c8c8c8;padding-bottom:28px}
+#checkout-step-payment .sp-methods dt label{font:24px/28px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;}
+#checkout-step-payment .sp-methods dt label span.label{display: inline-block; vertical-align: top;}
+#checkout-step-payment .sp-methods dt label p.desc{font-size: 16px; font-family: 'Futura PT W01 Book'; margin-top: 5px; margin-bottom: 0px;}
+#checkout-step-payment .sp-methods a.paypal-logo{ display: inline-block; margin-left: 35px; margin-top: 15px; }
+#checkout-step-payment .sp-methods dd li{border-bottom:none;padding:0;}
+#checkout-step-payment .sp-methods dd .form-list{padding:0;width:auto;overflow:hidden;margin:0 -15px;}
+#checkout-step-payment .sp-methods dd li{float:left;padding:0 15px;width:50%;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;}
+#checkout-step-payment .sp-methods dd .expiration-date .input-box{margin:0 -15px;width:auto;overflow:hidden;}
+#checkout-step-payment .sp-methods dd .expiration-date .v-fix{float:left;padding:0 15px;width:50%;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;}
+#checkout-step-payment .sp-methods dt.ccsave{border-bottom:none;margin-bottom:0;}
+#checkout-step-payment .sp-methods dt.ccsave .rad-area{float:left;margin:5px 12px 0 0;}
+#checkout-step-payment .sp-methods dt.ccsave label{display:block;overflow:hidden;}
+#checkout-step-payment .sp-methods dt.ccsave .label{float:left;width:47%;margin-right:19px;}
+#checkout-step-payment .sp-methods dt.ccsave .desc{display:block;padding:10px 0 0;font:16px/22px 'Futura PT W01 Book', 'Times New Roman', Times, serif;color:#3c3c3c;}
+#checkout-step-payment .sp-methods dt.ccsave .logo-ccsave{float:left;margin:15px 0 0;max-width:40%;}
+#checkout-step-payment .sp-methods dd.ccsave{border-bottom:1px solid #c8c8c8;margin-bottom:26px;}
+
+#checkout-step-payment .sp-methods dt.paypal_express .rad-area{float:left;margin:5px 12px 0 0;}
+#checkout-step-payment .sp-methods dt.paypal_express label{display:block;overflow:hidden;}
+#checkout-step-payment .sp-methods dt.paypal_express .label{float:left;width:47%;margin-right:19px;}
+#checkout-step-payment .sp-methods dt.paypal_express .desc{display:block;padding:10px 0 0;font:16px/22px 'Futura PT W01 Book', 'Times New Roman', Times, serif;color:#3c3c3c;}
+#checkout-step-payment .sp-methods dt.paypal_express .paypal-logo{float:left;margin:17px 0 0;max-width:40%;}
+#checkout-step-payment .sp-methods dd.paypal_express{display:none;}
+#checkout-step-payment .buttons-set{margin:30px 0 0;}
+#checkout-step-payment .buttons-set button.button{float:right;}
+
+#checkout-step-review{padding:0 0 30px;}
+
+.opc .order-review{}
+.opc .order-review .data-table{border:none;font-size:16px;line-height:22px;}
+.opc .order-review .data-table thead{background-color:#00a7e1;}
+.opc .order-review .data-table thead th{padding:9px 15px;border-bottom:1px solid #fff;}
+.opc .order-review .data-table thead th.image{width:150px;}
+.opc .order-review .data-table thead th.prices{width:100px;}
+.opc .order-review .data-table thead th.qty{width:40px;}
+.opc .order-review .data-table thead th.subtotal{width:100px;}
+.opc .order-review .data-table td{padding:38px 15px 30px;}
+.opc .order-review .data-table td.image{padding-top:30px;}
+.opc .order-review .data-table th.first,
+.opc .order-review .data-table td.first{padding-left:30px;}
+.opc .order-review .data-table th.last,
+.opc .order-review .data-table td.last{padding-right:30px;}
+.opc .order-review .data-table.review-table tbody tr.last td{border-bottom:4px solid #c8c8c8;}
+.opc .order-review .data-table.totals tr{padding-top:26px;}
+.opc .order-review .data-table.totals td{padding:5px 30px 6px 15px;color:#000;border:none;}
+.opc .order-review .data-table.totals tr:first-child td{padding-top:26px;}
+.opc .order-review .data-table.totals tr th,
+.opc .order-review .data-table.totals tr td:first-child{padding-left:30px;padding-right:15px;text-align:left !important;}
+.opc .order-review .data-table.totals tr.last .label{color:#00a7e1;padding-top:23px;}
+.opc .order-review .data-table.totals tr.last .grand-price{font-size:28px;line-height:38px;padding-top:11px;}
+.opc .order-review .data-table .product-image{min-width:150px;height:auto;}
+.opc .order-review .data-table .product-name{line-height:22px;margin-bottom:11px;}
+.opc .order-review .data-table .item-options{margin-bottom:-13px;}
+.opc .order-review .data-table .text-block{position:absolute;left:-9999px;top:-9999px;}
+.opc .order-review .data-table .text-block .it2 .title{display:none;}
+.opc .order-review .data-table .text-block .title,
+.opc .order-review .data-table .text-block .val{display:inline-block;vertical-align:middle;margin:0 5px 10px;}
+.opc .order-review .authentication{}
+.opc .order-review .warning-message{}
+.opc .order-review .buttons-set{padding-top:30px;border-top:1px solid #c8c8c8;margin:14px 30px 0;}
+.opc .order-review .buttons-set button.button{float:right;width:240px;font-size:18px;margin-top:14px;}
+.opc .order-review .buttons-set .affiliate-partner{float:left;width:50%;}
+.opc .order-review .monkey-box .chk-area{margin-top:-8px;}
+
+/* Multiple Addresses Checkout */
+.checkout-progress{padding:0 50px;margin:10px 0;}
+.checkout-progress li{float:left;width:20%;border-top:5px solid #ccc;text-align:center;color:#ccc;}
+.checkout-progress li.active{border-top-color:#000;color:#000;}
+
+.multiple-checkout{position:relative;}
+.multiple-checkout .tool-tip{top:50%;margin-top:-120px;right:10px;}
+.multiple-checkout .grand-total{font-size:1.5em;text-align:right;}
+.multiple-checkout .grand-total big{}
+.multiple-checkout .grand-total .price{}
+/* ======================================================================================= */
+
+
+/* Account Login/Create Pages ============================================================ */
+.account-login{}
+.account-login .sub-title{font:18px/22px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;color:#000;text-transform:uppercase;margin-bottom:14px;}
+.account-login .text{margin-bottom:14px;}
+.account-login .registered-users{}
+
+.account-login,
+.forgot-password,
+.account-create{margin:0 auto;width:80%;}
+/* Account Login/Create Pages ============================================================ */
+
+/* Captcha */
+.captcha-note{}
+.captcha-image{float:left;position:relative;}
+.captcha-img{border:1px solid #ccc;}
+.registered-users .captcha-image{}
+#checkout-step-login .captcha-image{}
+.captcha-reload{position:absolute;top:2px;right:2px;}
+.captcha-reload.refreshing{animation:rotate 1.5s infinite linear;-webkit-animation:rotate 1.5s infinite linear;-moz-animation:rotate 1.5s infinite linear;}
+
+@-webkit-keyframes rotate{
+    0%{-webkit-transform:rotate(0);}
+    0%{-webkit-transform:rotate(-360deg);}
+}
+@-moz-keyframes rotate{
+    0%{-moz-transform:rotate(0);}
+    0%{-moz-transform:rotate(-360deg);}
+}
+@keyframes rotate{
+    0%{transform:rotate(0);}
+    0%{transform:rotate(-360deg);}
+}
+
+/* Remember Me Popup ===================================================================== */
+.window-overlay{background:url(../images/window_overlay.png) repeat;background:rgba(0, 0, 0, 0.35);position:absolute;top:0;left:0;height:100%;width:100%;z-index:990;}
+
+.remember-me label{}
+.remember-me-popup{}
+.remember-me-popup h3{}
+.remember-me-popup .remember-me-popup-head{}
+.remember-me-popup .remember-me-popup-head .remember-me-popup-close{}
+.remember-me-popup .remember-me-popup-body{}
+.remember-me-popup .remember-me-popup-body a{}
+/* Remember Me Popup ===================================================================== */
+
+
+/* My Account ============================================================================= */
+.my-account{font-size:16px;line-height:22px;}
+.my-account .title-buttons .link-rss{float:none;margin:0;}
+.my-account h2{font-size:24px;margin-bottom:10px;}
+.my-account h3{font-size:22px;margin-bottom:8px;}
+.my-account h4{font-size:18px;margin-bottom:5px;}
+.my-account address{margin-bottom:8px;}
+
+/********** < Dashboard */
+.dashboard{}
+.dashboard .welcome-msg{margin-bottom:20px;}
+.dashboard .welcome-msg .hello{font-size:18px;}
+
+/* Block: Recent Orders */
+.dashboard .box-recent{margin:10px 0;}
+.dashboard .box-recent .box-head{font-size:1px;line-height:0;text-align:justify;margin-bottom:10px;}
+.dashboard .box-recent .box-head:after{content:'';display:inline-block;vertical-align:top;width:100%;font-size:1px;}
+.dashboard .box-recent .box-head h2,
+.dashboard .box-recent .box-head a{display:inline-block;vertical-align:middle;line-height:22px;text-align:left;margin:0;}
+.dashboard .box-recent .box-head a{font-size:18px;}
+.dashboard .box-recent .orders-block dt .title,
+.dashboard .box-recent .orders-block dd{display:none;}
+.dashboard .box-recent .orders-block .title,
+.dashboard .box-recent .orders-block .val{display:inline-block;vertical-align:top;}
+.dashboard .box-recent .orders-block .title{min-width:150px;}
+
+/* Block: Account Information */
+.dashboard .box-info{}
+.dashboard .box-info .col2-set{margin-bottom:20px;}
+.dashboard .box-info .box-title{font-size:1px;line-height:0;text-align:justify;margin-bottom:8px;}
+.my-account .dashboard .box-info .box-title:after{content:'';display:inline-block;vertical-align:top;width:100%;font-size:1px;}
+.dashboard .box-info .box-title h3,
+.dashboard .box-info .box-title a{display:inline-block;vertical-align:middle;line-height:22px;text-align:left;margin:0;}
+.dashboard .box-info .box-title a{font-size:18px;}
+
+/* Block: Reviews */
+.dashboard .box-reviews .number{float:left;font-size:10px;font-weight:bold;line-height:1;color:#fff;margin:3px -20px 0 0;padding:2px 3px;background:#ddd;}
+.dashboard .box-reviews .details{margin-left:20px;}
+
+/* Block: Tags */
+.dashboard .box-tags .number{float:left;font-size:10px;font-weight:bold;line-height:1;color:#fff;margin:3px -20px 0 0;padding:2px 3px;background:#ddd;}
+.dashboard .box-tags .details{margin-left:20px;}
+/********** Dashboard > */
+
+/* Address Book */
+.addresses-list{}
+.addresses-list li.item +  li.item{margin-top:20px;}
+.addresses-list-additional li.item{}
+
+/* Order View */
+#my-orders-table .orders-block dt .title,
+#my-orders-table .orders-block dd{display:none;}
+#my-orders-table .orders-block .title,
+#my-orders-table .orders-block .val{display:inline-block;vertical-align:top;}
+#my-orders-table .orders-block .title{min-width:150px;}
+#my-orders-table h4{font:inherit;}
+.order-details #my-orders-table{border-width:1px 1px 0;}
+.order-details #my-orders-table tbody td{border-top:none;}
+.order-details #my-orders-table tbody .border td{border-bottom:1px solid #c8c8c8;}
+.order-details .order-totals{border-width:0 1px 1px;}
+.order-details .order-totals .border{display:none;}
+.order-details .order-totals  tbody td{border:none !important;}
+.order-details .order-totals  tbody tr td:first-child{text-align:left !important;}
+.order-details .order-totals  .grand_total strong{color:#00a7e1;}
+.order-details .order-totals  .grand_total .price{color:#000;font-size:28px;}
+
+.order-info{font:18px/22px 'Futura PT W01 Heavy', Georgia, 'Times New Roman', Times, serif;}
+.order-info dt,
+.order-info dd,
+.order-info ul,
+.order-info li{display:inline;}
+.order-info dt{}
+
+.order-date{margin:10px 0;}
+
+.order-info-box{}
+
+.order-items{width:100%;overflow-x:auto;}
+
+.order-additional{margin:15px 0;}
+/* Order Gift Message */
+.gift-message dt strong{color:#666;}
+.gift-message dd{font-size:13px;margin:5px 0 0;}
+/* Order Comments */
+.order-about dt{}
+.order-about dd{font-size:13px;margin:0 0 7px;}
+
+.tracking-table{margin:0 0 15px;}
+.tracking-table th{white-space:nowrap;}
+
+.tracking-table-popup{width:100%;}
+.tracking-table-popup th{font-weight:bold;white-space:nowrap;}
+.tracking-table-popup th,
+.tracking-table-popup td{padding:1px 8px;}
+
+/* Order Print Pages */
+.page-print .print-head{}
+.page-print .print-head img{float:left;}
+.page-print .print-head address{float:left;margin-left:15px;}
+/* Price Rewrites */
+.page-print .gift-message-link{display:none;}
+.page-print .price-excl-tax,
+.page-print .price-incl-tax{display:block;white-space:nowrap;}
+.page-print .cart-price,
+.page-print .price-excl-tax .label,
+.page-print .price-incl-tax .label,
+.page-print .price-excl-tax .price,
+.page-print .price-incl-tax .price{display:inline;}
+
+/* My Reviews */
+.product-review .product-img-box{float:left;width:140px;}
+.product-review .product-img-box .product-image{display:block;width:125px;height:125px;}
+.product-review .product-img-box .label{font-size:11px;margin:0 0 3px;}
+.product-review .product-img-box .ratings .rating-box{float:none;display:block;margin:0 0 3px;}
+.product-review .product-details{margin-left:150px;}
+.product-review .product-name{font-size:16px;font-weight:bold;margin:0 0 10px;}
+.product-review h3{}
+.product-review .ratings-table{margin:0 0 10px;}
+.product-review dt{font-weight:bold;}
+.product-review dd{font-size:13px;margin:5px 0 0;}
+/* ======================================================================================= */
+
+/* Paypal Reviews */
+.paypal-express-review .paypal-review-order h2, .paypal-express-review .sub-title, .paypal-express-review .paypal-review-order h3{ font: 24px/28px 'Futura PT W01 Cond Bold',Georgia,'Times New Roman',Times,serif; }
+.paypal-express-review .paypal-review-order .info-set:first-child h2{padding: 0px 0px 10px 0px;}
+.paypal-express-review .paypal-review-order .info-set h2{padding: 20px 0px 15px;}
+.paypal-express-review .paypal-review-order .paypal-shipping-method h3{padding-bottom: 10px;}
+.paypal-express-review .paypal-review-order #checkout-totals-table{margin-bottom: 20px;}
+.paypal-express-review .paypal-review-order button#review_button{margin-left: 10px;}
+
+/* ======================================================================================= */
+
+
+/* Footer ================================================================================ */
+.footer-container{background:url(../images/dark_texture.png) repeat;color:#fff;}
+.footer-container a{color:#fff;text-decoration:none;}
+.footer-container a:hover{color:#009acf;}
+.footer{padding:30px 0;}
+.footer h3,.footer .title{display:block;font:16px/22px 'Futura PT W01 Bold', Georgia, 'Times New Roman', Times, serif;margin:3px 0 0;padding:0;}
+.footer h3{margin:17px 0 0;}
+.footer-top .footer{padding-bottom:29px;}
+.footer-top .footer h3{font:20px/24px 'Futura PT W01 Heavy', Georgia, 'Times New Roman', Times, serif;text-transform:uppercase;margin:0 0 7px;letter-spacing:-0.2px;}
+.footer .footer-affiliate{overflow:hidden;font:16px/20px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;padding:15px 20px 22px;background:#000;letter-spacing:0.1px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+.footer .footer-affiliate p{margin-bottom:4px;}
+.footer .footer-affiliate a{display:inline-block;vertical-align:top;text-transform:uppercase;color:#00a7e1;position:relative;padding-right:11px;letter-spacing:0;}
+.footer .footer-affiliate a:after{content:'';position:absolute;right:0;top:5px;width:9px;height:9px;background:url(../images/spt_general.png) 0 -90px no-repeat;}
+.footer .infinity-menu-footer{float:left;width:68.6%;font-size:0;line-height:0;padding-top:4px;}
+.footer .infinity-menu-footer h3{margin-bottom:13px;letter-spacing:-1.2px;}
+.footer .infinity-menu-footer li{display:inline-block;vertical-align:top;width:33.33%;font:16px/32px 'Futura PT W01 Cond Bold', Georgia, 'Times New Roman', Times, serif;text-transform:uppercase;padding:0 14px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;position:relative;}
+.footer .infinity-menu-footer li:after{content:'';position:absolute;left:0;top:14px;width:4px;height:4px;background:url(../images/spt_general.png) -10px -90px no-repeat;}
+
+.footer-middle{position:relative;}
+.footer-middle:before{content:'';position:absolute;left:0;right:0;top:0;width:100%;height:1px;background:#3a3a3a;}
+.footer-middle .footer{padding:36px 0 35px;}
+.footer .col{float:left;width:31.5%;margin-left:2.7%;font-size:16px;line-height:22px;overflow:hidden;padding:0 10px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+.footer .col:first-child{margin-left:0;}
+.footer .col:hover{background:url(../images/white08.png);cursor:default;}
+.footer .col a{color:#fff;}
+.footer .buy-infocrank{padding:14px 10px 13px;}
+.footer .buy-infocrank .icon{float:left;margin:-3px 15px 0 -10px;width:100px;height:73px;background:url(../images/spt_general.png) -185px 0 no-repeat;}
+.footer .buy-infocrank .icon:hover{background-position:-185px -75px;}
+.footer .subscription{padding:15px 10px 14px;}
+.footer .subscription .icon{float:left;margin:-3px 31px 0 9px;width:67px;height:71px;background:url(../images/spt_general.png) -290px 0 no-repeat;}
+.footer .subscription .icon:hover{background-position:-290px -75px;}
+
+.footer-social{}
+.footer-social ul{float:left;margin-right:15px;width:100px;margin-left:-9px;}
+.footer-social ul li{float:left;margin:5px;width:40px;height:40px;}
+.footer-social ul a{display:block;height:100%;background-image:url(../images/spt_general.png);background-repeat:repeat;text-indent:-999em;}
+.footer-social .facebook{background-position:-22px 0;}
+.footer-social .facebook:hover{background-position:-22px -40px;}
+.footer-social .twitter{background-position:-62px 0;}
+.footer-social .twitter:hover{background-position:-62px -40px;}
+.footer-social .youtube{background-position:-102px 0;}
+.footer-social .youtube:hover{background-position:-102px -40px;}
+.footer-social .linkedin{background-position:-142px 0;}
+.footer-social .linkedin:hover{background-position:-142px -40px;}
+
+.footer-bottom{background-color:#000;color:#fff;font-size:16px;line-height:22px;}
+.footer-bottom .footer{padding:8px 0 10px;}
+.footer-bottom a{color:#fff;}
+.footer-bottom a:hover{color:#009acf;}
+.footer-bottom .copy{float:left;font-weight:normal;font-family:'Futura PT W01 Book', Georgia, 'Times New Roman', Times, serif;padding-left:2px;}
+.footer-bottom .footer-links{overflow:hidden;text-align:right;font-size:0;line-height:0;}
+.footer-bottom .footer-links li{display:inline;padding:0 0 0 25px;margin:0 0 0 10px;position:relative;font-size:16px;line-height:22px;}
+.footer-bottom .footer-links li:first-child{padding:0;margin:0;}
+.footer-bottom .footer-links li:after{content:'';position:absolute;left:0;top:7px;width:14px;height:6px;background:url(../images/spt_general.png) 0 -26px no-repeat;}
+.footer-bottom .footer-links li:first-child:after{display:none;}
+
+.footer-container .bottom-container{text-align:center;}
+/* ======================================================================================= */
+
+.badges-checkout { margin: 10px 0; }
+.badges img { vertical-align: middle; }
+.badges a + img { margin-left: 30px; }
+.checkout-cart-index .badges-checkout { padding: 0 0 0 30px; }
+.checkout-cart-index .badges a + img { margin-left: 22px; }
+
+/* Clears ================================================================================ */
+.header-after-row .nav-container > ul:after,
+.badges:after,
+.header-after-row .content:after,
+.collateral-tabs .tab-content .std:after,
+.top-information-wrap:after,
+.group:after,
+.clearer:after,
+.header-container:after,
+.header-container .top-container:after,
+#nav:after,
+.main:after,
+.footer:after,
+.footer-container .bottom-container:after,
+.col-main:after,
+.col2-set:after,
+.col3-set:after,
+.col4-set:after,
+.search-autocomplete li:after,
+.block .block-content:after,
+.block .actions:after,
+.block li.item:after,
+.block-poll li:after,
+.block-layered-nav .currently li:after,
+.page-title:after,
+.products-grid:after,
+.products-list li.item:after,
+.box-account .box-head:after,
+.dashboard .box .box-title:after,
+.box-reviews li.item:after,
+.box-tags li.item:after,
+.sorter:after,
+.ratings:after,
+.add-to-box:after,
+.add-to-cart:after,
+.product-essential:after,
+.product-collateral:after,
+.product-view .product-img-box .more-views ul:after,
+.product-view .product-shop .short-description:after,
+.product-view .box-description:after,
+.product-view .box-tags .form-add:after,
+.product-options .options-list li:after,
+.product-options-bottom:after,
+.product-review:after,
+.cart:after,
+.cart-collaterals:after,
+.cart .crosssell li.item:after,
+.opc .step-title:after,
+.checkout-progress:after,
+.multiple-checkout .place-order:after,
+.group-select li:after,
+.form-list li:after,
+.form-list .field:after,
+.buttons-set:after,
+.page-print .print-head:after,
+.advanced-search-summary:after,
+.gift-messages-form .item:after,
+.send-friend .form-list li p:after{display:block;content:".";clear:both;font-size:0;line-height:0;height:0;overflow:hidden;}
+/* ======================================================================================= */

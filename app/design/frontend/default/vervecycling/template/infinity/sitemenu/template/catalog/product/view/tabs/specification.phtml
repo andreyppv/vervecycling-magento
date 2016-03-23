@@ -1,0 +1,6 @@
+<?php $specification = $this->getProduct()->getSpecification(); ?>
+<?php if ($specification): ?>
+    <div class="std">
+        <?php echo $this->helper('catalog/output')->productAttribute($this->getProduct(), $specification, 'specification') ?>
+    </div>
+<?php endif; ?>

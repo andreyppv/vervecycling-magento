@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <adminhtml_magic360_index>
+        <reference name="content">
+            <block type="magic360/adminhtml_settings" name="settings" />
+        </reference>
+    </adminhtml_magic360_index>
+    <adminhtml_magic360_edit>
+        <reference name="head">
+            <action method="addCss"><name>magic360/style.css</name></action>
+            <!--<action method="addJs"><name>magic360/options.js</name></action>-->
+            <action method="addItem"><type>skin_js</type><name>magic360/options.js</name></action>
+        </reference>
+        <reference name="left">
+            <block type="magic360/adminhtml_settings_edit_tabs" name="tabs" before="-"/>
+        </reference>
+        <reference name="content">
+            <block type="magic360/adminhtml_settings_edit" name="edit" />
+        </reference>
+    </adminhtml_magic360_edit>
+    <adminhtml_catalog_product_edit>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>magic360/gallery.js</name></action>
+        </reference>
+        <reference name="product_tabs">
+            <action method="addTab"><!--<action method="addTabAfter">-->
+                <name>magic360_images</name>
+                <block>magic360/adminhtml_catalog_product_edit_tab_images</block>
+                <!--<tab>group_215</tab>-->
+            </action>
+        </reference>
+    </adminhtml_catalog_product_edit>
+    <adminhtml_cache_index>
+        <reference name="cache.additional">
+            <block type="adminhtml/template" name="magic360.cache.additional" template="magic360/cache_additional.phtml" />
+        </reference>
+    </adminhtml_cache_index>
+</layout>
+

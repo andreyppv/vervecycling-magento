@@ -1,0 +1,211 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+if($_REQUEST['ajax']=='true')
+{
+	?>
+	<style>
+		#header , #tabs , hr , .testimonials , #footer , .featured-brand { display:none; }
+	</style>
+	<?php
+}
+?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+    <div class="col-md-1"></div>
+    <div class="col-md-1p left-side">
+        <h5><a href="<?php echo Mage::getBaseUrl(); ?>"> < ALL PRODUCTS</a></h5>
+
+    <form <?php if($_REQUEST['ajax']=='true') { ?>target="_parent"<?php } ?> action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+        <?php echo $this->getBlockHtml('formkey') ?>
+
+        <?php echo $this->getChildHtml('media'); ?>
+        <?php echo $this->getChildHtml('product_additional_data') ?>
+</div> 
+        <div class="col-md-1"></div>
+    </div><!--8-columns-->
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+    <div class="col-xs-12 col-md-12 right-side">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-12">
+            <h4>
+                <a href="">
+                    <?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+                </a>
+            </h4>
+            <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+            <h4 style="color:#000;margin-top:0px;">
+                <b><?php echo $this->getPriceHtml($_product, true) ?></b>
+            </h4>
+            <div class="description-product-ul">
+                <?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description'); ?>
+            </div>
+            <h5>
+                <?php if ($_product->isAvailable()): ?>
+                    <b class="availability in-stock">  <?php echo $this->__('In stock') ?>  </b>
+                <?php else: ?>
+                    <b class="availability out-of-stock"><?php echo $this->__('Out of stock') ?></b>
+                <?php endif; ?>
+                <span><img src="<?php echo $this->getSkinUrl(); ?>images/ship.png" /></span><b>Ships in 4-10 days</b>
+            </h5>
+
+        </div>
+
+        <div class="right-side-low col-xs-12 col-sm-6 col-md-6 col-lg-12">
+            <h5>ORDER YOURS TODAY</h5>
+            <div class="low-pad">
+                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+                    <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+                <?php endif;?>
+                <?php if ($_product->isSaleable() && $this->hasOptions()):?>
+	            <div class="product-options-wrap">
+					<?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+				</div>
+	        <?php endif;?>
+                <?php echo $this->getChildHtml('product_type_data') ?>
+                <form class="form-horizontal" role="form">
+
+                    <h3><b>TOTAL</b> (USD) <?php $_priceIncludingTax = Mage::helper('tax')
+                            ->getPrice($_product, $_product->getFinalPrice());echo  $_priceIncludingTax; ?></h3>
+                    <button type="button" id="product-addtocart-button" class="btn btn-warning btn-block" onclick="productAddToCartForm.submit(this)">Place Order</button>
+                    <div class="share_social">
+                        <img src="<?php echo $this->getSkinUrl(); ?>images/share1.png" class="shareimg" alt=""/>
+                        <span class="new_so">
+                            <img src="<?php echo $this->getSkinUrl(); ?>images/s1.png" alt=""/>
+                        </span>
+                        <span class="new_so">
+                            <img src="<?php echo $this->getSkinUrl(); ?>images/s4.png" alt=""/>
+                        </span>
+                        <span class="new_so">
+                            <img src="<?php echo $this->getSkinUrl(); ?>images/s2.png" alt="" style="margin-left: -4px;"/>
+                        </span>
+                        <span class="new_so">
+                            <img src="<?php echo $this->getSkinUrl(); ?>images/s6.png" alt=""/>
+                        </span>
+                        <span class="new_so">
+                            <img src="<?php echo $this->getSkinUrl(); ?>images/s5.png" alt=""/>
+                        </span>
+                        <span class="new_so">
+                            <img src="<?php echo $this->getSkinUrl(); ?>images/s3.png" alt="" style="margin-left: -4px;"/>
+                        </span>
+                    </div>
+                    <p class="money">100% Money Back Gurantee</p>
+                </form>
+            </div>
+            <h6 style="color: #1CACE4; width: 115px; float: left;font-size: 14px;"><a href="http://www.vervecycling.com/find-a-dealer/">FIND A DEALER</a></h6>
+            <h6 class="pull-right" style="color: #1CACE4;font-size: 14px;"><a href="http://www.vervecycling.com/fi">COMPARE MODELS</a></h6>
+
+
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+<!--********************************************-->
+
+
+
+
+
+    </form>
+    <script type="text/javascript">
+    //<![CDATA[
+        var productAddToCartForm = new VarienForm('product_addtocart_form');
+        productAddToCartForm.submit = function(button, url) {
+            if (this.validator.validate()) {
+                var form = this.form;
+                var oldUrl = form.action;
+
+                if (url) {
+                   form.action = url;
+                }
+                var e = null;
+                try {
+                    this.form.submit();
+                } catch (e) {
+                }
+                this.form.action = oldUrl;
+                if (e) {
+                    throw e;
+                }
+
+                if (button && button != 'undefined') {
+                    button.disabled = true;
+                }
+            }
+        }.bind(productAddToCartForm);
+
+        productAddToCartForm.submitLight = function(button, url){
+            if(this.validator) {
+                var nv = Validation.methods;
+                delete Validation.methods['required-entry'];
+                delete Validation.methods['validate-one-required'];
+                delete Validation.methods['validate-one-required-by-name'];
+                // Remove custom datetime validators
+                for (var methodName in Validation.methods) {
+                    if (methodName.match(/^validate-datetime-.*/i)) {
+                        delete Validation.methods[methodName];
+                    }
+                }
+
+                if (this.validator.validate()) {
+                    if (url) {
+                        this.form.action = url;
+                    }
+                    this.form.submit();
+                }
+                Object.extend(Validation.methods, nv);
+            }
+        }.bind(productAddToCartForm);
+    //]]>
+    </script>
+
+<div style="margin-top:50px;">
+<?php
+
+ /*echo Mage::app()->getLayout()
+     ->createBlock('core/template')->setTemplate('page/html/verve/ourclients.phtml')->toHtml()*/
+?>
+</div>
+<style>
+    #content .tab-content {
+        padding-bottom: 0; /*because ourclients template will handle*/
+    }
+</style>
+

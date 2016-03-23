@@ -1,0 +1,124 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product media data template
+ *
+ * @see Mage_Catalog_Block_Product_View_Media
+ */
+?>
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+?>
+<?php /*if ($_product->getImage() != 'no_selection' && $_product->getImage()): */?><!--
+<div class="product-image product-image-zoom">
+    <?php
+/*        $_img = '<img id="image" style="width:97%; text-align:center;" src="'.$this->helper('catalog/image')->init($_product, 'image').'" alt="'.$this->escapeHtml($this->getImageLabel()).'" title="'.$this->escapeHtml($this->getImageLabel()).'" />';
+        //echo $_helper->productAttribute($_product, $_img, 'image');
+        echo $_img;
+    */?>
+</div>
+
+--><?php /*else: */?>
+<div id="carousel" class="carousel slide" data-ride="carousel" data-interval="false">
+    <div class="carousel-inner carousel-main">
+    <?php if (count($this->getGalleryImages()) > 0): $i=0; ?>
+        <?php foreach ($this->getGalleryImages() as $_image): ?>
+            <?php
+                $class = 'item';
+                if($i==0):
+                    $class .= ' active';
+                endif; ?>
+                <div class="<?php echo $class; ?>">
+                    <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(256); ?>" alt="<?php echo $this->escapeHtml($this->getImageLabel()) ?>" title="<?php echo $this->escapeHtml($this->getImageLabel()); ?>" />
+
+                </div>
+            <?php $i++; ?>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <?php
+            $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(265).'" alt="'.$this->escapeHtml($this->getImageLabel()).'" title="'.$this->escapeHtml($this->getImageLabel()).'" />';
+            echo $_helper->productAttribute($_product, $_img, 'image');
+        ?>
+  <!-- --><?php /*endif; */?>
+
+
+<?php endif; ?>
+    </div>
+</div>
+<div class="clearfix">
+<?php if (count($this->getGalleryImages()) > 0): $j = 0; ?>
+<div id="thumbcarousel" class="carousel slide" data-interval="false">
+    <!--<h2><?php /*echo $this->__('More Views') */?></h2>-->
+    <div class="carousel-inner">
+
+    <?php foreach ($this->getGalleryImages() as $_image): ?>
+        <?php
+        $class = 'item';
+        if($j==0):
+            $class .= ' active';
+        endif; ?>
+        <div class="item">
+            <!--<a href="#" onclick="changeImg('<?php /*echo $_image->getUrl(); */?>'); popWin('<?php /*echo $this->getGalleryUrl($_image) */?>', 'gallery', 'width=300,height=300,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes'); return false;" title="<?php /*echo $this->escapeHtml($_image->getLabel()) */?>"><img src="<?php /*echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(56); */?>" width="56" height="56" alt="<?php /*echo $this->escapeHtml($_image->getLabel()) */?>" /></a>
+           -->
+            <div data-target="#carousel" data-slide-to="<?php echo $j; ?>" class="thumb">
+            <!--<a href="#" onclick="changeImg('<?php /*echo $_image->getUrl(); */?>');  " title="<?php /*echo $this->escapeHtml($_image->getLabel()) */?>"><img src="<?php /*echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(56); */?>" width="56" height="56" alt="<?php /*echo $this->escapeHtml($_image->getLabel()) */?>" /></a>
+            -->
+                <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(56); ?>" width="56" height="56" alt="<?php echo $this->escapeHtml($_image->getLabel()) ?>" />
+
+            </div>
+        </div>
+        <?php $j++; ?>
+    <?php endforeach; ?>
+    </div>
+    <!--<script type="text/javascript">
+        //<![CDATA[
+        jQuery('.more-views-of-item').owlCarousel({
+            autoplay: 3000,
+            items: 4,
+            navigation: true,
+            navigationText: [
+                "<i class='icon-chevron-left icon-white'></i>",
+                "<i class='icon-chevron-right icon-white'></i>"
+            ],
+            pagination:false
+        });
+        function changeImg(src) { return;
+            if(src==undefined) return;
+            jQuery('#image').attr('src',src);
+        }
+        //]]
+    </script>-->
+    <a class="left carousel-control" href="#thumbcarousel" role="button" data-slide="prev" style="background-image: none;width: 25px;">
+        <img src="<?php echo $this->getSkinUrl(); ?>images/arrow-left.png" alt="left arrow" style="margin: 28px 1px 0px 0px;"/>
+    </a>
+    <a class="right carousel-control" href="#thumbcarousel" role="button" data-slide="next" style="background-image: none;width: 25px;">
+        <img src="<?php echo $this->getSkinUrl(); ?>images/arrow-right.png" alt="right arrow" style="margin: 28px 0px 0px 2px;"/>
+    </a>
+</div>
+    </div>
+<?php endif; ?>

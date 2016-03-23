@@ -1,0 +1,14 @@
+<?php if($menu = $this->getMenu()): ?>
+	<div class="infinity-menu" id="sitemenu-<?php echo $this->getMenuCategory();?>">
+	    <?php echo $menu; ?>
+	</div>
+
+	<script type="text/javascript">
+	//<![CDATA[
+	jQuery( document ).ready( function ( $ ) {
+	    // add `active` class to parents of current page item
+	    $('#sitemenu-<?php echo $this->getMenuCategory();?> li.current').parents('#sitemenu-<?php echo $this->getMenuCategory();?> li').addClass('active');
+	} );
+	//]]>
+	</script>
+<?php endif; ?>

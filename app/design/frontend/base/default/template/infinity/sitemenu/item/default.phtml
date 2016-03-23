@@ -1,0 +1,27 @@
+<?php
+
+$_level = $this->getLevel();
+$_show  = $this->getShow();
+$_items = $this->getItems(); ?>
+
+<?php if ( $_show ) : ?><ul id="sitemenu-main" class="level-<?php echo $_level ?>"><?php endif; ?>
+
+    <?php foreach ( $_items as $_item ) :
+
+    $_has_child  = $_item->getHasChild();
+    $_is_current = $_item->getIsCurrent();
+    $_is_first   = $_item->getIsFirst();
+    $_is_last    = $_item->getIsLast();
+
+    $_class  = 'level-'. $_level;
+    $_class .= $_has_child ? ' parent' : '';
+    $_class .= $_is_current ? ' current' : '';
+    $_class .= $_is_last ? ' last' : ( $_is_first ? ' first' : '' );
+
+    ?>
+    <?php if ( $_show ) : ?>
+        <li class="<?php echo $_class ?> item-<?php echo $_item->getId() ?>"><a target="<?php echo $_item->getTarget() ? $_item->getTarget() : '_self' ?>" href="<?php echo $_item->getUrl() ?>"><span><?php echo $_item->getTitle() ?></span></a><?php endif; ?><?php echo $_item->getChildren() ?><?php if ( $_show ) : ?></li>
+    <?php endif; ?>
+    <?php endforeach; ?>
+
+<?php if ( $_show ) : ?></ul><?php endif; ?>

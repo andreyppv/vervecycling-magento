@@ -1,0 +1,73 @@
+<?php
+/**
+ * Currency switcher
+ *
+ * @see Mage_Directory_Block_Currency
+ */
+
+//$quiteId = Zend_Debug::dump($_SESSION["checkout"]['quote_id_3']);
+//Zend_Debug::dump($_SESSION['quote_id_4']);
+//Zend_Debug::dump($_SESSION['quote_id_5']);
+//Zend_Debug::dump($_SESSION['quote_id_6']);
+
+//$quote = Mage::getModel("sales/quote")->load($quiteId);
+
+//echo 'storeId: '.Mage::app()->getStore()->getId();
+$_websites = Mage::app()->getWebsites();
+foreach($_websites as $website)
+{
+    $storeId = $website->getDefaultGroup()->getDefaultStore()->getId();
+    foreach(Mage::app()->getStore($storeId)->getAvailableCurrencyCodes() as $symbol)
+    {
+        $currencies[$symbol] = Mage::app()->getLocale()->currency($symbol)->getName();
+    }
+}
+?>
+<?php //if($this->getCurrencyCount()>1): ?>
+<?php if(count($currencies)>1): ?>
+<div class="product-currency">
+    <div class="sub-title"><?php echo $this->__('PRICE:') ?> <span class="name">&nbsp;</span> <a href="javascript:;" onclick="currencyLisShow(this)"><?php echo $this->__('(Change currency)')?></a></div>
+    <ul class="currency-list" id="product-currency">
+        
+        
+    <?php //foreach ($this->getCurrencies() as $_code => $_name): ?>
+    <?php foreach ($currencies as $_code => $_name): ?>
+        <li class="item<?php echo ($_code==$this->getCurrentCurrencyCode())? ' current':''; ?>" data-currency="<?php echo $this->getSwitchCurrencyUrl($_code) ?>">
+			<a href="<?php //echo $this->getSwitchCurrencyUrl($_code) ?>" data-currency="<?php echo $_code?>">
+			    <img src="<?php echo $this->getSkinUrl().'images/flag/' . strtolower($_code) . '.jpg'; ?>" title="<?php echo $_name ?> (<?php echo $_code ?>)" width="22" height="16" />
+			    <span class="name"><?php echo $this->__($_name); ?></span> <span>(<?php echo Mage::app()->getLocale()->currency($_code)->getSymbol() ?>)</span>
+			</a>
+        </li>
+    <?php endforeach; ?>
+	</ul>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+        jQuery('.product-currency li a').click(function(event){
+            event.preventDefault();
+            event.stopPropagation();
+            currency = jQuery(this).data('currency');
+            
+            var date = new Date(0);
+            document.cookie="currency=; path=/; expires="+date.toUTCString();
+            
+            var date = new Date( new Date().getTime() + 1000*86400*365 );
+            document.cookie="currency="+currency+"; path=/; expires="+date.toUTCString()+"domain="+Mage.Cookies.domain;
+
+            setLocation('<?php echo Mage::getUrl().'infocrank/';?>');
+            return false;
+        });
+        
+
+	function currencyLisShow(_this){
+		jQuery(_this).parent('.sub-title').toggleClass('show');
+		jQuery('#product-currency').toggleClass('show');
+		return false;
+	}
+	function currentCurrencyNameSet(){
+		jQuery('.product-currency').children('.sub-title').find('.name').text(jQuery('#product-currency').children('li.current').find('.name').text());
+	}
+	currentCurrencyNameSet();
+//]]>
+</script>
+<?php endif; ?>

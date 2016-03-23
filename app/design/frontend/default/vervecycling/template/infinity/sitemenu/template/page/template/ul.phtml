@@ -1,0 +1,7 @@
+<?php if($children = $this->getSortedChildren()): ?>
+<ul class="<?php echo ($elementClass = $this->getElementClass()) ? $elementClass : 'list' ;?>">
+	<?php $i = 0; foreach ($children as $childName): ?>
+    	<li class="item <?php echo $childName; if(++$i == count($children)) echo ' last'; ?>"><?php echo $this->getChildHtml($childName); ?></li>
+    <?php endforeach; ?>
+</ul>
+<?php endif; ?>

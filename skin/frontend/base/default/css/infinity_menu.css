@@ -1,0 +1,34 @@
+
+/* Layout */
+.sf-menu,
+.sf-menu *               { list-style:none; margin:0; padding:0; }
+.sf-menu li              { position:relative; }
+.sf-menu ul              { display:none; left:0; position:absolute; top:100%; z-index:99; }
+.sf-menu > li            { float:left; }
+.sf-menu li:hover > ul,
+.sf-menu li.sfHover > ul { display:block; }
+.sf-menu a,
+.sf-menu a span          { display:block; position:relative; }
+.sf-menu ul ul           { left:100%; top:0; }
+
+/* Themes */
+
+/* Top Menu */
+#sitemenu-main                         { background:#0a263c; height:28px; margin:0 auto; padding:0 15px; position:relative; text-align:left; width:920px; z-index:9999; }
+#sitemenu-main li a                    { cursor:pointer; text-decoration:none; }
+#sitemenu-main li a span               { color:#A7C6DD; font-weight:bold; line-height:20px; padding:4px 10px; }
+#sitemenu-main li > a:hover span,
+#sitemenu-main li.active > a span,
+#sitemenu-main li.current > a span,
+#sitemenu-main li.sfHover > a span     { color:#D96708; }
+#sitemenu-main li ul                   { border-bottom:1px solid #899ba5; border-left:1px solid #899ba5; }
+#sitemenu-main li li a span            { background:#ecf3f6; border-right:1px solid #899ba5; border-top:1px solid #899ba5; color:#2F2F2F; font-weight:normal; width:160px; }
+#sitemenu-main li li.first > a span    { border-top-width:0; }
+#sitemenu-main li li > a:hover span,
+#sitemenu-main li li.active > a span,
+#sitemenu-main li li.current > a span,
+#sitemenu-main li li.sfHover > a span  { background:#d5e4eb; color:#2F2F2F; }
+#sitemenu-main li li li.first a span   { border-top-width:1px; }
+
+/* Footer Menu */
+#sitemenu-footer li.current a { text-decoration:underline; }

@@ -1,0 +1,152 @@
+<hr style="visibility:hidden;"/>
+<?php
+$current_product = Mage::registry('current_product');
+$tabs=array(
+            'description'=>'Features',
+            'construction'=>'Construction',
+            'specification'=>'Specification',
+            'compatibility'=>'Compatibility',
+            'bike_computers'=>'Bike Computers',
+            'easy_installation'=>'Easy Installation'
+            );
+?>
+<div id="tabs">
+  <ul class="nav nav-tabs tab-menu">
+    <?php
+    $c=0;
+    foreach($tabs as $key=>$val):
+        $c++;
+    ?>
+    <li role="presentation"><a href="#tabs-<?php echo $c; ?>"><?php echo $val; ?></a></li>
+    <?php
+    endforeach;
+    ?>
+  </ul>
+  <div class="container">
+  <?php
+    $c=0;
+    foreach($tabs as $key=>$val):
+        $c++;
+    ?>
+    <div id="tabs-<?php echo $c; ?>">
+    <?php
+      $processor = Mage::helper('cms')->getBlockTemplateProcessor();
+      echo $html = $processor->filter($current_product->getData($key));
+    ?>
+    </div>
+    <?php endforeach; ?>
+  </div>
+</div>
+<!--
+<ul class="nav nav-tabs tab-menu">
+    <li role="presentation" class="active"><a href="#!" class="active"><span>SPECIFICATION</span></a></li>
+    <li role="presentation"><a href="#!"><span>CONSTRUCTION</span></a></li>
+    <li role="presentation"><a href="#!"><span>MANUALS</span></a></li>
+    <li role="presentation"><a href="#!"><span>CUSTOMER REVIEWS</span></a></li>
+</ul>
+<hr style="visibility:hidden;"/>
+<div class="container">
+    <table class = "table table-bordered" >
+        <tbody>
+        <tr>
+            <td rowspan="4" class="leftdiv">Environmental</td>
+            <td class="middlediv">Ingress protection level</td>
+            <td class="rightdiv">IPX7,resists up to 1m immersion</td>
+        </tr>
+
+        <tr>
+            <td class="middlediv">Operating humidity</td>
+            <td class="rightdiv">0-100%</td>
+        </tr>
+
+        <tr>
+            <td class="middlediv">Chemical resistance</td>
+            <td class="rightdiv">Resists typical lubricants and bike cleansing chemical</td>
+        </tr>
+        <tr>
+            <td class="middlediv">Battery operating temperature</td>
+            <td class="rightdiv">0-60&deg; celsius</td>
+        </tr>
+
+
+        <tr>
+            <td rowspan="2" class="leftdiv">Mechanical</td>
+            <td class="middlediv">certifications</td>
+            <td class="rightdiv">Certified to market specific standards</td>
+        </tr>
+
+        <tr>
+            <td class="middlediv">Maintenance</td>
+            <td class="rightdiv">User serviceable parts: bottom brckets, chainrings, seats, batteries, and power module housing spares</td>
+        </tr>
+
+        <tr >
+            <td rowspan="3" class="leftdiv">System</td>
+            <td class="middlediv">Battery</td>
+            <td class="rightdiv"> User replaceable, SR44(Silver Oxide) also 303 0r 357</td>
+        </tr>
+        <tr>
+            <td class="middlediv">Battery life</td>
+            <td class="rightdiv">Over 500 hrs(opretional)</td>
+        </tr>
+        <tr>
+            <td class="middlediv">Start up time</td>
+            <td class="rightdiv"> <5 sec(or as per bike computer display)</td>
+        </tr>
+
+        <tr>
+            <td rowspan="4" class="leftdiv">Data processing</td>
+            <td class="middlediv"> Wireless communication</td>
+            <td class="rightdiv">ANT + Protocol</td>
+        </tr>
+
+        <tr>
+            <td class="middlediv">Wireless range</td>
+            <td class="rightdiv">2m</td>
+        </tr>
+        <tr>
+            <td class="middlediv">Power range</td>
+            <td class="rightdiv">0-3000 watts</td>
+        </tr>
+        <tr>
+            <td class="middlediv">cadence range</td>
+            <td class="rightdiv">10-200 rpm</td>
+        </tr>
+
+        <tr>
+            <td rowspan="3" class="leftdiv">Accuracy</td>
+            <td class="middlediv">cadence</td>
+            <td class="rightdiv">&plusmn;1 rpm</td>
+        </tr>
+
+        <tr>
+            <td class="middlediv">Torque</td>
+            <td class="rightdiv">&plusmn;0.2 Nm accuracy for measurements below 20Nm, and &plusmn;1% of actual reading for measurements above 20Nm</td>
+        </tr>
+        <tr>
+            <td class="middlediv">Power</td>
+            <td class="rightdiv">&plusmn;0.37% error (99.63% accurate) for 20-100kg loads. Download Accuracy Certification here.</td>
+        </tr>
+
+        <tr>
+            <td rowspan="4" class="leftdiv">Product</td>
+            <td class="middlediv">Warranty</td>
+            <td class="rightdiv">2 years</td>
+        </tr>
+
+        <tr>
+            <td class="middlediv">software</td>
+            <td class="rightdiv">compatible with major data analytic: training Peaks, golden Cheetah, cycling analytics, VeloPro, Strava, Garmin Training Center</td>
+        </tr>
+        <tr>
+            <td class="middlediv">Firmware</td>
+            <td class="rightdiv">Free updates available via our websites</td>
+        </tr>
+        <tr>
+            <td class="middlediv">Power meter metrics</td>
+            <td class="rightdiv">Individual Left/Right Power Balance </br> Total Power</br> L/R Pedal Smoothness</br> L/R Torque Effectiveness</br> cadene and more ANT+ metrics</td>
+        </tr>
+        </tbody>
+    </table>
+</div>-->
+<hr style="visibility:hidden;"/>

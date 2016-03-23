@@ -1,0 +1,17 @@
+<div class="footer-container">
+    <div class="footer-top">
+		<div class="footer">
+			<?php //echo str_replace('store/', '', $this->getChildHtml('footerTopLinks')); ?>
+			<?php echo $this->getChildHtml('footerTopLinks'); ?>
+			<?php //echo str_replace('store/', '', $this->getChildHtml('cms_footer_affiliate')); ?>
+			<?php echo $this->getChildHtml('cms_footer_affiliate'); ?>
+	    </div>		
+	</div>
+	<?php echo $this->getChildHtml('cms_footer_middle') ?>
+	<div class="footer-bottom">
+		<div class="footer">
+	        <div class="copy"><?php echo $this->getCopyright() ?></div>
+			<?php echo $this->getChildHtml('footerLinks') ?>
+	    </div>
+	</div>
+</div>

@@ -1,0 +1,77 @@
+<!--@subject Welcome, {{var customer.name}}! @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"var logo_url":"Email Logo Image Url",
+"htmlescape var=$customer.name":"Customer Name",
+"store url=\"customer/account/\"":"Customer Account Url",
+"var customer.email":"Customer Email",
+"htmlescape var=$customer.password":"Customer Password"}
+@-->
+
+<body style="background:#ffffff; font:14px Arial, Helvetica, sans-serif; line-height:22px; margin:0;">
+	<table width="580" align="center" bgcolor="ffffff" cellspacing="0" cellpadding="0">
+		<tr>
+			<td style="padding-top:20px; padding-bottom:20px;">
+				<a href="{{store url=""}}"><img src="{{var logo_url}}" alt="{{var logo_alt}}" border="0"/></a>
+			</td>
+		</tr>
+		<tr>
+			<td height="6" style="font-size:0; line-height:0;"><img src="{{skin url='../vervecycling/images/separator.gif' }}" alt="" width="580" height="6"></td>
+		</tr>
+		<tr>
+			<td height="15" style="font-size:0; line-height:0;"></td>
+		</tr>
+		<tr>
+			<td><h1 style="font-size:22px; line-height:26px; margin:0;">Dear {{htmlescape var=$customer.name}},</h1></td>
+		</tr>
+		<tr>
+			<td height="13" style="font-size:0; line-height:0;"></td>
+		</tr>
+		<tr>
+			<td style="font-size:14px; line-height:22px;">Welcome to {{var store.getFrontendName()}}. To log in when visiting our site just click <strong><a href="{{store url="customer/account/"}}" style="color:#00a7e1; text-decoration:none;">Login</a></strong> or <strong><a href="{{store url="customer/account/"}}" style="color:#00a7e1; text-decoration:none;">My Account</a></strong> at the top of every page, and then enter your e-mail address and password.</td>
+		</tr>
+		<tr>
+			<td height="10" style="font-size:0; line-height:0;"></td>
+		</tr>
+		<tr>
+			<td style="font-size:14px; line-height:22px;">
+				Use the following values when prompted to log in:<br/>
+				<strong>E-mail:</strong> <strong><a href="mailto: {{var customer.email}}" style="color:#00a7e1; text-decoration:none;">{{var customer.email}}</a></strong><br/>
+				<strong>Password:</strong> {{htmlescape var=$customer.password}}
+			</td>
+		</tr>
+		<tr>
+			<td height="10" style="font-size:0; line-height:0;"></td>
+		</tr>
+		<tr>
+			<td style="font-size:14px; line-height:22px;">When you log in to your account, you will be able to do the following:</td>
+		</tr>
+		<tr>
+			<td height="10" style="font-size:0; line-height:0;"></td>
+		</tr>
+		<tr>
+			<td>
+				<ul style="font-size:14px; line-height:22px; margin:0; padding:0;">
+					<li style="list-style:none inside;">&ndash; Proceed through checkout faster when making a purchase</li>
+					<li style="list-style:none inside;">&ndash; Check the status of orders</li>
+					<li style="list-style:none inside;">&ndash; View past orders</li>
+					<li style="list-style:none inside;">&ndash; Make changes to your account information</li>
+					<li style="list-style:none inside;">&ndash; Change your password</li>
+					<li style="list-style:none inside;">&ndash; Store alternative addresses (for shipping to multiple family members and friends!)</li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<td height="10" style="font-size:0; line-height:0;"></td>
+		</tr>
+		<tr>
+			<td style="font-size:14px; line-height:22px;">If you have any questions about your account or any other matter, please feel free to contact us at <strong><a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#00a7e1; text-decoration:none;">{{config path='trans_email/ident_support/email'}}</a></strong> {{config path='general/store_information/phone'}}.</td>
+		</tr>
+		<tr>
+			<td height="30" style="font-size:0; line-height:0;"></td>
+		</tr>
+		<tr>
+			<td style="border-top:1px solid #c8c8c8; font-size:14px; line-height:22px; padding-top:14px; padding-bottom:12px;">Thank you again,<br> <strong>{{var store.getFrontendName()}}</strong></td>
+		</tr>
+	</table>
+</body>

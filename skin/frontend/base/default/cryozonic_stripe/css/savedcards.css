@@ -1,0 +1,29 @@
+.sp-methods ul.saved-cards li label {
+    float: none;
+}
+ul.saved-cards span {
+    display: inline-block;
+}
+ul.saved-cards span.type {
+    font-weight: bold;
+    margin-left: 3px;
+}
+ul.saved-cards span.exp {
+    float: right;
+}
+ul.saved-cards span.cryozonic-stripe-fade {
+    color: #aaa;
+    font-weight: normal;
+}
+ul.saved-cards label {
+    display: inline;
+}
+#new-card .form-list select {
+    width: auto;
+}
+#new-card .form-list label {
+    float: none;
+}
+#cryozonic_stripe_cc_cid {
+    width: 40px;
+}

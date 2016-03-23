@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+    <default module="page">
+        <block type="page/html" name="root" output="toHtml" template="page/2columns-right.phtml">
+            <block type="page/html_head" name="head" as="head">
+
+                <!-- Sets viewport meta tag using text block -->
+                <block type="core/text" name="head.viewport">
+                    <action method="setText"><text><![CDATA[<meta name="viewport" content="initial-scale=1.0, width=device-width" />]]>&#10;</text></action>
+                </block>
+
+            </block>
+            <block type="core/text_list" name="after_body_start" as="after_body_start" translate="label">
+                <label>Page Top</label>
+            </block>
+            <block type="page/html_notices" name="global_notices" as="global_notices" template="page/html/notices.phtml" />
+
+
+            <block type="page/html_header" name="header" as="header">
+                <block type="page/template_links" name="top.links" as="topLinks"/>
+                <block type="core/text_list" name="top.menu" as="topMenu" translate="label">
+                    <label>Navigation Bar</label>
+
+                </block>
+            </block>
+
+            <!--<block type="page/html_breadcrumbs" name="breadcrumbs" as="breadcrumbs"/>-->
+            <block type="core/messages" name="global_messages" as="global_messages"/>
+            <block type="core/messages" name="messages" as="messages"/>
+            <!--top navigation-->
+            <block type="core/text_list" name="topnavigation" as="topnavigation">
+                <block type="page/html_topmenu" name="catalog.topnav" template="page/html/topmenu.phtml">
+                    <block type="page/html_topmenu_renderer" name="catalog.topnav.renderer" template="page/html/topmenu/renderer.phtml"/>
+                </block>
+            </block>
+
+            <!--content-->
+            <block type="core/text_list" name="content" as="content">
+                <label>Content</label>
+            </block>
+
+            <!--<block type="core/text_list" name="pre_after" as="pre_after" translate="label">
+                <label>Without Right Column</label>
+                <block type="core/template" name="verve_pre_after" template="page/html/verve/template_pre_after.phtml"  />
+            </block>-->
+
+            <block type="core/text_list" name="right" as="right" translate="label">
+                <label>Right Column</label>
+                <block type="core/template" name="test" template="verve/contact.phtml" />
+                <!--<block type="core/template" name="verve_pre_after" template="page/html/verve/template_pre_after.phtml"  />-->
+            </block>
+
+            <block type="core/text_list" name="feature_content" as="feature_content" translate="label">
+                <label>Feature Content</label>
+            </block>
+
+
+
+           <!-- <block type="core/text_list" name="our.clients" as="our.clients" translate="label">
+                <label>Our Clients</label>
+                <block type="core/template" name="theclients" template="page/html/ourclients.phtml"  />
+            </block>-->
+
+
+
+            <block type="page/html_footer" name="footer" as="footer" template="page/html/footer.phtml">
+                <block type="page/html_wrapper" name="bottom.container" as="bottomContainer" translate="label">
+                    <label>Page Footer</label>
+                    <action method="setElementClass"><value>bottom-container</value></action>
+                </block>
+                <block type="page/switch" name="store_switcher" as="store_switcher" template="page/switch/stores.phtml"/>
+                <block type="page/template_links" name="footer_links" as="footer_links" template="page/template/links.phtml"/>
+            </block>
+
+        </block>
+
+
+
+    </default>
+
+
+    <page_one_column translate="label">
+        <label>All One-Column Layout Pages</label>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+            <!-- Mark root page block that template is applied -->
+            <action method="setIsHandle"><applied>1</applied></action>
+            <action method="setLayoutCode"><name>one_column</name></action>
+        </reference>
+
+    </page_one_column>
+</layout>

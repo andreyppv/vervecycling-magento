@@ -1,0 +1,24 @@
+<?php 
+	$_product = $this->getProduct();
+	if(is_null($_product)){
+		$_product = Mage::registry('product');
+	}
+	
+	$productSend = 'st_url="' . $_product->getProductUrl() . '"'
+				. 'st_title="' . $_product->getName() . '"'
+				. 'st_image="' . $this->helper('catalog/image')->init($_product, 'small_image') . '"'
+				. 'st_summary="' . $this->stripTags($_product->getShortDescription()) . '"';
+?>
+<?php if(is_object($_product)): ?>
+<div class="sharethis-product">
+	<span class="label"><?php echo $this->__('Share:'); ?></span>
+	<div class="share">
+		<span class='st_facebook_large' <?php echo $productSend; ?> displayText='Facebook'></span>
+		<span class='st_twitter_large' <?php echo $productSend; ?> displayText='Tweet'></span>
+		<span class='st_googleplus_large' <?php echo $productSend; ?> displayText='Google +'></span>
+		<span class='st_pinterest_large' <?php echo $productSend; ?> displayText='Pinterest'></span>
+		<span class='st_linkedin_large' <?php echo $productSend; ?> displayText='LinkedIn'></span>
+		<span class='st_sharethis_large' <?php echo $productSend; ?> displayText='ShareThis'></span>
+	</div>
+</div>
+<?php endif; ?>

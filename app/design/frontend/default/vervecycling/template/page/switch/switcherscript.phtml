@@ -1,0 +1,87 @@
+<script type="text/javascript">
+    //&lt;![CDATA[
+    var switcher = jQuery('.form-language');
+
+    function goPortrait()
+    {
+        //Delete form Landscape
+        jQuery('.user-panel').find('.form-language').remove();
+        //Add to Portrait
+        jQuery('#navigation-mobile-drop').append(switcher);
+    }
+
+    function goLandscape()
+    {
+        //Delete from Portrait
+        jQuery('#navigation-mobile-drop').find('.form-language').remove();
+        //Add to Landscape
+        jQuery('.user-panel').append(switcher);
+    }
+
+    function callBack(){
+        var $select = jQuery('#language-chooser');
+        //$select.children('li.active').prependTo($select);
+        hreflang = $select.children('li.active').children('a').attr('hreflang');
+        if(hreflang == 'en') hreflang = 'eng';
+        jQuery('.form-language').find('.switcher').html(hreflang);
+        //console.log($select.children('li').children('a'));
+        $select.children('li').children('a').click(function(){ //alert('here');
+            _this = jQuery(this);
+            _this.parent().siblings().removeClass('active');
+            _this.parent().addClass('active');
+            hreflang = _this.attr('hreflang');
+            office = _this.attr('subtitle');
+            if(hreflang == 'en') hreflang = 'eng';
+            jQuery('.form-language').find('.switcher').text(hreflang);
+            jQuery('.form-language').find('.country').text(office + ' :');
+            inf_ajaxurl = '<?php echo Mage::getUrl('supportswitcher'); ?>';
+
+            jQuery.post(
+                inf_ajaxurl,
+                {
+                    'location': _this.attr('location')
+                },
+                function(response){
+                    //alert('The server responded: ' + response);
+                }
+            );
+        });
+    }
+    //Rotate mobile device
+    /*jQuery(window).on("orientationchange",function()
+     {
+     switch(window.orientation)
+     {
+     case -90:
+     case 90:
+     //landscape
+     goLandscape();
+     break;
+     default:
+     //portrait
+     goPortrait();
+     break;
+     }
+     callBack();
+     });*/
+    //Resize browser window, for mobile + desktop
+    jQuery(window).resize(
+        function()
+        {
+            if(jQuery('#navigation-mobile-control').css('display') == 'block'){
+                goPortrait();
+            } else {
+                goLandscape();
+            }
+            mainNavWidth();
+            quickAccessPosition();
+            callBack();
+        }
+    );
+    //Default for mobile devices
+    if(jQuery('#navigation-mobile-control').css('display') == 'block'){
+        goPortrait();
+    }
+    callBack();
+    //]]&gt;
+</script>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+    <!--======  Home Page =========  -->
+    <cms_index_index>
+
+                <!--<reference name="content.between">
+
+                    <action method="setTemplate">
+                        <template>verve/index/home.phtml</template>
+                        <type>verve/template</type>
+                    </action>
+                </reference>-->
+
+    </cms_index_index>
+
+
+   <!-- <reference name="content.between">
+        <block type="catalog/product_list" name="product_list" template="catalog/product/list.phtml">
+            <action method="setCategoryId"><category_id>2</category_id></action>
+            <block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
+                <block type="page/html_pager" name="product_list_toolbar_pager"/>
+            </block>
+            <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+        </block>
+    </reference>-->
+
+</layout>

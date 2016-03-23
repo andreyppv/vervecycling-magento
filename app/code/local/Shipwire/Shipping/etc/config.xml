@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Shipwire_Shipping>
+      <version>0.1.0</version>
+    </Shipwire_Shipping>
+  </modules>
+ 
+  <global>
+    <models>
+      <shipwire_shipping>
+        <class>Shipwire_Shipping_Model</class>
+      </shipwire_shipping>
+    </models>
+ 
+    <resources>
+      <shipwire_shipping_setup>
+        <setup>
+          <module>Shipwire_Shipping</module>
+        </setup>
+        <connection>
+          <use>core_setup</use>
+        </connection>
+      </shipwire_shipping_setup>
+    </resources>
+  </global>
+</config>

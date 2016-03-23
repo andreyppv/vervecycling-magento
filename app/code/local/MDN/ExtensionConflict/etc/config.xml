@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <MDN_ExtensionConflict>
+            <version>1.4</version>
+        </MDN_ExtensionConflict>
+    </modules>
+    <global>
+    
+	   	<helpers>
+            <ExtensionConflict>
+                <class>MDN_ExtensionConflict_Helper</class>
+            </ExtensionConflict>
+        </helpers>
+        	    
+	   	<blocks>
+            <ExtensionConflict>
+            	<class>MDN_ExtensionConflict_Block</class>
+           	</ExtensionConflict>
+    	</blocks>
+    	
+        <models>
+    	    <ExtensionConflict>
+                <class>MDN_ExtensionConflict_Model</class>
+                <resourceModel>ExtensionConflict_mysql4</resourceModel>
+            </ExtensionConflict>
+            
+            <ExtensionConflict_mysql4>
+                <class>MDN_ExtensionConflict_Model_Mysql4</class>
+                <entities>
+                    <ExtensionConflict>
+                        <table>extension_conflict</table>
+                    </ExtensionConflict>
+                </entities>
+            </ExtensionConflict_mysql4>
+    	</models>
+        
+   	    <resources>
+        	<ExtensionConflict_setup>
+				<setup>
+					<module>MDN_ExtensionConflict</module>
+					<class>Mage_Eav_Model_Entity_Setup</class>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</ExtensionConflict_setup>
+            <ExtensionConflict_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </ExtensionConflict_write>
+            <ExtensionConflict_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </ExtensionConflict_read>
+        </resources>	
+        
+    </global>
+    
+     <adminhtml>
+
+		<menu>
+            <system>
+                <children>
+                    <ExtensionConflict translate="title" module="ExtensionConflict">
+                        <title>Extension Conflict</title>
+                        <action>ExtensionConflict/Admin/List</action>
+                    </ExtensionConflict>
+                </children>
+             </system>
+        </menu>
+
+
+        <routers>
+            <ExtensionConflict>
+                <use>standard</use>
+                <args>
+                    <module>MDN_ExtensionConflict</module>
+                    <frontName>Organizer</frontName>
+                </args>
+            </ExtensionConflict>
+        </routers>
+
+        <layout>
+            <updates>
+                <ExtensionConflict>
+                    <file>ExtensionConflict.xml</file>
+                </ExtensionConflict>
+            </updates>
+        </layout>
+               
+    </adminhtml>
+    
+    <frontend>
+        <routers>
+            <ExtensionConflict>
+                <use>standard</use>
+                <args>
+                    <module>MDN_ExtensionConflict</module>
+                    <frontName>ExtensionConflict</frontName>
+                </args>
+            </ExtensionConflict>
+        </routers>
+        
+    </frontend>
+    
+    <admin>
+    	<routers>
+            <ExtensionConflict>
+                <use>admin</use>
+                <args>
+                    <module>MDN_ExtensionConflict</module>
+                    <frontName>ExtensionConflict</frontName>
+                </args>
+            </ExtensionConflict>
+        </routers>
+    </admin>
+    
+</config> 

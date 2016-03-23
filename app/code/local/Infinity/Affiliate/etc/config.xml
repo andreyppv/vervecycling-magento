@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Infinity_Affiliate>
+            <version>0.1.0</version>
+        </Infinity_Affiliate>
+    </modules>
+    <global>
+        <fieldsets>
+            <sales_convert_quote>                           
+                <affiliate_partner_name><to_order>*</to_order></affiliate_partner_name>
+            </sales_convert_quote>
+
+            <sales_convert_order>                                              
+                <affiliate_partner_name><to_quote>*</to_quote></affiliate_partner_name>
+            </sales_convert_order>
+        </fieldsets>
+        
+        <helpers>
+            <affiliate>
+                <class>Infinity_Affiliate_Helper</class>
+            </affiliate>
+        </helpers>
+<!--        <blocks>
+            <affiliate>
+                <class>Infinity_Affiliate_Block</class>
+            </affiliate>
+        </blocks>-->
+        <models>
+            <affiliate>
+                <class>Infinity_Affiliate_Model</class>
+                <resourceModel>affiliate_mysql4</resourceModel>
+            </affiliate>
+        </models>
+        <resources>
+            <affilate_setup>
+                <setup>
+                    <module>Infinity_Affiliate</module>
+                    <class>Mage_Sales_Model_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </affilate_setup>
+            <affilate_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </affilate_write>
+            <affilate_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </affilate_read>
+        </resources>
+        <events>
+<!--            <adminhtml_sales_order_create_process_data_before>  identifier of the event we want to catch 
+                <observers>
+                    <infinity_affilate_observer>  identifier of the event handler 
+                        <type>model</type>  class method call type; valid are model, object and singleton 
+                        <class>affiliate/observer</class>  observers class alias 
+                        <method>saveAffiliateData</method>   observer's method to be called 
+                        <args></args>  additional arguments passed to observer 
+                    </infinity_affilate_observer>
+                </observers>
+            </adminhtml_sales_order_create_process_data_before>-->
+<!--            <sales_quote_save_before>-->
+            <sales_order_save_after>    
+                <observers>
+                    <infinity_affilate_quoteobserver> 
+                        <type>model</type>
+                        <class>affiliate/observer</class>
+                        <method>saveAffiliateQuoteData</method>
+                        <args></args>
+                    </infinity_affilate_quoteobserver>
+                </observers>
+            </sales_order_save_after>
+            <!--</sales_quote_save_before>-->
+
+            <adminhtml_controller_action_predispatch_start>
+              <observers>
+                <infinity_affilate_adminthemeobserver>
+                  <type>singleton</type>
+                  <class>Infinity_Affiliate_Model_Adminhtml_Observer</class>
+                  <method>overrideTheme</method>
+                </infinity_affilate_adminthemeobserver>
+              </observers>
+            </adminhtml_controller_action_predispatch_start>      
+            
+            
+        </events>
+    </global>
+<!--    <admin>
+        <routers>
+            <affiliate>
+                <use>admin</use>
+                <args>
+                    <module>Infinity_Affiliate</module>
+                    <frontName>affiliate</frontName>
+                </args>
+            </affiliate>
+        </routers>
+    </admin>-->
+    <adminhtml>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <affiliate translate="title" module="affiliate">
+                            <title>Affiliate</title>
+                            <sort_order>1000</sort_order>
+                            <children>
+                                <affiliatebackend translate="title">
+                                    <title>Backend Page Title</title>
+                                </affiliatebackend>
+                            </children>
+                        </affiliate>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+<!--        <layout>
+            <updates>
+                <affiliate>
+                    <file>affiliate.xml</file>
+                </affiliate>
+            </updates>
+        </layout>-->
+    </adminhtml>
+    <default>
+        <design>
+            <admin>
+                <theme>vervecycling</theme>
+            </admin>
+        </design>
+    </default>
+</config> 

@@ -1,0 +1,15 @@
+.head-adminhtml-message{background-image: url("../../images/fam_folder_table.gif");}
+.iwd-notification{ text-decoration: none;}
+.head-adminhtml-list { background-image: url("../../images/fam_package.gif");}
+.iwd-block dl > dt.label{background: url("images/iwdlogo.png") no-repeat scroll 10px 2px #D1DEDF;padding-left: 50px;text-indent: -999em;}
+.defaultadmin .iwd-block dl > dt.label {background:url("images/iwdlogo.png") no-repeat scroll 25px 9px #424a4d !important;}
+
+.iwdstore-block{overflow:hidden;margin:0;}
+.iwdstore-block .item-extensions{float: left;margin: 0 0 0 70px;min-height: 315px;padding: 24px 0;width: 175px;}
+.iwdstore-block .item-extensions .image{}
+.iwdstore-block .item-extensions .image img{width:175px;}
+.iwdstore-block .item-extensions .title{border-bottom: 1px solid #EDEDED;margin: 0 0 15px;padding: 31px 0 17px;text-align: center;}
+.iwdstore-block .item-extensions .title a{font-family: Arial;color: #545454;min-height: 57px;max-height: 57px;overflow: hidden;display: block;font-size:16px; font-weight:bold; text-decoration:none;}
+.iwdstore-block .item-extensions .title a:hover{color: #D4022E}
+.iwdstore-block .item-extensions .price{ color: #000000;font-size: 20px;font-weight: bold;text-align: center;}
+.iwdstore-block .store-extensions-header{font-family: Arial;font-size: 1.6666em;margin-left:70px;border-bottom: 1px dashed #DDDDDD;line-height: 1.25em;padding-bottom: 30px;padding-top: 7px;}

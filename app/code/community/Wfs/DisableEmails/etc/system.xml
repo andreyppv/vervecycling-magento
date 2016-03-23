@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * WebFlakeStudio
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://webflakestudio.com/WFS-LICENSE-COMMUNITY.txt
+ *
+ *
+ * MAGENTO EDITION USAGE NOTICE
+ *
+ * This package designed for Magento COMMUNITY edition
+ * WebFlakeStudio does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * WebFlakeStudio does not provide extension support in case of
+ * incorrect edition usage.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future.
+ *
+ * @category   Wfs
+ * @package    Wfs_DisableEmails
+ * @copyright  Copyright (c) 2012 WebFlakeStudio (http://webflakestudio.com)
+ * @license    http://webflakestudio.com/WFS-LICENSE-COMMUNITY.txt
+ */
+-->
+<config>
+    <sections>
+        <system>
+            <groups>
+                <wfs_disable_emails translate="label" module="wfs_disable_emails">
+                    <label>Disable Email Notifications</label>
+                    <frontend_type>text</frontend_type>
+                    <frontend_model>wfs_disableemails/adminhtml_system_config_form_fieldset_disableEmails</frontend_model>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                </wfs_disable_emails>
+            </groups>
+        </system>
+    </sections>
+</config>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Infinity_ProductsList>
+            <version>0.1.0</version>
+        </Infinity_ProductsList>
+    </modules>
+
+    <global>
+        <blocks>
+            <infinity_productslist>
+                <class>Infinity_ProductsList_Block</class>
+            </infinity_productslist>
+        </blocks>
+        <helpers>
+            <productslist>
+                <class>Infinity_ProductsList_Helper</class>
+            </productslist>
+        </helpers>
+    </global>
+</config>

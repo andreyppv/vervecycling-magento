@@ -1,0 +1,24 @@
+<style>
+    .content-header{display:none !important}
+</style>
+<div class="iwdstore-block">
+<h3 class="store-extensions-header"><?php echo $this->__('Featured Extensions')?></h3>
+<?php $collection = $this->getExtensions();?>
+    <?php if(!empty($collection)): ?>
+        <?php $i=0; foreach ($collection as $product):?>
+        <?php if ($i==0) {$i++;continue;}?>
+            <div class="item-extensions">
+                <div class="image">
+                    <a href="<?php echo $product[0]?>" target="_blank"><img src="<?php echo $product[1]?>"/></a>
+                </div>
+                <div class="title">
+                    <a href="<?php echo $product[0]?>" target="_blank"><?php echo $product[2]?></a>
+                </div>
+                <div class="price"><?php echo $product[3]?></div>
+            </div>
+            <?php ++$i;?>
+        <?php endforeach;?>
+    <?php endif; ?>
+</div>
+
+

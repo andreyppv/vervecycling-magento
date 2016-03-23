@@ -1,0 +1,42 @@
+<?php
+/**
+ * Language switcher template
+ *
+ * @see Mage_Page_Block_Switch
+ */
+?>
+<?php if(count($this->getStores())>1): ?>
+<?php $_class = ''; ?>
+<div class="form-language">
+	<div class="label"><?php echo $this->__('Language: %s', Mage::app()->getStore()->getName()) ?><span class="move">&nbsp;</span></div>
+	<ul class="language-chooser" id="language-chooser">
+	    <?php foreach ($this->getStores() as $_lang): ?>
+            <?php 
+            if($_lang->getId() == $this->getCurrentStoreId())
+            {
+                if(Mage::getSingleton('core/cookie')->get('store_for_wp') != $_lang->getCode())
+                {
+                    Mage::getSingleton('core/cookie')->delete('store_for_wp');
+                    if($_lang->getCode())
+                    {
+                        $storeArr = explode('_',$_lang->getCode());
+                        $store = current($storeArr);
+                        $language = end($storeArr);
+                    }
+                    
+                    Mage::getSingleton('core/cookie')->set('store_for_wp', $language, true, '/');
+                    Mage::getSingleton('core/cookie')->set('region_for_wp', $store, true, '/');
+                }
+            }
+            $currentUrl = $_lang->getCurrentUrl();
+            $currentUrl = substr($currentUrl,0,strpos($currentUrl,'?___'));
+            ?>
+	        <li<?php echo ($_lang->getId() == $this->getCurrentStoreId()) ? ' class="active"' : ''; ?>>
+				<a href="<?php echo $currentUrl ?>" data-lang="<?php echo $_lang->getCode()?>" class="<?php echo str_replace(' ','',strtolower($this->htmlEscape($_lang->getCode()))); ?>" title="<?php echo $this->htmlEscape($_lang->getName()) ?>">
+					<?php echo $this->htmlEscape($_lang->getName()) ?>
+				</a>
+			</li>
+	    <?php endforeach; ?>
+	</ul>
+</div>
+<?php endif; ?>

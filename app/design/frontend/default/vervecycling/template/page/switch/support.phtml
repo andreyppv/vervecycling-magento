@@ -1,0 +1,42 @@
+<?php
+$locationsList = $this->parseLocationsOption();
+$location = Mage::getModel('core/cookie')->get('location');
+$location = ($location) ? $location : trim(reset(array_keys($locationsList)));
+
+?>
+
+        <div class="form-language"> 
+        
+        	<?php
+				$currency = Mage::registry('currency');
+					
+				if($currency == 'EUR')
+				{
+					echo $this->getLayout()->createBlock('cms/block')->setBlockId('eu_number')->toHtml(); 
+				}
+				elseif($currency == 'USD'){
+					 echo $this->getLayout()->createBlock('cms/block')->setBlockId('usa_number')->toHtml(); 
+				}
+				elseif($currency == 'AUD')
+				{
+					 echo $this->getLayout()->createBlock('cms/block')->setBlockId('aus_number')->toHtml(); 
+				}
+				elseif($currency == 'GBP')
+				{
+					 echo $this->getLayout()->createBlock('cms/block')->setBlockId('gbp_number')->toHtml(); 
+				}
+				else { 
+          echo $this->getLayout()->createBlock('cms/block')->setBlockId('usa_number')->toHtml();
+        }					
+?>
+                
+            <ul id="language-chooser" class="language-chooser">
+                <?php foreach($locationsList as $locationPoint => $locationProperty) : ?>
+                    <li class="">
+                        <a title="<?php echo $locationProperty['title']; ?>" subtitle="<?php echo $locationProperty['subtitle']; ?>" hreflang="<?php echo $locationProperty['phone']; ?>" href="#" location="<?php echo $locationPoint; ?>">
+                            <span><?php echo $locationProperty['title']; ?></span>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>

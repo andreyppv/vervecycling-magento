@@ -1,0 +1,35 @@
+<?php
+/**
+ * Currency switcher
+ *
+ * @see Mage_Directory_Block_Currency
+ */
+?>
+<?php if($this->getCurrencyCount()>1): ?>
+<div class="field checkout-currency">
+    <h2 class="title"><?php echo $this->__('Currency Selection') ?></h2>
+    <div class="block-content">
+        <label class="sub-title" for="checkout_currency"><?php echo $this->__('Select your preferred currency.') ?></label>
+		<div class="input-box">
+			<select name="currency" id="checkout_currency">
+	        <?php foreach($this->getCurrencies() as $_code => $_name): ?>
+	            <option value="<?php echo $this->getSwitchCurrencyUrl($_code) ?>"<?php if($_code==$this->getCurrentCurrencyCode()): ?> selected="selected"<?php endif; ?>>
+	                <?php echo $_name ?> - <?php echo $_code ?>
+	            </option>
+	        <?php endforeach; ?>
+	        </select>
+		</div>
+        <div class="buttons-set">
+            <button id="currency-submit" type="button" title="<?php echo $this->__('Change Currency') ?>" value="<?php echo $this->getSwitchCurrencyUrl() ?>" class="button grey" onclick="setLocation(this.value)" value="<?php echo $this->__('Change Currency') ?>"><span><?php echo $this->__('Change Currency') ?></span></button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+	//jQuery('#checkout_currency').change();
+	jQuery('#checkout_currency').change(function(){
+		jQuery('#currency-submit').val(jQuery(this).val());
+	});
+//]]>
+</script>
+<?php endif; ?>

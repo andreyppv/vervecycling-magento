@@ -1,0 +1,6 @@
+<?php $compatibility = $this->getProduct()->getCompatibility(); ?>
+<?php if ($compatibility): ?>
+    <div class="std">
+        <?php echo $this->helper('catalog/output')->productAttribute($this->getProduct(), $compatibility, 'compatibility') ?>
+    </div>
+<?php endif; ?>

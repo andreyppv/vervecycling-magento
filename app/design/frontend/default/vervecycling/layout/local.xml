@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+    <default>
+        <remove name="right.poll"/>
+        <remove name="right.permanent.callout"/>
+        <remove name="left.permanent.callout"/>
+        <remove name="paypal.partner.right.logo"/>
+        <remove name="cart_sidebar"/>
+        <remove name="catalog.compare.sidebar"/>
+        <remove name="right.reports.product.viewed"/>
+        <remove name="right.reports.product.compared"/>
+        <remove name="left.reports.product.viewed"/>
+        <remove name="sale.reorder.sidebar"/>
+        <remove name="currency"/>
+        <remove name="wishlist_sidebar"/>
+		<remove name="left.newsletter"/>
+		<remove name="breadcrumbs"/>
+        <reference name="head">
+			<action method="addCss"><stylesheet>css/mobile.css</stylesheet></action>
+			<action method="addCss"><stylesheet>css/jcf.css</stylesheet></action>
+			<action method="addItem"><type>js</type><name>jquery/placeholder.js</name></action>
+			<action method="addItem"><type>js</type><name>jquery/jcf.js</name></action>
+			<action method="addItem"><type>js</type><name>jquery/jcf.select.js</name></action>
+			<action method="addItem"><type>js</type><name>jquery/jcf.radio.js</name></action>
+			<action method="addItem"><type>js</type><name>jquery/jcf.checkbox.js</name></action>
+			<action method="addItem"><type>js</type><name>jquery/jquery.sameheight.js</name></action>
+			<action method="addItem"><type>js</type><name>jquery/jquery.carousel.js</name></action>
+			<action method="addItem"><type>js</type><name>jquery/select2.js</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/select2.css</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/jquery.dotdotdot.min.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/local.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/currencySwitch.js</name></action>
+        </reference>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+            <block type="page/html_wrapper" name="header.after.row" as="header_after" translate="label">
+                <action method="setElementClass"><value>header-after-row</value></action>
+	            <block type="page/html_wrapper" name="header.after" translate="label">
+	                <label>Header After</label>
+	                <action method="setElementClass"><value>content</value></action>
+	            </block>
+            </block>
+			<block type="page/html_wrapper" name="before.content.wrapper" as="beforeContentWrapper">
+				<action method="setElementClass"><value>top-information-wrap</value></action>
+				<block type="core/template" name="grneral.page.title" template="page/template/page-title.phtml" />
+			</block>
+			<block type="page/html_wrapper" name="after.content.wrapper" as="afterContentWrapper">
+				<action method="setElementClass"><value>bottom-information-wrap</value></action>
+			</block>
+        </reference>
+        <reference name="header">
+			<remove name="top.search"/>
+			<block type="page/html_wrapper" name="header.user.panel" as="userPanel">
+				<action method="setElementClass"><value>user-panel</value></action>
+				<action method="insert"><name>store_language</name></action>
+				<block type="directory/currency" name="store.currency" before="-" template="page/switch/country.phtml"/>
+			</block>
+			<block type="page/html_wrapper" name="header.quick.access" as="quickAccess">
+				<action method="setElementClass"><value>quick-access</value></action>
+				<block type="cms/block" name="header_help_menu">
+					<action method="setBlockId"><block_id>header_help_menu</block_id></action>
+				</block>
+				<block type="page/template_links" name="user.links">
+		            <block type="checkout/links" name="checkout_cart_link">
+		                <action method="addCartLink"></action>
+		            </block>
+				</block>
+			</block>
+        </reference>
+        <reference name="header.after">
+        	<block type="page/html_topmenu" name="catalog.top.nav" template="page/html/topmenu.phtml">
+	            <block type="core/text_list" name="before.links.nav" translate="label">
+	                <label>Before Links Nav</label>
+					<block type="page/html_wrapper" name="link.all.products">
+						<action method="setElementClass"><value>level0 level-top</value></action>
+						<action method="setHtmlTagName"><value>li</value></action>
+						<block type="page/template_links" name="all.products" template="page/template/link.phtml">
+							<action method="setElementClass"><value>level-top all-products</value></action>
+							<action method="addLink" translate="label title"><label>All Products</label><url></url><title>All Products</title><prepare>true</prepare><urlParams helper="core/url/getHomeUrl"/></action>
+						</block>
+					</block>
+	            </block>
+        	</block>
+        	<block type="directory/currency" name="store.currency" before="-" template="infinity/currency/currency.phtml">
+        		<action method="setElementType"><value>dropdown</value></action>
+        	</block>
+        </reference>
+ 		<reference name="footer">
+            <action method="unsetChild"><name>cms_footer_links</name></action>
+            <action method="unsetChild"><name>footer_links</name></action>
+			<block type="page/html_wrapper" name="cms_footer_affiliate">
+				<action method="setElementClass"><value>footer-affiliate</value></action>
+				<block type="cms/block" name="footer_affiliate">
+					<action method="setBlockId"><block_id>footer_affiliate</block_id></action>
+				</block>
+			</block>
+			<block type="page/html_wrapper" name="cms_footer_middle">
+				<action method="setElementClass"><value>footer-middle</value></action>
+				<block type="page/html_wrapper" name="cms_footer_box">
+					<action method="setElementClass"><value>footer</value></action>
+					<block type="page/html_wrapper" name="cms_footer_products">
+						<action method="setElementClass"><value>col buy-infocrank</value></action>
+						<block type="cms/block" name="footer_block_1">
+							<action method="setBlockId"><block_id>footer_block_1</block_id></action>
+						</block>
+					</block>
+					<block type="page/html_wrapper" name="cms_footer_service">
+						<action method="setElementClass"><value>col footer-social</value></action>
+						<block type="cms/block" name="footer_block_2">
+							<action method="setBlockId"><block_id>footer_block_2</block_id></action>
+						</block>
+					</block>
+					<block type="page/html_wrapper" name="cms_footer_company">
+						<action method="setElementClass"><value>col subscription</value></action>
+						<block type="cms/block" name="footer_block_3">
+							<action method="setBlockId"><block_id>footer_block_3</block_id></action>
+						</block>
+					</block>
+				</block>
+			</block>
+		</reference>
+        <reference name="after_body_start">
+            <block type="core/template" name="googletag" template="page/html/googletag.phtml"></block>
+        </reference>
+        <reference name="before_body_end">
+            <block type="core/template" name="livechat" template="page/html/livechat.phtml"></block>
+            <block type="core/template" name="body_end_scripts" template="page/html/body_end_scripts.phtml"></block>
+        </reference>
+    </default>
+<!--************************************* Home Page ****************************************-->
+    <cms_index_index translate="label">
+        <label>CMS Home Page</label>
+        <reference name="root">
+        	<action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+         <reference name="link.all.products">
+        	<action method="setElementClass"><value>level0 active level-top</value></action>
+        </reference>
+		<reference name="content">
+			<action method="unsetChild"><name>page_content_heading</name></action>
+			<action method="unsetChild"><name>cms.wrapper</name></action>
+			<block type="infinity_homeproductslist/product_list" name="home.catalog.product.list" template="catalog/product/list.phtml">
+				<action method="setMode"><value>grid</value></action>
+				<action method="setColumnCount"><value>3</value></action>
+			</block>
+		</reference>
+    </cms_index_index>
+<!--************************************* Catalog Category ****************************************-->
+    <catalog_category_layered translate="label">
+        <label>Catalog Category (Anchor)</label>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+		<reference name="category.products">
+			<action method="unsetChild"><name>product_list</name></action>
+			<block type="infinity_productslist/product_list" name="product_list" template="catalog/product/list.phtml">
+                <action method="insert"><name>product_list_toolbar</name></action>
+                <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+			</block>
+		</reference>
+		<reference name="product_list_toolbar">
+            <action method="addPagerLimit" translate="label"><mode>list</mode><limit>all</limit><label>All</label></action>
+            <action method="addPagerLimit" translate="label"><mode>grid</mode><limit>all</limit><label>All</label></action>
+			<action method="setDefaultListPerPage"><limit>all</limit></action>
+			<action method="setDefaultGridPerPage"><limit>all</limit></action>
+		</reference>
+    </catalog_category_layered>
+
+    <catalog_category_default translate="label">
+        <label>Catalog Category (Non-Anchor)</label>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+		<reference name="category.products">
+			<action method="unsetChild"><name>product_list</name></action>
+			<block type="infinity_productslist/product_list" name="product_list" template="catalog/product/list.phtml">
+                <action method="insert"><name>product_list_toolbar</name></action>
+                <action method="setToolbarBlockName"><name>product_list_toolbar</name></action>
+			</block>
+		</reference>
+		<reference name="product_list_toolbar">
+            <action method="addPagerLimit" translate="label"><mode>list</mode><limit>all</limit><label>All</label></action>
+            <action method="addPagerLimit" translate="label"><mode>grid</mode><limit>all</limit><label>All</label></action>
+			<action method="setDefaultListPerPage"><limit>all</limit></action>
+			<action method="setDefaultGridPerPage"><limit>all</limit></action>
+		</reference>
+    </catalog_category_default>
+
+    <catalogsearch_result_index translate="label">
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+    </catalogsearch_result_index>
+<!--************************************* Product Page ****************************************-->
+	<catalog_product_view translate="label">
+        <label>Catalog Product View (Any)</label>
+        <reference name="head">
+<!--			<action method="addCss"><stylesheet>css/magiczoomplus.css</stylesheet></action>
+			<action method="addItem"><type>skin_js</type><name>js/magiczoomplus.js</name></action>  -->
+        </reference>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="product.info">
+            <remove name="product.attributes" />
+            <remove name="product.description" />
+			<reference name="product.info.options.wrapper.bottom">
+                <action method="unsetChild"><name>product.info.addto</name></action>
+				<!--<block type="directory/currency" name="product.currency" before="-" template="catalog/product/view/currency.phtml"/>-->
+	        	<block type="directory/currency" name="product.currency" before="-" template="infinity/currency/currency.phtml">
+	        		<action method="setElementType"><value>dropdown</value></action>
+	        	</block>
+            </reference>
+			<block type="core/template" name="product.share" as="productShare" template="catalog/seo/sharethis.phtml"/>
+            <block type="catalog/product_view_attributes" name="product.tab.view" template="catalog/product/view/tabs/view.phtml">
+	            <block type="catalog/product_view_attributes" name="product.features.tab" template="catalog/product/view/tabs/features.phtml">
+	                <action method="addToParentGroup"><group>product_tabs</group></action>
+					<action method="setTitle" translate="value"><value>Features</value></action>
+	            </block>
+				<block type="catalog/product_view_attributes" name="product.construction.tab" template="catalog/product/view/tabs/construction.phtml">
+	                <action method="addToParentGroup"><group>product_tabs</group></action>
+					<action method="setTitle" translate="value"><value>Construction</value></action>
+	            </block>
+	            <block type="catalog/product_view_attributes" name="product.specification.tab" template="catalog/product/view/tabs/specification.phtml">
+	                <action method="addToParentGroup"><group>product_tabs</group></action>
+					<action method="setTitle" translate="value"><value>Specification</value></action>
+	            </block>
+	            <block type="catalog/product_view_attributes" name="product.compatibility.tab" template="catalog/product/view/tabs/compatibility.phtml">
+	                <action method="addToParentGroup"><group>product_tabs</group></action>
+					<action method="setTitle" translate="value"><value>Compatibility</value></action>
+	            </block>
+	            <block type="catalog/product_view_attributes" name="product.bike_computers.tab" template="catalog/product/view/tabs/bike-computers.phtml">
+	                <action method="addToParentGroup"><group>product_tabs</group></action>
+					<action method="setTitle" translate="value"><value>Bike Computers</value></action>
+	            </block>
+                <block type="catalog/product_view_attributes" name="product.easy_install.tab" template="catalog/product/view/tabs/easy-install.phtml">
+                    <action method="addToParentGroup"><group>product_tabs</group></action>
+                    <action method="setTitle" translate="value"><value>Easy Install</value></action>
+                </block>
+            </block>
+			<block type="core/template" name="product_message" template="page/template/ul.phtml">
+				<action method="setElementClass"><value>product-message</value></action>
+	            <block type="catalog/product_view_attributes" name="ships" template="catalog/product/view/options/ships.phtml" />
+				<block type="cms/block" name="product_outside_us">
+					<action method="setBlockId"><block_id>product_outside_us</block_id></action>
+				</block>
+			</block>
+        </reference>
+        <reference name="after.content.wrapper">
+			<block type="page/html_wrapper" name="product-collateral">
+				<action method="setElementClass"><value>product-collateral</value></action>
+				<action method='insert'><name>product.tab.view</name></action>
+				<action method='insert'><name>product.info.upsell</name></action>
+				<action method='insert'><name>product.info.additional</name></action>
+			</block>
+        </reference>
+        <reference name="product.info.additional">
+            <remove name="product_tag_list" />
+        </reference>
+	</catalog_product_view>
+    <PRODUCT_TYPE_bundle translate="label" module="bundle">
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>js/bundlePrice.js</name></action>
+        </reference>
+    </PRODUCT_TYPE_bundle>
+	<!--************************************* Checkout ****************************************-->
+    <checkout_cart_index translate="label">
+        <label>Shopping Cart</label>
+        <reference name="checkout.cart">
+            <block type="directory/currency" name="checkout.currency" template="checkout/cart/currency.phtml"/>
+        </reference>
+    </checkout_cart_index>
+
+	<checkout_onepage_index translate="label">
+		<reference  name="grneral.page.title">
+			<action method="setTitle" translate="title"><title>Checkout</title></action>
+		</reference>
+    </checkout_onepage_index>
+	<checkout_onepage_success>
+		<reference name="root">
+			<action method="setTemplate"><template>page/1column.phtml</template></action>
+		</reference>
+        <reference name="before_body_end">
+            <block type="core/template" name="body_end_success" template="page/html/body_end_success.phtml"></block>
+        </reference>
+	</checkout_onepage_success>
+    <checkout_cart_index>
+        <reference name="checkout.cart.methods">
+            <action method='unsetChild'><name>checkout.cart.methods.paypal_express.bottom</name></action>
+			<block type="paypal/express_shortcut" name="checkout.cart.methods.paypal_express.bottom" after="-" template="paypal/express/shortcut.phtml">
+                <action method="setIsQuoteAllowed"><value>1</value></action>
+            </block>
+        </reference>
+        <reference name="before_body_end">
+            <block type="core/template" name="body_end_cart" template="page/html/body_end_cart.phtml"></block>
+        </reference>
+    </checkout_cart_index>
+<!--************************************* Login/Log Out ****************************************-->
+    <customer_logged_in>
+        <reference name="user.links">
+            <action method="addLink" translate="label title" module="customer"><label>Log Out</label><url helper="customer/getLogoutUrl"/><title>Log Out</title><prepare/><urlParams/><position>1</position><liParams/><aParams>class="logout"</aParams></action>
+			<action method="addLink" translate="label title" module="customer"><label>Account</label><url helper="customer/getAccountUrl"/><title>Account</title><prepare/><urlParams/><position>2</position><liParams/><aParams>class="account"</aParams></action>
+		</reference>
+    </customer_logged_in>
+    <customer_logged_out>
+        <reference name="user.links">
+			<action method="addLink" translate="label title" module="customer"><label>Account: Login</label><url helper="customer/getLoginUrl"/><title>Login</title><prepare/><urlParams/><position>1</position><liParams/><aParams>class="login"</aParams></action>
+		</reference>
+    </customer_logged_out>
+<!--************************************* Checkout ****************************************-->
+	<checkout_onepage_review>
+        <!--<reference name="checkout.onepage.review.info.items.after">
+        	<remove name="magemonkey.subscribe" />
+        </reference>-->
+	</checkout_onepage_review>
+<!--************************************* My Account ****************************************-->
+	<customer_account>
+		<reference name="root">
+			<action method="unsetChild"><name>customer_account_navigation</name></action>
+			<block type="customer/account_navigation" name="customer_account_navigation" before="-" template="customer/account/navigation.phtml">
+				<action method="addLink" translate="label" module="customer"><name>account</name><path>customer/account/</path><label>Account Dashboard</label></action>
+				<action method="addLink" translate="label" module="customer"><name>account_edit</name><path>customer/account/edit/</path><label>Account Information</label></action>
+				<action method="addLink" translate="label" module="customer"><name>address_book</name><path>customer/address/</path><label>Address Book</label></action>
+				<action method="addLink" translate="label" module="sales"><name>orders</name><path>sales/order/history/</path><label>My Orders</label></action>
+			</block>
+        </reference>
+	</customer_account>
+    <customer_account_index>
+        <!-- Mage_Sales -->
+        <!--remove name="customer_account_dashboard_top"/-->
+        <reference name="customer_account_dashboard_top">
+            <action method="setTemplate"><template>customer/order/recent.phtml</template></action>
+        </reference>
+    </customer_account_index>
+    <customer_account_create>
+        <reference name="customer_form_register">
+            <block type="core/text_list" name="customer.account.create.subscribe.checkbox" as="subscribe_checkbox" translate="label">
+                <label>Items After</label>
+                <block type="monkey/checkout_subscribe" name="magemonkey.subscribe" template="magemonkey/customer/create/subscribe.phtml">
+                        <block type="monkey/signup" name="left.monkeysignup" template="magemonkey/lists.phtml" />
+                </block>
+            </block>
+        </reference>
+    </customer_account_create>
+<!--************************************* Email layouts section ****************************************-->
+    <sales_email_order_items>
+        <reference name="order_totals">
+            <action method="setLabelProperties"><value>colspan="3" align="right" style="border-left:1px solid #000000; padding:0 19px 8px 19px;"</value></action>
+            <action method="setValueProperties"><value>align="right" style="border-right:1px solid #000000; padding:0 19px 8px 19px;"</value></action>
+        </reference>
+    </sales_email_order_items>
+    <sales_email_order_invoice_items>
+        <reference name="invoice_totals">
+            <action method="setLabelProperties"><value>colspan="3" align="right" style="border-left:1px solid #000000; padding:0 19px 8px 19px;"</value></action>
+            <action method="setValueProperties"><value>align="right" style="border-right:1px solid #000000; padding:0 19px 8px 19px;"</value></action>
+        </reference>
+    </sales_email_order_invoice_items>
+    <sales_email_order_creditmemo_items>
+        <reference name="creditmemo_totals">
+                <action method="setLabelProperties"><value>colspan="3" align="right" style="border-left:1px solid #000000; padding:0 19px 8px 19px;"</value></action>
+                <action method="setValueProperties"><value>align="right" style="border-right:1px solid #000000; padding:0 19px 8px 19px;"</value></action>
+        </reference>
+    </sales_email_order_creditmemo_items>
+</layout>

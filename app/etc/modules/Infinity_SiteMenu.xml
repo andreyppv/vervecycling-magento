@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Infinity_SiteMenu>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Infinity_SiteMenu>
+    </modules>
+</config> 

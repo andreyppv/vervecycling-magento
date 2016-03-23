@@ -1,0 +1,87 @@
+<?php
+/**
+ * Cryozonic
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Single Domain License
+ * that is available through the world-wide-web at this URL:
+ * http://cryozonic.com/licenses/stripe.html
+ * If you are unable to obtain it through the world-wide-web,
+ * please send an email to info@cryozonic.com so we can send
+ * you a copy immediately.
+ *
+ * @category   Cryozonic
+ * @package    Cryozonic_Stripe
+ * @copyright  Copyright (c) Cryozonic Ltd (http://cryozonic.com)
+ */
+
+ ?>
+
+<?php $_code=$this->getMethodCode() ?>
+<?php include_once 'stripejs.phtml'; ?>
+<ul class="form-list" id="payment_form_<?php echo $_code ?>" style="display:none;">
+    <?php include 'saved.phtml'; ?>
+    <li class="stripe-new">
+        <label class="required" for="<?php echo $_code ?>_cc_owner"><em>*</em><?php echo $this->__('Name on Card') ?></label>
+        <div class="input-box">
+            <input type="text" title="<?php echo Mage::helper('payment')->__('Name on Card') ?>" class="required-entry stripe-input input-text" id="<?php echo $_code ?>_cc_owner" name="payment[cc_owner]" value="<?php echo $this->getInfoData('cc_owner') ?>"/>
+        </div>
+    </li>
+    <li class="stripe-new">
+        <label for="<?php echo $_code ?>_cc_number" class="required"><em>*</em><?php echo $this->__('Card Number') ?></label>
+        <div class="input-box">
+            <input type="text" id="<?php echo $_code ?>_cc_number" name="payment[cc_number]" title="<?php echo $this->__('Card Number') ?>" class="input-text validate-cc-number validate-cc-type required-entry stripe-input" value="" />
+        </div>
+    </li>
+    <li id="<?php echo $_code ?>_cc_type_exp_div" class="stripe-new">
+        <label for="<?php echo $_code ?>_expiration" class="required"><em>*</em><?php echo $this->__('Expiration Date') ?></label>
+        <div class="input-box">
+            <div class="v-fix">
+                <select id="<?php echo $_code ?>_expiration" name="payment[cc_exp_month]" class="month validate-cc-exp required-entry stripe-input">
+                <?php $_ccExpMonth = $this->getInfoData('cc_exp_month') ?>
+                <?php foreach ($this->getCcMonths() as $k=>$v): ?>
+                    <option value="<?php echo $k?$k:'' ?>"<?php if($k==$_ccExpMonth): ?> selected="selected"<?php endif ?>><?php echo $v ?></option>
+                <?php endforeach ?>
+                </select>
+            </div>
+            <div class="v-fix">
+                <?php $_ccExpYear = $this->getInfoData('cc_exp_year') ?>
+                <select id="<?php echo $_code ?>_expiration_yr" name="payment[cc_exp_year]" class="year required-entry stripe-input">
+                <?php foreach ($this->getCcYears() as $k=>$v): ?>
+                    <option value="<?php echo $k?$k:'' ?>"<?php if($k==$_ccExpYear): ?> selected="selected"<?php endif ?>><?php echo $v ?></option>
+                <?php endforeach ?>
+                </select>
+            </div>
+        </div>
+    </li>
+    <?php echo $this->getChildHtml() ?>
+    <?php if($this->hasVerification()): ?>
+    <li id="<?php echo $_code ?>_cc_type_cvv_div" class="stripe-new">
+        <label for="<?php echo $_code ?>_cc_cid" class="required"><em>*</em><?php echo $this->__('Card Verification Number') ?></label>
+        <div class="input-box">
+            <div class="v-fix">
+                <input type="text" title="<?php echo $this->__('Card Verification Number') ?>" class="input-text cvv required-entry stripe-input validate-cc-cvn" id="<?php echo $_code ?>_cc_cid" name="payment[cc_cid]" value="" autocomplete="off" />
+            </div>
+            <a href="#" class="cvv-what-is-this"><?php echo $this->__('What is this?') ?></a>
+        </div>
+    </li>
+    <?php endif; ?>
+    <?php if ($this->stripe->showSaveCardOption()): ?>
+    <li id="<?php echo $_code ?>_cc_save_div" class="stripe-new">
+        <div class="input-box">
+            <div class="v-fix">
+                <label for="<?php echo $_code ?>_cc_save">
+                    <?php if ($this->stripe->alwaysSaveCard()): ?>
+                        <input type="hidden" class="input-hidden stripe-input" id="<?php echo $_code ?>_cc_save" name="payment[cc_save]" value="1"/>
+                    <?php else: ?>
+                        <input type="checkbox" title="<?php echo $this->__('Save card for future purchases') ?>" class="input-checkbox stripe-input" id="<?php echo $_code ?>_cc_save" name="payment[cc_save]" checked="checked"/>
+                        &nbsp;
+                        <?php echo $this->__('Save card for future purchases') ?>
+                    <?php endif; ?>
+                </label>
+            </div>
+        </div>
+    </li>
+    <?php endif; ?>
+</ul>

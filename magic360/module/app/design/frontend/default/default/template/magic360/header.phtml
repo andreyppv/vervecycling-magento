@@ -1,0 +1,43 @@
+<?php
+
+$magicToolboxHelper = Mage::helper('magic360/settings');
+//if($magicToolboxHelper->isModuleOutputEnabled()) return;
+
+//$moduleName = $this->getRequest()->getModuleName();         //catalog   review  checkout    catalog     cms     catalogsearch   catalogsearch   wishlist
+//$this->getRequest()->getRouteName()                         //catalog   review  checkout    catalog     cms     catalogsearch   catalogsearch   wishlist
+//$controllerName = $this->getRequest()->getControllerName(); //product   product cart        category    index   result          advanced        index
+//$actionName = $this->getRequest()->getActionName();         //view      list    configure   view        index   index           result          configure
+
+// $productPage = false;
+// if(in_array($controllerName, array('product', 'cart'))) {
+//     $page = 'product';
+//     if($actionName == 'view') {
+//         $productPage = true;
+//     }
+// } else if($controllerName == 'index' && ($actionName == 'configure' || $actionName == 'view')) {
+//     $page = 'product';
+//     if($actionName != 'view') {
+//         //NOTE: if we need this for 'configure' action !?
+//         $productPage = true;
+//     }
+// } else {
+//     $page = 'category';
+// }
+
+$tool = $magicToolboxHelper->loadTool();
+$tool->params->resetProfile();
+
+$force = $tool->params->checkValue('include-headers-on-all-pages', 'Yes', 'default');
+
+$magic360ClassName = Mage::registry('magic360ClassName');
+if(!$magic360ClassName && !$force) return;
+
+$page = $this->getPageType();
+
+
+if($force ||
+   ($tool->params->profileExists($page) && !$tool->params->checkValue('enable-effect', 'No', $page))) {
+    echo $tool->getHeadersTemplate(str_replace('/magic360.js', '', $this->getSkinUrl('js/magic360.js')), str_replace('/magic360.css', '', $this->getSkinUrl('css/magic360/magic360.css')));
+}
+
+?>

@@ -1,0 +1,112 @@
+<?php
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+<?php $backendfields = Mage::helper('backendfields'); ?>
+<div class="header-container">
+	<?php 
+		$welcomeTitle = $backendfields->getWelcomeTitle();
+		$welcome = $this->getWelcome();
+		$mainBanner = $backendfields->getMainBanner();
+	?>
+	<div class="header<?php if(!$mainBanner) echo ' no-banner'; ;?>">
+		<?php if($mainBanner): ?>
+		<div class="main-banner">
+			<img src="<?php echo $mainBanner; ?>" height="220" width="1400" alt="<?php echo $welcomeTitle; ?>">	
+		</div>
+		<?php endif; ?>
+		<div class="welcome-msg">
+			<?php echo ($welcomeTitle)? '<h4 class="site-title">' . $welcomeTitle . '</h4>':''; ?>
+			<?php echo ($welcome)? '<h5 class="site-description">' . $welcome . '</h5>':''; ?>
+		</div>
+		<div class="quick-access-wrap" id="quick-access-box">
+			<div class="content">
+				<?php echo $this->getChildHtml('quickAccess') ?>
+			</div>
+		</div>
+    </div>
+	<div class="top-navigation-wrap">
+		<div class="top-navigation">
+    		<?php $logoHoverUrl = $backendfields->getLogoSrcHover(); ?>
+	        <a href="<?php echo str_replace('store/','',$this->getUrl('')) ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo" id="header">
+				<strong><?php echo $this->getLogoAlt() ?></strong>
+				<img src="<?php echo $this->getLogoSrc() ?>" <?php echo $logoHoverUrl ? ' class="no-over"' : '';?>  alt="<?php echo $this->getLogoAlt() ?>" />
+				<?php if($logoHoverUrl != ''): ?>
+					<img src="<?php echo $logoHoverUrl ?>" class="<?php echo $logoHoverUrl ? 'over' : '';?>" alt="<?php echo $this->getLogoAlt() ?>" />
+				<?php endif; ?>
+			</a>
+			<?php echo $this->getChildHtml('topMenu') ?>
+	        <div id="navigation-mobile-control" class="nav-mobile-control">
+	        	<a href="#" class="label"><?php echo $this->__('Menu'); ?></a>
+	        </div>
+	        <?php echo $this->getChildHtml('userPanel') ?>
+			<script type="text/javascript">
+			<!--
+				function mainNavWidth(){
+					topNavigation = jQuery('.top-navigation');
+					logoWidth = topNavigation.children('.logo').outerWidth(true);
+					formLanguageWidth = topNavigation.children('.user-panel').outerWidth(true);
+					topNavigation.children('.nav-container').css('max-width', topNavigation.width() - logoWidth - formLanguageWidth -30);
+				}
+				
+				function quickAccessPosition(){
+					topNavigationHeight = jQuery('.top-navigation').outerHeight();
+					jQuery('#quick-access-box').css('top', topNavigationHeight);
+				}
+				mainNavWidth();
+				
+				jQuery(window).load(function(){
+					mainNavWidth();
+				    quickAccessPosition();
+				});
+				jQuery(window).resize(function(){
+					mainNavWidth();
+					quickAccessPosition();
+				});
+			//-->
+			</script>
+		</div>
+	</div>
+	<div class="top-navigation-border">&nbsp;</div>
+	<div id="navigation-mobile-drop" class="navigation-mobile-drop" style="display: none;">
+		<?php echo $this->getChildHtml('topMenu') ?>
+        <?php echo $this->getChildHtml('store_language_script'); ?>
+		<script type="text/javascript">
+		//<![CDATA[
+			var $selectMobile = jQuery('#navigation-mobile-drop');
+			$selectMobile.find('li.menu-item').each(function(){
+				_this = jQuery(this);
+				if(_this.children('.sub-menu').size()){
+					if(_this.children('a').children('.sf-sub-indicator').size() < 1){
+						_this.children('a').append('<span class="sf-sub-indicator">&nbsp;</span>');
+					}
+				}
+			});
+
+			jQuery('#navigation-mobile-control').children('.label').click(function(e){
+				//e.preventDefault();
+				jQuery(this).toggleClass('show');
+				$selectMobile.toggleClass('show');
+				$selectMobile.slideToggle();
+				//return false;
+			});
+			$selectMobile.find('.menu-item-has-children').mouseenter(function(){
+				$subMenu = jQuery(this).find('.sub-menu');
+				$subMenu.css('display','none');
+			});
+			jQuery('#navigation-mobile-drop .sitemenu .move').live('click', function(e){
+				jQuery(this).parent('li').toggleClass('show');
+				jQuery(this).next('.sub-menu').toggleClass('show');
+			});
+			jQuery('#navigation-mobile-drop .move').live('click', function(e){
+				e.preventDefault();
+				jQuery(this).parent('.label').toggleClass('show');
+				jQuery(this).parent('.label').next('.language-chooser').toggleClass('show');
+				return false;
+			});
+		//]]>
+		</script>
+	</div>
+	<?php echo $this->getChildHtml('topContainer'); ?>
+</div>

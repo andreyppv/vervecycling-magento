@@ -1,0 +1,157 @@
+<?php
+/**
+ * Cryozonic
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Single Domain License
+ * that is available through the world-wide-web at this URL:
+ * http://cryozonic.com/licenses/stripe.html
+ * If you are unable to obtain it through the world-wide-web,
+ * please send an email to info@cryozonic.com so we can send
+ * you a copy immediately.
+ *
+ * @category   Cryozonic
+ * @package    Cryozonic_Stripe
+ * @copyright  Copyright (c) Cryozonic Ltd (http://cryozonic.com)
+ */
+
+$savedCards = $this->stripe->getCustomerCards();
+
+?>
+<div class="page-title">
+    <h1><?php echo $this->__('Saved Cards') ?></h1>
+</div>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+
+<?php if (empty($savedCards)): ?>
+
+	<p><?php echo $this->__('You have no saved cards.') ?></p>
+
+<?php else: ?>
+
+<?php echo $this->getChildHtml('form_before')?>
+<form action="" method="post">
+    <div class="fieldset">
+        <?php echo $this->getBlockHtml('formkey')?>
+        <h2 class="legend"><?php echo $this->__('Select cards to remove') ?></h2>
+        <ul class="saved-cards" id="saved-cards">
+            <?php foreach ($savedCards as $key => $card): ?>
+            <li>
+                <input type="checkbox" name="card[]" value="<?php echo $card->id; ?>" id="<?php echo $card->id; ?>" class="select">
+                <label for="<?php echo $card->id; ?>">
+                    <span class="type <?php echo $card->type ?>"><?php echo $card->type; ?></span>
+                    <span class="last4 cryozonic-stripe-fade"><?php echo $this->__('ending in'); ?> <?php echo $card->last4; ?></span>
+                    <span class="exp cryozonic-stripe-fade"><?php echo $this->__('expires'); ?>
+                        <?php echo str_pad($card->exp_month,2,'0',STR_PAD_LEFT); ?>/<?php echo $card->exp_year; ?>
+                    </span>
+                </label>
+            </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    <div class="buttons-set">
+        <button type="submit" title="<?php echo $this->__('Save') ?>" class="button"><span><span><?php echo $this->__('Remove') ?></span></span></button>
+    </div>
+</form>
+
+<?php endif; ?>
+
+<form action="" method="post" id="new-card" onsubmit="return Cryozonic_SaveNewCard()">
+    <div class="fieldset">
+        <h2 class="legend"><?php echo $this->__('Add new card'); ?></h2>
+        <ul class="form-list">
+            <li class="fields">
+                <div class="field">
+                    <label class="required" for="cryozonic_stripe_cc_owner"><em>*</em><?php echo $this->__('Name on Card') ?></label>
+                    <div class="input-box">
+                        <input type="text" title="<?php echo Mage::helper('payment')->__('Name on Card') ?>" class="required-entry stripe-input input-text" id="cryozonic_stripe_cc_owner" name="newcard[cc_owner]" value="<?php echo $this->getParam('cc_owner') ?>"/>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="cryozonic_stripe_expiration" class="required"><em>*</em><?php echo $this->__('Expiration Date') ?></label>
+                    <div>
+                        <select id="cryozonic_stripe_expiration" name="newcard[cc_exp_month]" class="month validate-cc-exp required-entry stripe-input">
+                        <?php $_ccExpMonth = $this->getParam('cc_exp_month') ?>
+                        <?php foreach ($this->getCcMonths() as $k=>$v): ?>
+                            <option value="<?php echo $k?$k:'' ?>"<?php if($k==$_ccExpMonth): ?> selected="selected"<?php endif ?>><?php echo $v ?></option>
+                        <?php endforeach ?>
+                        </select>
+
+                        <?php $_ccExpYear = $this->getParam('cc_exp_year') ?>
+                        <select id="cryozonic_stripe_expiration_yr" name="newcard[cc_exp_year]" class="year required-entry stripe-input">
+                        <?php foreach ($this->getCcYears() as $k=>$v): ?>
+                            <option value="<?php echo $k?$k:'' ?>"<?php if($k==$_ccExpYear): ?> selected="selected"<?php endif ?>><?php echo $v ?></option>
+                        <?php endforeach ?>
+                        </select>
+                    </div>
+                </div>
+            </li>
+            <li class="fields">
+                <div class="field">
+                    <?php $_ccNumber = $this->getParam('cc_number') ?>
+                    <label for="cryozonic_stripe_cc_number" class="required"><em>*</em><?php echo $this->__('Card Number') ?></label>
+                    <div class="input-box">
+                        <input type="text" id="cryozonic_stripe_cc_number" name="newcard[cc_number]" title="<?php echo $this->__('Card Number') ?>" class="input-text validate-cc-number validate-cc-type required-entry stripe-input" value="<?php echo $_ccNumber; ?>" />
+                    </div>
+                </div>
+                <div class="field">
+                    <?php $_ccCid = $this->getParam('cc_cid') ?>
+                    <label for="cryozonic_stripe_cc_cid" class="required"><em>*</em><?php echo $this->__('CVN') ?></label>
+                    <div class="input-box">
+                        <input type="text" title="<?php echo $this->__('Card Verification Number') ?>" class="input-text cvv required-entry stripe-input validate-cc-cvn" id="cryozonic_stripe_cc_cid" name="newcard[cc_cid]" value="<?php echo $_ccCid; ?>" autocomplete="off" />
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="buttons-set">
+        <p class="required">* Required Fields</p>
+        <p class="back-link"><a href="<?php echo $this->getBackUrl() ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
+        <button id="cryozonic-savecard-button" type="submit" title="Save Card" class="button"><span><span>Save Card</span></span></button>
+        <span class="please-wait" id="cryozonic-savecard-please-wait" style="display:none;">
+            <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" alt="<?php echo $this->__('Saving...') ?>" title="<?php echo $this->__('Saving...') ?>" class="v-middle" /> <?php echo $this->__('Saving...') ?>
+        </span>
+    </div>
+</form>
+
+<?php
+$store = Mage::app()->getStore();
+if ($store->getConfig('payment/cryozonic_stripe/stripe_js'))
+{
+    $mode = $store->getConfig('payment/cryozonic_stripe/stripe_mode');
+    $path = "payment/cryozonic_stripe/stripe_{$mode}_pk";
+    $publishableKey = $store->getConfig($path);
+
+    // Also get the customer address when AVS is enabled
+    if (Mage::getStoreConfig('payment/cryozonic_stripe/avs'))
+    {
+        $billingAddress = Mage::helper('cryozonic_stripe')->getBillingAddress();
+
+        if (!empty($billingAddress))
+        {
+            $address_line1 = $billingAddress['address_line1'];
+            $address_zip = $billingAddress['address_zip'];
+        }
+    }
+
+    // Sanitization
+    if (!empty($address_line1))
+    {
+        $address_line1 = preg_replace("/\r|\n/", " ", $address_line1);
+        $address_line1 = addslashes($address_line1);
+    }
+?>
+
+<script type="text/javascript">
+    initStripe('<?php echo $publishableKey; ?>');
+
+    avs_enabled = <?php echo (Mage::getStoreConfig('payment/cryozonic_stripe/avs') ? 'true' : 'false') ?>;
+    <?php if (!empty($address_line1)): ?>
+    // These are intendedly global variables
+    avs_address_line1 = '<?php echo $address_line1; ?>';
+    avs_address_zip = '<?php echo $address_zip; ?>';
+    <?php endif; ?>
+</script>
+
+<?php } ?>

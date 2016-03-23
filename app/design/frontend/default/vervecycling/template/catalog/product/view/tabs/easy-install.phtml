@@ -1,0 +1,58 @@
+<?php
+$product  = $this->getProduct();
+$productType = $product->getTypeID();
+?>
+<?php if($productType != simple):?>
+	<?php
+	$easyInstall = $this->getProduct()->getEasyInstallation();
+	$PdfNames = $product->getResource()->getAttribute('infinity_pdf_name')->getFrontend()->getValue($product);
+	$PdfNamesList = explode(',', $PdfNames);
+	$PdfFiles = $product->getResource()->getAttribute('infinity_pdf_file')->getFrontend()->getValue($product);
+	$PdfFilesList = explode(',', $PdfFiles);
+	$mediaUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
+	$mediaPath = Mage::getBaseDir(Mage_Core_Model_Store::URL_TYPE_MEDIA);
+	?>
+	<?php if ($easyInstall): ?>
+	    <div class="std installation-block" name="install">
+	        <h2><?php echo $this->__('Easy Installation')?></h2>
+	        <div class="btn-list">
+	            <ul>
+	                <li class="active"><a href="#install"><?php echo $this->__('VIEW VIDEO TUTORIALS')?></a></li>
+	                <li><a href="#install"><?php echo $this->__('DOWNLOAD PDFS')?></a></li>
+	            </ul>
+	        </div>
+	        <div class="installation-holder">
+	            <?php if(is_array($PdfFilesList)) :?>
+	                <div id="files" class="files-block">
+	                    <h3>DOWNLOAD PDFS</h3>
+	                    <ul class="files-list">
+	                        <?php foreach($PdfFilesList as $pdfIndex => $pdfFile): ?>
+	                            <?php if(!file_exists($mediaPath.'/easyinstallpdf/'.trim($pdfFile))) { continue; } ?>
+	                            <li>
+	                                <a href="<?php echo $mediaUrl; ?>easyinstallpdf/<?php echo trim($pdfFile); ?>">
+	                                    <?php echo (isset($PdfFilesList[$pdfIndex])) ? trim($PdfNamesList[$pdfIndex]) : trim($pdfFile); ?>
+	                                </a>
+	                            </li>
+	                        <?php endforeach; ?>
+	                    </ul>
+	                </div>
+	            <?php endif; ?>
+	            <div id="installation" class="installation-content active">
+	                <?php echo Mage::helper('cms')->getBlockTemplateProcessor()->filter($easyInstall); ?>
+	            </div>
+	        </div>
+	    </div>
+	<?php endif; ?>
+	<script type="text/javascript">
+	    jQuery('.btn-list li').click(function(element){
+	            if(jQuery(this).attr('class') != 'active') {
+	                jQuery('.btn-list li').each(function(){
+	                    jQuery(this).toggleClass('active');
+	                });
+	                jQuery('.installation-content').toggleClass('active');
+	                jQuery('.files-block').toggleClass('active');
+	            };
+	        }
+	    );
+	</script>
+<?php endif; ?>

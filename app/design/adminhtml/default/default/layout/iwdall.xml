@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+	<default>
+		<reference name="head">
+			<action method="addJs"><script>iwd/all/iwd-jquery-2.1.3.min.js</script></action>
+			<action method="addCss"><name>iwd/all/iwdall.css</name></action>
+		</reference>
+	</default>
+	
+	 <adminhtml_iwd_all_support_index>
+        <update handle="editor"/>
+        <reference name="content">
+            <block type="iwdall/adminhtml_support_edit" after="-" name="supportform"/>
+        </reference>
+    </adminhtml_iwd_all_support_index>
+	
+	<adminhtml_system_config_edit>
+        <reference name="content">
+            <block type="iwdall/jsinit" name="iwd_all_jsinit" template="iwd/jsinit.phtml"/>
+        </reference>
+    </adminhtml_system_config_edit>
+	
+</layout>

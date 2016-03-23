@@ -1,0 +1,26 @@
+<?php
+
+$_items = $this->getItems(); ?>
+
+<ul class="catalog">
+    <?php foreach ( $_items as $_item ) :
+
+    $_has_child  = $_item->getHasChild();
+    $_is_current = $_item->getIsCurrent();
+    $_is_first   = $_item->getIsFirst();
+    $_is_last    = $_item->getIsLast();
+    $_level      = $_item->getLevel();
+    $_image      = $_item->getImage();
+    $_thumbnail  = $_item->getThumbnail();
+    $_desc       = $_item->getDescription();
+
+    $_class  = 'level-'. $_level;
+    $_class .= $_has_child ? ' parent' : '';
+    $_class .= $_is_current ? ' current' : '';
+    $_class .= $_is_last ? ' last' : ( $_is_first ? ' first' : '' );
+
+    ?>
+    <li id="item-cat-<?php echo $_item->getEntityId() ?>" class="<?php echo $_class ?>">
+        <a target="<?php echo $_item->getTarget() ?>" href="<?php echo $_item->getUrl() ?>"><span><?php echo $_item->getName() ?></span></a><?php echo $_item->getChildren() ?></li>
+    <?php endforeach; ?>
+</ul>

@@ -1,0 +1,56 @@
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+
+<!DOCTYPE html>
+
+<!--[if lt IE 7 ]> <html lang="<?php echo $this->getLang(); ?>" id="top" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="<?php echo $this->getLang(); ?>" id="top" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="<?php echo $this->getLang(); ?>" id="top" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="<?php echo $this->getLang(); ?>" id="top" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="<?php echo $this->getLang(); ?>" id="top" class="no-js"> <!--<![endif]-->
+
+<head>
+<?php echo $this->getChildHtml('head') ?>
+</head>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<?php echo $this->getChildHtml('after_body_start') ?>
+<?php echo $this->getChildHtml('header') ?>
+<?php echo $this->getChildHtml('global_notices') ?>
+<section id="content">
+<?php echo $this->getChildHtml('topnavigation') ?>
+ <div class="tab-content">
+     <div class="container">
+        <?php
+        $controller=$this->getRequest()->getControllerName();
+        $action=$this->getRequest()->getActionName();
+        if($controller.$action=='onepageindex'):
+        ?>
+        <div class="col-xs-12">
+        <?php
+            echo $this->getLayout()->createBlock('checkout/cart')->setTemplate('checkout/cart.phtml')->toHtml();
+            //checkout.cart
+        ?>
+        </div>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <?php
+        endif;
+        ?> 
+       <div class="col-xs-12 col-md-8">
+            <?php echo $this->getChildHtml('content') ?>
+       </div>
+       <div class="col-xs-12 col-md-4">
+            <?php echo $this->getChildHtml('right') ?>
+       </div>
+</div>
+ </div>
+<?php echo $this->getChildHtml('feature_content') ?>
+</section>
+<?php echo $this->getChildHtml('footer') ?>
+
+<?php echo $this->getAbsoluteFooter() ?>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Infinity_BundleSave>
+            <version>0.1.0</version>
+        </Infinity_BundleSave>
+    </modules>
+    <global>
+        <models>
+            <infinity_bundle>
+                <class>Infinity_BundleSave_Model</class>
+            </infinity_bundle>
+            <bundle>
+                <rewrite>
+                    <selection>Infinity_BundleSave_Model_Selection</selection>
+                </rewrite>
+            </bundle>
+        </models>
+    </global>
+</config>

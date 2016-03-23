@@ -1,0 +1,35 @@
+<?php
+/**
+ * Currency switcher
+ *
+ * @see Mage_Directory_Block_Currency
+ */
+$_websites = Mage::app()->getWebsites();
+foreach($_websites as $website)
+{
+    $storeId = $website->getDefaultGroup()->getDefaultStore()->getId();
+    foreach(Mage::app()->getStore($storeId)->getAvailableCurrencyCodes() as $symbol)
+    {
+        //$currencies[$symbol] = Mage::app()->getLocale()->currency($symbol)->getName();
+        //$currencies[$symbol] = $website->getName();
+        $currencies[$symbol] = array('currency_name'=>Mage::app()->getLocale()->currency($symbol)->getName(),
+                                    'website_code'=>$website->getCode(),
+                                    'website_name'=>$website->getName()
+                                    );
+    }
+}
+?>
+<?php if(count($currencies)>1): ?>
+<div class="header-country-switcher" data-current-url="<?php echo $this->helper("core/url")->getCurrentUrl();?>">
+    <div class="label"><?php echo $this->getCurrentCurrencyCode(); ?><span class="move">&nbsp;</span></div>
+    <ul class="chooser">
+	    <?php foreach ($currencies as $currencySymbol => $data): ?>
+	        <li class="item<?php echo ($currencySymbol==$this->getCurrentCurrencyCode())? ' active':''; ?>" data-currency="<?php echo $this->getSwitchCurrencyUrl($currencySymbol) ?>">
+				<a href="<?php echo $currencySymbol ?>" data-currency="<?php echo $currencySymbol?>" data-website="<?php echo $data['website_code']?>">
+				    <?php echo $currencySymbol; ?>
+				</a>
+	        </li>
+	    <?php endforeach; ?>
+    </ul>
+</div>
+<?php endif; ?>

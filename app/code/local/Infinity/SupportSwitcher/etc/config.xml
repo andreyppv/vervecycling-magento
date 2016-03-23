@@ -1,0 +1,54 @@
+<config>
+    <modules>
+        <Infinity_SupportSwitcher>
+            <version>0.0.1</version>
+        </Infinity_SupportSwitcher>
+    </modules>
+    <frontend>
+        <routers>
+            <supportswitcher>
+                <use>standard</use>
+                <args>
+                    <module>Infinity_SupportSwitcher</module>
+                    <frontName>supportswitcher</frontName>
+                </args>
+            </supportswitcher>
+        </routers>
+    </frontend>
+    <global>
+        <blocks>
+            <supportswitcher>
+                <class>Infinity_SupportSwitcher_Block</class>
+            </supportswitcher>
+        </blocks>
+        <helpers>
+            <supportswitcher>
+                <class>Infinity_SupportSwitcher_Helper</class>
+            </supportswitcher>
+        </helpers>
+    </global>
+    <adminhtml>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <supportswitcher>
+                                        <title>Infinity - All</title>
+                                    </supportswitcher>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</adminhtml>
+</config>

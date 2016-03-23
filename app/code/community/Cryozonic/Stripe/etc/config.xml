@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<!--
+ * Cryozonic
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Single Domain License
+ * that is available through the world-wide-web at this URL:
+ * http://cryozonic.com/licenses/stripe.html
+ * If you are unable to obtain it through the world-wide-web,
+ * please send an email to info@cryozonic.com so we can send
+ * you a copy immediately.
+ *
+ * @category   Cryozonic
+ * @package    Cryozonic_Stripe
+ * @copyright  Copyright (c) Cryozonic Ltd (http://cryozonic.com)
+ * -->
+<config>
+  <modules>
+    <Cryozonic_Stripe>
+      <version>1.9.0</version>
+    </Cryozonic_Stripe>
+  </modules>
+  <global>
+    <models>
+      <compiler>
+        <rewrite>
+          <process>Cryozonic_Stripe_Model_Compiler_Process</process>
+        </rewrite>
+      </compiler>
+      <cryozonic_stripe>
+        <class>Cryozonic_Stripe_Model</class>
+      </cryozonic_stripe>
+    </models>
+    <helpers>
+      <cryozonic_stripe>
+        <class>Cryozonic_Stripe_Helper</class>
+      </cryozonic_stripe>
+    </helpers>
+    <blocks>
+      <cryozonic_stripe>
+        <class>Cryozonic_Stripe_Block</class>
+      </cryozonic_stripe>
+      <!-- <page>
+        <rewrite>
+          <html_head>Cryozonic_Stripe_Block_Html_Head</html_head>
+        </rewrite>
+      </page> -->
+      <adminhtml>
+        <rewrite>
+          <page_head>Cryozonic_Stripe_Block_Html_AdminHead</page_head>
+        </rewrite>
+      </adminhtml>
+      <payment>
+        <rewrite>
+          <info>Cryozonic_Stripe_Block_Payment_Info</info>
+        </rewrite>
+      </payment>
+    </blocks>
+    <resources>
+      <cryozonic_stripe_setup>
+        <setup>
+          <module>Cryozonic_Stripe</module>
+        </setup>
+        <connection>
+          <use>core_setup</use>
+        </connection>
+      </cryozonic_stripe_setup>
+      <cryozonic_stripe_write>
+        <connection>
+          <use>core_write</use>
+        </connection>
+      </cryozonic_stripe_write>
+      <cryozonic_stripe_read>
+        <connection>
+          <use>core_read</use>
+        </connection>
+      </cryozonic_stripe_read>
+    </resources>
+    <events>
+      <sales_order_payment_place_end>
+        <observers>
+          <cryozonic_stripe_update_customer_id>
+            <type>singleton</type>
+            <class>cryozonic_stripe/observer</class>
+            <method>sales_order_payment_place_end</method>
+          </cryozonic_stripe_update_customer_id>
+        </observers>
+      </sales_order_payment_place_end>
+    </events>
+  </global>
+  <default>
+    <payment>
+      <cryozonic_stripe>
+        <model>cryozonic_stripe/standard</model>
+        <active>1</active>
+        <order_status>pending</order_status>
+        <title>Pay by Card (Stripe)</title>
+        <payment_action>authorize_capture</payment_action>
+        <allowspecific>0</allowspecific>
+        <sort_order>1</sort_order>
+        <use_store_currency>1</use_store_currency>
+      </cryozonic_stripe>
+    </payment>
+  </default>
+  <frontend>
+    <routers>
+      <cryozonic_stripe>
+        <use>standard</use>
+        <args>
+          <module>Cryozonic_Stripe</module>
+          <frontName>cryozonic_stripe</frontName>
+        </args>
+      </cryozonic_stripe>
+      <customer>
+        <args>
+          <modules>
+            <savedcards before="Mage_Customer">Cryozonic_Stripe</savedcards>
+          </modules>
+        </args>
+      </customer>
+    </routers>
+    <layout>
+      <updates>
+        <cryozonic_stripe>
+          <file>cryozonic_stripe.xml</file>
+        </cryozonic_stripe>
+        <savedcards module="Cryozonic_Stripe">
+          <file>customer/savedcards.xml</file>
+        </savedcards>
+      </updates>
+    </layout>
+    <translate>
+      <modules>
+        <Cryozonic_Stripe>
+          <files>
+            <default>Cryozonic_Stripe.csv</default>
+          </files>
+        </Cryozonic_Stripe>
+      </modules>
+    </translate>
+  </frontend>
+  <adminhtml>
+    <layout>
+      <updates>
+        <cryozonic_stripe>
+          <file>cryozonic_stripe.xml</file>
+        </cryozonic_stripe>
+      </updates>
+    </layout>
+  </adminhtml>
+</config>

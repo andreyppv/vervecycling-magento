@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<config>
+<menu>
+            <system>
+                <children>
+                    <ExtensionConflict translate="title" module="ExtensionConflict">
+                        <title>Extension Conflict</title>
+                        <action>ExtensionConflict/Admin/List</action>
+                    </ExtensionConflict>
+                </children>
+             </system>
+        </menu>
+
+
+        <routers>
+            <ExtensionConflict>
+                <use>standard</use>
+                <args>
+                    <module>MDN_ExtensionConflict</module>
+                    <frontName>Organizer</frontName>
+                </args>
+            </ExtensionConflict>
+        </routers>
+
+        <layout>
+            <updates>
+                <ExtensionConflict>
+                    <file>ExtensionConflict.xml</file>
+                </ExtensionConflict>
+            </updates>
+        </layout>
+</config>

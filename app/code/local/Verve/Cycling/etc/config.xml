@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <Verve_Cycling>
+            <version>1.0.0</version>
+        </Verve_Cycling>
+    </modules>
+    <frontend>
+        <routers>
+            <verve>
+                <use>standard</use>
+                <args>
+                    <module>Verve_Cycling</module>
+                    <frontName>verve</frontName>
+                </args>
+            </verve>
+
+        </routers>
+        <layout>
+            <updates>
+                <verve>
+                    <file>vervecycling.xml</file>
+                </verve>
+            </updates>
+        </layout>
+    </frontend>
+
+    <global>
+        <helpers>
+            <verve>
+                <class>Verve_Cycling_Helper</class>
+            </verve>
+        </helpers>
+        <blocks>
+            <verve>
+                <class>Verve_Cycling_Block</class>
+            </verve>
+            <catalog>
+                <rewrite>
+                    <product_view_options_type_select>Verve_Cycling_Block_Product_View_Options_Type_Select</product_view_options_type_select>
+                </rewrite>
+            </catalog>
+            <review>
+                <rewrite>
+                    <helper>Verve_Cycling_Block_Review_Helper</helper>
+                </rewrite>
+            </review>
+        </blocks>
+    </global>
+</config>

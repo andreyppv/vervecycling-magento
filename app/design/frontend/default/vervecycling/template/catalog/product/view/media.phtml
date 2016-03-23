@@ -1,0 +1,148 @@
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+?>
+ <script type="text/javascript">
+    /*MagicZoomPlus.options = {
+		'zoom-width': 200,
+		'zoom-height': 200
+    };*/
+</script>
+<ul class="product-image">
+    <?php  
+    	$counts = array();
+    	foreach($_product->getMediaGallery('images') as $_image) {
+    		$url = (string)$this->helper('catalog/image')->init($_product, 'image', $_image['file'])->resize(720, 500);
+    		$fileName = preg_replace('/^.+[\\\\\\/]/', '', $url);
+    		$fileName = substr($fileName, 0, -6);
+    		if (empty($counts[$fileName])) {
+				$counts[$fileName] = 1;
+			} else {
+				$counts[$fileName] ++;
+			}    		
+        }
+    ?>
+	<?php $i = 0; ?>
+    <?php foreach ($this->getGalleryImages() as $_image): ?>
+        <?php 
+              $i++;
+              $_relimage = '"'.$this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile()).'"';
+              $_firstimage    = '"'.$this->helper('catalog/image')->init($_product, 'image').'"';
+        ?>
+		<li class="item big-image-<?php echo $i; ?><?php if( $_firstimage==$_relimage ) echo ' active'?>">
+			<?php 
+				$fileName = $_image->getFile();
+				$largeFilepath = substr($fileName, 0, 5);
+				$fileName = preg_replace('/^.+[\\\\\\/]/', '', (string)$this->helper('catalog/image')->init($_product, 'image', $_image['file'])->resize(720, 500));
+				$countKey = substr($fileName, 0, -6);
+				$fileEnd = substr($fileName, -4);
+				$fileName = substr($fileName, 0, -6);
+				$fileName = $fileName . '{col}' .$fileEnd;
+				
+			?>
+			<a 
+				id="big-image-<?php echo $i; ?>" 
+				href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile()); ?>" 
+				class="Magic360"
+				data-magic360-options="filename:<?php echo $fileName; ?>; columns:<?php echo empty($counts[$countKey])? 1 : $counts[$countKey];  ?>; large-filename:<?php echo $fileName; ?> ; large-filepath: <?php echo $this->getBaseUrl() . '/media/catalog/product' . $largeFilepath ?>; speed:80;"
+				title="<?php echo $this->htmlEscape($_image->getLabel()) ?>">
+				<img 
+					class="big-image-<?php echo $i; ?>"
+					<?php if($_firstimage==$_relimage): ?>
+						src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->resize(720, 500); ?>" 
+					<?php else: ?>
+						src=""
+						data-src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile())->resize(720, 500); ?>" 
+					<?php endif; ?>
+					width="720" height="500" 
+				/>
+			</a>
+			<?php if(!empty($counts[$countKey]) && $counts[$countKey] > 1 ): ?>
+			<div class="control-wrap">
+				<a href="#" class="control-rotate big-image-<?php echo $i; ?>" data-target="big-image-<?php echo $i; ?>"><span><?php echo $this->__('Exit');?></span> 360°</a>
+			</div>
+			<?php endif; ?>
+		</li>
+    <?php endforeach;?>
+</ul>
+<?php if (count($this->getGalleryImages()) > 0): ?>
+<div class="more-views">
+    <div class="mask">
+	    <ul class="slideset">
+	    <?php $i = 0; ?>
+	    <?php foreach ($this->getGalleryImages() as $_image): ?>
+	        <?php 
+	              $i++;
+	              $_relimage = '"'.$this->helper('catalog/image')->init($this->getProduct(), 'image', $_image->getFile()).'"';
+	              $_firstimage    = '"'.$this->helper('catalog/image')->init($_product, 'image').'"';
+	        ?>
+	        <li class="item slide">
+	            <a href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile()); ?>" title="<?php echo $this->htmlEscape($_image->getLabel()) ?>" class="<?php if( $_firstimage==$_relimage ) echo 'active'?>"  data-image="big-image-<?php echo $i; ?>" >
+		            <img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(120, 84); ?>" width="120" height="84" alt="<?php echo $this->htmlEscape($_image->getLabel()) ?>" />
+	            </a>
+	        </li>
+	    <?php endforeach;?>
+	    </ul>
+	</div>
+	<a class="btn-prev" title="<?php echo $this->__('Previous'); ?>" href="#"><?php echo $this->__('Previous'); ?></a>
+	<a class="btn-next" title="<?php echo $this->__('Next'); ?>" href="#"><?php echo $this->__('Next'); ?></a>
+</div>
+<?php endif; ?>
+<script type="text/javascript">
+	Magic360.options = {
+		'onready' : function(spin){
+			Magic360.spin(spin);
+			Magic360.pause(spin);
+			jQuery('.more-views .item').children('a').removeClass('disable');
+			},
+		'autospin-direction' : 'anticlockwise',
+		'autospin':'off',
+		'fullscreen': 'false',
+		'hint' : 'false',
+		'z-index': 99
+	};
+	
+	jQuery('.product-image').sameHeight({
+		elements: '.item',
+		multiLine: true,
+		flexible: true,
+		useMinHeight: false
+	});	
+
+	
+	jQuery('.more-views .item a').live('click', function(event){
+		event.preventDefault();
+		if(!jQuery(this).hasClass('disable')){
+			productImage = jQuery('ul.product-image');
+			jQuery(this).parents('.more-views').find('a').removeClass('active').css('opacity', 1);
+			jQuery(this).addClass('active').css('opacity', 0.3);
+			jQuery('.product-image').find('.control-rotate').removeClass('active');
+			Magic360.pause(jQuery('.product-image').children('li.active').find('a.Magic360').attr('id'));
+			productImage.find('li.' + jQuery(this).attr('data-image')).addClass('active').siblings('.item').removeClass('active');
+			mainProdImg = productImage.find('li.active').find('img');
+			if(!mainProdImg.attr('src') && mainProdImg.attr('data-src')){
+				jQuery(this).parents('.more-views').find('a').addClass('disable');
+				mainProdImg.attr('src', mainProdImg.attr('data-src'));
+				mainProdImg.removeAttr('data-src');
+			}
+		}
+		return false;	
+	});
+	
+	jQuery('.control-rotate').live('click', function(event){
+		event.preventDefault();
+		var spinId = jQuery(this).attr('data-target');
+		jQuery(this).toggleClass('active');
+		if(jQuery(this).hasClass('active')){
+			Magic360.spin(spinId);
+		}else{
+			Magic360.pause(spinId);
+		}
+		return false;	
+	});
+	
+	jQuery('.product-image .Magic360').live('click', function(event){
+		jQuery('.product-image').find('.control-rotate').removeClass('active');
+			
+	});
+</script>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Infinity_ProductAttributes>
+            <version>0.1.0</version>
+        </Infinity_ProductAttributes>
+    </modules>
+    <global>
+        <models>
+            <productattributes>
+                <class>Infinity_ProductAttributes_Model</class>
+                <resourceModel>productattributes_resource</resourceModel>
+            </productattributes>
+            <productattributes_resource>
+                <class>Infinity_ProductAttributes_Model_Resource</class>
+            </productattributes_resource>
+        </models>
+        <helpers>
+            <productattributes>
+                <class>Infinity_ProductAttributes_Helper</class>
+            </productattributes>
+        </helpers>
+        <resources>
+            <productattributes_setup>
+                <setup>
+                    <module>Infinity_ProductAttributes</module>
+                    <class>productattributes_resource/setup</class>
+                </setup>
+            </productattributes_setup>
+        </resources>
+    </global>
+</config>

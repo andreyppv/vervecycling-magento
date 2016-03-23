@@ -1,0 +1,145 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+$_item = $this->getItem();
+$isVisibleProduct = $_item->getProduct()->isVisibleInSiteVisibility();
+$canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage_Catalog_Model_Product_Attribute_Source_Msrp_Type::TYPE_BEFORE_ORDER_CONFIRM);
+
+$excl_tax =  $this->helper('tax')->getPrice($_item->getProduct(), $_item->getProduct()->getPrice(), false);
+$excl_tax = Mage::helper('core')->currency($excl_tax,true,false);
+
+$subtotal_excl_tax =  $this->helper('tax')->getPrice($_item->getProduct(), $_item->getProduct()->getPrice(), false)*(int)$this->getQty();
+$subtotal_excl_tax = Mage::helper('core')->currency($subtotal_excl_tax,true,false);
+
+$inc_tax = $this->helper('tax')->getPrice($_item->getProduct(), $_item->getProduct()->getPrice(), true);
+$inc_tax = Mage::helper('core')->currency($inc_tax,true,false);
+?>
+        <div class="form-field rohieow">
+            <div class="row field-head">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+                    <h3 class="title">
+                    <?php if ($this->hasProductUrl()):?>
+                        <a href="<?php echo $this->getProductUrl() ?>"><?php echo $this->escapeHtml($this->getProductName()) ?></a>
+                    <?php else: ?>
+                        <?php echo $this->escapeHtml($this->getProductName()) ?>
+                    <?php endif; ?>
+                    </h3>
+                    <?php echo $this->getLayout()->createBlock('review/helper')->getSummaryHtml($_item->getProduct(), 'view'); ?>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 cart-units">
+
+                        <div class="col-md-4">
+                            <span><?php echo $this->__('Unit Price'); ?></span>
+                        </div>
+                        <div class="col-md-2">
+                            <span><?php echo $this->__('QTY'); ?></span>
+                        </div>
+                        <div class="col-md-4">
+                            <span><?php echo $this->__('Subtotal'); ?></span>
+                        </div>
+                        <div class="col-md-2">
+
+                        </div>
+
+                </div>
+
+            </div>
+
+            <div class="row field-container">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+
+                    <div class="row">
+                        <div class="col-md-5">
+                            <?php if ($this->hasProductUrl()):?>
+                            <a href="<?php echo $this->getProductUrl() ?>" title="<?php echo $this->escapeHtml($this->getProductName()) ?>" class="product-image">
+                                <?php endif;?>
+                                <img src="<?php echo $this->getProductThumbnail()->resize(320); ?>"   alt="<?php echo $this->escapeHtml($this->getProductName()) ?>" />
+                                <?php if ($this->hasProductUrl()):?>
+                            </a>
+                            <?php endif;?>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5">
+                            <p class="span">100% Money Back Guarantee</p>
+                            <p>
+                                <input type="text" class="form-control input-box"  placeholder="Enter bike, make, model and year" />
+                            </p>
+                            <?php if ($_options = $this->getOptionList()):?>
+                                    has options
+                                   <div class="row">
+                                        <?php foreach ($_options as $_option) : ?>
+                                            <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option); ?>
+                                            <div class="col-sm-6">
+                                                 <p style="padding-bottom: 6px;">
+                                                     <strong><?php echo $this->escapeHtml($_option['label']); ?></strong><br />
+
+                                                     <?php echo $_formatedOptionValue['value']; ?>
+                                                 </p>
+                                            </div>
+                                        <?php endforeach; ?>
+                                   </div>
+                                    <div style="padding-top: 6px;">
+                                        <p>
+                                            <a href="<?php echo $this->getConfigureUrl(); ?>"><?php echo $this->__('Edit'); ?></a>
+                                        </p>
+                                    </div>
+
+                            <?php endif; ?>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+
+                        <div class="col-sm-4">
+                            <span><?php echo Mage::app()->getStore()->getCurrentCurrencyCode().$this->__(' ').$excl_tax.' (Excl. Tax)'; ?></span>
+                        </div>
+                        <div class="col-sm-2">
+                            <span>
+                               <input name="cart[<?php echo $_item->getId() ?>][qty]"
+                                      data-cart-item-id="<?php echo $this->jsQuoteEscape($_item->getSku()) ?>"
+                                      value="<?php echo $this->getQty() ?>" size="3" title="<?php echo $this->__('Qty') ?>" class="input-text qty" maxlength="12" />
+                            </span>
+                            <div style="padding-top: 6px;">
+                                <p>
+                                    <a  name="update_cart_action"  class="button btn-update" onclick="document.getElementById('cart-form').submit(); return false;" href="#"><?php echo $this->__('Update'); ?></a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <span><?php echo Mage::app()->getStore()->getCurrentCurrencyCode().$this->__(' ').($subtotal_excl_tax).' (Excl. Tax)'; ?></span>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <a href="<?php echo $this->getDeleteUrl()?>"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN); ?>frontend/vervecycling/default/images/remove.png" /></a>
+                        </div>
+                </div>
+            </div>
+
+        </div>

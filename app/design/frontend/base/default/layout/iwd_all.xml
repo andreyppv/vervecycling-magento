@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<default>
+		<reference name="head">
+			<action method="addJs"><script>iwd/all/iwd-jquery-2.1.3.min.js</script></action>
+			<action method="addJs"><script>iwd/all/modal.js</script></action>
+        </reference>
+    </default>
+</layout>

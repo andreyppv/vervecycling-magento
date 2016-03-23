@@ -1,0 +1,225 @@
+<?xml version="1.0"?>
+<!-- 
+ * Cryozonic
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Single Domain License
+ * that is available through the world-wide-web at this URL:
+ * http://cryozonic.com/licenses/stripe.html
+ * If you are unable to obtain it through the world-wide-web,
+ * please send an email to info@cryozonic.com so we can send
+ * you a copy immediately.
+ *
+ * @category   Cryozonic
+ * @package    Cryozonic_Stripe
+ * @copyright  Copyright (c) Cryozonic Ltd (http://cryozonic.com)
+ * -->
+<config>
+  <sections>
+    <payment>
+      <groups>
+        <cryozonic_stripe translate="label comment" module="cryozonic_stripe">
+          <label>Stripe Payment Gateway</label>
+          <comment>&lt;strong&gt;Please note&lt;/strong&gt;: If you do not yet have a Stripe account, please &lt;a href="https://manage.stripe.com/register" target="_blank"&gt;click here&lt;/a&gt; to register.</comment>
+          <sort_order>13</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <active translate="label">
+              <label>Enabled</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </active>
+            <title translate="label">
+              <label>Title</label>
+              <comment><![CDATA[This appears at the checkout page during payment]]></comment>
+              <frontend_type>text</frontend_type>
+              <sort_order>2</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </title>
+
+            <stripe_mode translate="label">
+              <label>Mode</label>
+              <comment><![CDATA[Set this to live when you are ready to accept payments]]></comment>
+              <frontend_type>select</frontend_type>
+              <source_model>cryozonic_stripe/source_mode</source_model>
+              <sort_order>5</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </stripe_mode>
+            <stripe_test_sk translate="label">
+              <label>Test Secret Key</label>
+              <comment>
+                <![CDATA[<a target="_blank" href="https://manage.stripe.com/account">stripe.com/account</a> &gt; API Keys &gt; Test Secret Key]]>
+              </comment>
+              <frontend_type>text</frontend_type>
+              <sort_order>11</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <depends>
+                <stripe_mode>test</stripe_mode>
+              </depends>
+            </stripe_test_sk>
+            <stripe_test_pk translate="label">
+              <label>Test Publishable Key</label>
+              <comment>
+                <![CDATA[<a target="_blank" href="https://manage.stripe.com/account">stripe.com/account</a> &gt; API Keys &gt; Test Publishable Key]]>
+              </comment>
+              <frontend_type>text</frontend_type>
+              <sort_order>12</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <depends>
+                <stripe_mode>test</stripe_mode>
+              </depends>
+            </stripe_test_pk>
+            <stripe_live_sk translate="label">
+              <label>Live Secret Key</label>
+              <comment>
+                <![CDATA[<a target="_blank" href="https://manage.stripe.com/account">stripe.com/account</a> &gt; API Keys &gt; Live Secret Key]]>
+              </comment>
+              <frontend_type>text</frontend_type>
+              <sort_order>13</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <depends>
+                <stripe_mode>live</stripe_mode>
+              </depends>
+            </stripe_live_sk>
+            <stripe_live_pk translate="label">
+              <label>Live Publishable Key</label>
+              <comment>
+                <![CDATA[<a target="_blank" href="https://manage.stripe.com/account">stripe.com/account</a> &gt; API Keys &gt; Live Publishable Key]]>
+              </comment>
+              <frontend_type>text</frontend_type>
+              <sort_order>14</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <depends>
+                <stripe_mode>live</stripe_mode>
+              </depends>
+            </stripe_live_pk>
+            <stripe_js translate="label">
+              <label>Stripe.js</label>
+              <comment>
+                <![CDATA[Enable Stripe.js for PCI compliance, or disable it for compatibility with custom checkout page modules.]]>
+              </comment>
+              <frontend_type>select</frontend_type>
+              <source_model>cryozonic_stripe/source_stripeJs</source_model>
+              <sort_order>20</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </stripe_js>
+            <payment_action translate="label">
+              <label>Payment Action</label>
+              <frontend_type>select</frontend_type>
+              <source_model>cryozonic_stripe/source_paymentAction</source_model>
+              <sort_order>35</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </payment_action>
+            <expired_authorizations translate="label">
+              <label>Expired Authorizations</label>
+              <comment>
+                <![CDATA[Authorizations will typically expire after 7 days. What should we do if an admin tries to capture an expired authorization?]]>
+              </comment>
+              <frontend_type>select</frontend_type>
+              <source_model>cryozonic_stripe/source_expiredAuthorizations</source_model>
+              <sort_order>36</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <depends>
+                <payment_action>authorize</payment_action>
+              </depends>
+            </expired_authorizations>
+            <avs translate="label">
+              <label>Address Verification Check (AVS)</label>
+              <frontend_type>select</frontend_type>
+              <source_model>cryozonic_stripe/source_avs</source_model>
+              <sort_order>37</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </avs>
+            <ccsave translate="label">
+              <label>Save Customer Cards</label>
+              <comment>
+                <![CDATA[Enable this if you want to save customer cards on Stripe's servers so that they don't have to enter the details of the same card twice]]>
+              </comment>
+              <frontend_type>select</frontend_type>
+              <source_model>cryozonic_stripe/source_ccSave</source_model>
+              <sort_order>38</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </ccsave>
+            <use_store_currency translate="label,comment">
+              <label>Pay in store currency</label>
+              <comment>Choose "Yes" to use store view currency instead of base currency.</comment>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>40</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </use_store_currency>
+            <order_status translate="label">
+              <label>New Order Status</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_order_status</source_model>
+              <sort_order>50</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+            </order_status>
+            <allowspecific translate="label">
+              <label>Payment Applicable From</label>
+              <frontend_type>select</frontend_type>
+              <sort_order>60</sort_order>
+              <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+            </allowspecific>
+            <specificcountry translate="label">
+              <label>Countries Payment Applicable From</label>
+              <frontend_type>multiselect</frontend_type>
+              <sort_order>70</sort_order>
+              <source_model>adminhtml/system_config_source_country</source_model>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+              <depends>
+                <allowspecific>1</allowspecific>
+              </depends>
+            </specificcountry>
+            <sort_order translate="label">
+              <label>Sort Order</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>100</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>0</show_in_store>
+            </sort_order>
+          </fields>
+        </cryozonic_stripe>
+      </groups>
+    </payment>
+  </sections>
+</config>
